@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Artmar Malerei – Maler in Luzern, Zug & Zürich. Fotos hochladen, Richtpreis in 30 Sekunden, Besichtigung am Wochenende.">
+<meta property="og:title" content="Artmar Malerei – Richtpreis in 30 Sekunden">
+<meta property="og:description" content="Maler in Luzern, Zug & Zürich. Fixpreis inkl. Material, fertig am Wochenende.">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head><body>
+<title>Artmar Preisrechner</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one narrow column like a painter's job sheet: photos, rooms, price, appointment; live price docked at the bottom */
+:root{
+ --bg:#f4f2f8; --card:#ffffff; --ink:#1b1230; --muted:#6b6385; --line:#e4dfee;
+ --plum:#2a1d47; --sun:#ffd54a; --sun-ink:#1b1230; --ok:#15803d; --wa:#1fa855; --violet:#6d3ff0;
+ --display:'Bricolage Grotesque','Figtree',system-ui,sans-serif;
+ --body:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+ --bg:#130c22; --card:#1f1634; --ink:#f3effb; --muted:#a69cc2; --line:#33284f;
+ --plum:#0d0818; --ok:#4ade80; --wa:#25d366; --violet:#a78bfa; color-scheme:dark}}
+:root[data-theme="dark"]{
+ --bg:#130c22; --card:#1f1634; --ink:#f3effb; --muted:#a69cc2; --line:#33284f;
+ --plum:#0d0818; --ok:#4ade80; --wa:#25d366; --violet:#a78bfa; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5;
+ padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 170px}
+.wrap{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+header.hero{background:var(--plum);color:#fff;border-radius:0 0 28px 28px;margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px)));padding:24px max(20px,env(safe-area-inset-left,0px)) 26px}
+.hero-in{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand b{font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.5px;line-height:1}
+.brand small{display:block;color:var(--sun);font-weight:700;letter-spacing:5px;font-size:12px;margin-top:3px}
+.lang{display:flex;background:rgba(255,255,255,.12);border-radius:999px;padding:3px}
+.lang button{font:inherit;font-weight:700;font-size:13px;border:0;border-radius:999px;padding:6px 12px;background:transparent;color:#fff;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--sun);color:var(--sun-ink)}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,7vw,40px);line-height:1.05;letter-spacing:-1px;margin:6px 0 0;text-wrap:balance}
+.hero h1 em{font-style:normal;background:var(--sun);color:var(--sun-ink);padding:0 8px;border-radius:10px}
+.hero p{margin:0;color:#d9d1ee;max-width:52ch}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;font-weight:700}
+.flow span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:5px 12px}
+.flow i{font-style:normal;color:var(--sun)}
+section.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.step{display:flex;align-items:baseline;gap:10px}
+.step span{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--sun);color:var(--sun-ink);font-weight:800;font-size:14px;flex:none}
+.step h2{font-family:var(--display);font-size:21px;margin:0;font-weight:800;letter-spacing:-.3px}
+.hint{color:var(--muted);font-size:14px;margin:-6px 0 0}
+.drop{border:2px dashed var(--muted);border-radius:16px;padding:18px;text-align:center;cursor:pointer;display:flex;flex-direction:column;gap:4px;align-items:center;background:var(--bg)}
+.drop b{font-size:16px}.drop small{color:var(--muted)}
+.drop:focus-within{outline:3px solid var(--sun)}
+.drop input{position:absolute;opacity:0;width:1px;height:1px}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:8px}
+.thumbs figure{margin:0;position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden;background:var(--line)}
+.thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+.thumbs button{position:absolute;top:4px;right:4px;width:26px;height:26px;border-radius:50%;border:0;background:rgba(0,0,0,.6);color:#fff;cursor:pointer;font-size:15px;line-height:1}
+.room{display:grid;grid-template-columns:1fr 92px 40px;gap:8px;align-items:center}
+select,input[type=number],input[type=text],input[type=tel]{font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:11px 12px;width:100%;min-width:0}
+select:focus,input:focus,button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset:1px}
+.m2{position:relative}.m2 input{padding-right:34px;text-align:right;font-variant-numeric:tabular-nums}
+.m2::after{content:"m²";position:absolute;right:11px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:14px;pointer-events:none}
+.icon-btn{width:40px;height:44px;border-radius:12px;border:1.5px solid var(--line);background:transparent;color:var(--muted);font-size:20px;cursor:pointer}
+.add{align-self:flex-start;background:transparent;border:1.5px dashed var(--muted);color:var(--ink);font:inherit;font-weight:700;border-radius:12px;padding:10px 14px;cursor:pointer}
+.seg{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.seg label{display:flex;flex-direction:column;gap:2px;border:1.5px solid var(--line);border-radius:14px;padding:11px 13px;cursor:pointer;background:var(--bg)}
+.seg label:has(input:checked){border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg b{font-weight:700}.seg small{color:var(--muted);font-size:13px}
+.toggle{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:6px 0;border-top:1px solid var(--line)}
+.toggle .t{min-width:0}.toggle .t small{display:block;color:var(--muted);font-size:13px}
+.sw{appearance:none;width:50px;height:30px;border-radius:999px;background:var(--line);position:relative;cursor:pointer;flex:none;transition:background .15s}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .15s}
+.sw:checked{background:var(--ok)}.sw:checked::after{transform:translateX(20px)}
+.count{display:flex;align-items:center;gap:6px;flex:none}
+.count button{width:36px;height:36px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font-size:18px;cursor:pointer}
+.count output{width:28px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+.price{display:flex;flex-direction:column;gap:6px}
+.big{font-family:var(--display);font-weight:800;font-size:clamp(30px,8vw,42px);letter-spacing:-1px;line-height:1;font-variant-numeric:tabular-nums}
+.break{display:flex;flex-direction:column;gap:6px;font-variant-numeric:tabular-nums}
+.break div{display:flex;justify-content:space-between;gap:12px;font-size:15px}
+.break div span:first-child{color:var(--muted)}
+.days{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.days button,.slots button{font:inherit;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:14px;cursor:pointer}
+.days button{flex:none;width:66px;padding:8px 0;display:flex;flex-direction:column;align-items:center;line-height:1.15}
+.days button small{color:var(--muted);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.days button b{font-size:22px;font-family:var(--display)}
+.days button[aria-pressed="true"]{background:var(--ink);color:var(--card);border-color:var(--ink)}
+.days button[aria-pressed="true"] small{color:var(--sun)}
+.slots{display:flex;flex-wrap:wrap;gap:8px}
+.slots button{padding:9px 14px;font-weight:700;font-variant-numeric:tabular-nums}
+.slots button[aria-pressed="true"]{background:var(--sun);border-color:var(--sun);color:var(--sun-ink)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.grid2 label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:14px}
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;counter-reset:s}
+.how div{background:var(--bg);border-radius:16px;padding:14px;counter-increment:s}
+.how div::before{content:counter(s);display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--sun);color:var(--sun-ink);font-weight:800;margin-bottom:6px}
+.how b{display:block}.how small{color:var(--muted)}
+ul.inc{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:6px 14px}
+ul.inc li::before{content:"✓ ";color:var(--ok);font-weight:800}
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--plum);color:#fff;border-radius:22px 22px 0 0;box-shadow:0 -10px 30px rgba(0,0,0,.25);
+ padding:14px max(16px,env(safe-area-inset-right,0px)) calc(14px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.dock-in{max-width:640px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.dock small{color:#cfc6e6;font-size:12px;display:block}
+.dock .range{font-family:var(--display);font-weight:800;font-size:clamp(24px,6.5vw,32px);letter-spacing:-.5px;font-variant-numeric:tabular-nums;line-height:1.1}
+.cta{display:inline-flex;align-items:center;gap:8px;background:var(--wa);color:#fff;text-decoration:none;font-weight:800;border-radius:14px;padding:13px 18px;white-space:nowrap}
+.cta.sun{background:var(--sun);color:var(--sun-ink)}
+.cta[aria-disabled="true"]{opacity:.45;pointer-events:none}
+.msg{white-space:pre-wrap;background:var(--bg);border:1.5px solid var(--line);border-radius:14px;padding:12px;font-size:14px;max-height:200px;overflow:auto}
+.copy{align-self:flex-start;font:inherit;font-weight:700;border-radius:12px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);padding:9px 14px;cursor:pointer}
+.note{background:var(--bg);border-radius:14px;padding:12px 14px;font-size:14px}
+.fine{color:var(--muted);font-size:13px;margin:0}
+.calc{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.calc .bar{flex:1;height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.gate{display:grid;gap:10px;background:var(--bg);border:1.5px solid var(--line);border-radius:16px;padding:14px}
+.gate b{font-size:16px}
+.gate .err{color:#c2362b;font-size:13px;min-height:1em}
+.locked{filter:blur(9px);user-select:none}
+.unlock{font:inherit;font-weight:800;border:0;border-radius:14px;padding:13px 18px;background:var(--wa);color:#fff;cursor:pointer;justify-self:start}
+.unlock:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.calc .bar i{display:block;height:100%;width:0;background:var(--violet);transition:width .6s ease}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header class="hero">
+ <div class="hero-in">
+  <div class="top">
+   <div class="brand">
+    <svg width="40" height="40" viewBox="0 0 120 120" aria-hidden="true"><rect x="10" y="22" width="78" height="40" rx="12" fill="#ffd54a"/><rect x="88" y="34" width="14" height="16" rx="4" fill="#ffd54a"/><path d="M95,50 L95,74 L58,74 L58,112" stroke="#fff" stroke-width="9" fill="none" stroke-linecap="round"/></svg>
+    <div><b>ARTMAR</b><small>MALEREI</small></div>
+   </div>
+   <div class="lang" role="group" aria-label="Sprache / Idioma"><button type="button" data-lang="de" aria-pressed="true">DE</button><button type="button" data-lang="es" aria-pressed="false">ES</button></div>
+  </div>
+  <h1 data-i="h1"></h1>
+  <p data-i="lead"></p>
+  <div class="flow"><span data-i="f1"></span><i>→</i><span data-i="f2"></span><i>→</i><span data-i="f3"></span></div>
+ </div>
+</header>
+
+<main class="wrap" style="margin-top:18px">
+ <section class="card" aria-labelledby="s1">
+  <div class="step"><span>1</span><h2 id="s1" data-i="s1"></h2></div>
+  <p class="hint" data-i="s1h"></p>
+  <label class="drop" for="photos"><input type="file" id="photos" accept="image/*" multiple><b data-i="drop"></b><small data-i="dropS"></small></label>
+  <div class="thumbs" id="thumbs"></div>
+ </section>
+
+ <section class="card" aria-labelledby="s2">
+  <div class="step"><span>2</span><h2 id="s2" data-i="s2"></h2></div>
+  <p class="hint" data-i="s2h"></p>
+  <div id="rooms" style="display:flex;flex-direction:column;gap:8px"></div>
+  <button class="add" id="addRoom" type="button" data-i="add"></button>
+  <div>
+   <div class="toggle"><div class="t"><b data-i="o1"></b><small data-i="o1s"></small></div><input class="sw" type="checkbox" id="ceil" checked></div>
+   <div class="toggle"><div class="t"><b data-i="o2"></b><small data-i="o2s"></small></div><input class="sw" type="checkbox" id="dark"></div>
+   <div class="toggle"><div class="t"><b data-i="o3"></b><small data-i="o3s"></small></div><input class="sw" type="checkbox" id="nic"></div>
+   <div class="toggle"><div class="t"><b data-i="o4"></b><small data-i="o4s"></small></div><input class="sw" type="checkbox" id="furn"></div>
+  </div>
+  <div class="seg" role="radiogroup" id="condG">
+   <label><input type="radio" name="cond" value="0" checked><b data-i="c1"></b><small data-i="c1s"></small></label>
+   <label><input type="radio" name="cond" value="0.15"><b data-i="c2"></b><small data-i="c2s"></small></label>
+   <label><input type="radio" name="cond" value="0.35"><b data-i="c3"></b><small data-i="c3s"></small></label>
+  </div>
+  <div class="seg" role="radiogroup" id="hG">
+   <label><input type="radio" name="h" value="2.5" checked><b data-i="h1b"></b><small data-i="h1s"></small></label>
+   <label><input type="radio" name="h" value="2.8"><b data-i="h2b"></b><small data-i="h2s"></small></label>
+   <label><input type="radio" name="h" value="3.2"><b data-i="h3b"></b><small data-i="h3s"></small></label>
+  </div>
+ </section>
+
+ <section class="card" aria-labelledby="s3" id="priceCard">
+  <div class="step"><span>3</span><h2 id="s3" data-i="s3"></h2></div>
+  <div class="calc" aria-hidden="true"><span data-i="calc"></span><div class="bar"><i id="bar"></i></div></div>
+  <div class="gate" id="gate">
+   <b data-i="gT"></b><small class="hint" data-i="gS"></small>
+   <div class="grid2">
+    <label for="name"><span data-i="name"></span><input type="text" id="name" autocomplete="name"></label>
+    <label for="tel"><span data-i="tel"></span><input type="tel" id="tel" autocomplete="tel" inputmode="tel" placeholder="+41 79 123 45 67"></label>
+   </div>
+   <div class="err" id="gErr" role="alert"></div>
+   <button class="unlock" id="unlock" type="button" data-i="gBtn"></button>
+  </div>
+  <div class="price"><div class="big locked" id="rangeBig">CHF –</div><div class="break" id="break"></div></div>
+  <p class="fine" data-i="pfine"></p>
+ </section>
+
+ <section class="card" aria-labelledby="s4" id="book">
+  <div class="step"><span>4</span><h2 id="s4" data-i="s4"></h2></div>
+  <p class="hint" data-i="s4h"></p>
+  <div class="days" id="days" role="group"></div>
+  <div class="slots" id="slots" role="group"></div>
+  <div class="grid2">
+   <label for="plz"><span data-i="plz"></span><input type="text" id="plz" autocomplete="postal-code"></label>
+  </div>
+  <div class="note" id="photoNote"></div>
+  <div class="msg" id="msg"></div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+   <a class="cta" id="wa2" href="#" target="_blank" rel="noopener"></a>
+   <button class="copy" id="copy" type="button" data-i="copy"></button>
+  </div>
+  <p class="fine" id="waNum"></p>
+ </section>
+
+ <section class="card" aria-labelledby="s6">
+  <h2 id="s6" style="font-family:var(--display);margin:0;font-size:21px" data-i="how"></h2>
+  <div class="how"><div><b data-i="hw1"></b><small data-i="hw1s"></small></div><div><b data-i="hw2"></b><small data-i="hw2s"></small></div><div><b data-i="hw3"></b><small data-i="hw3s"></small></div><div><b data-i="hw4"></b><small data-i="hw4s"></small></div></div>
+  <ul class="inc" id="inc"></ul>
+ </section>
+</main>
+
+<div class="dock" role="region" aria-label="Richtpreis">
+ <div class="dock-in">
+  <div><small data-i="dock"></small><div class="range" id="range">CHF –</div></div>
+  <a class="cta sun" href="#book" data-i="dockBtn"></a>
+ </div>
+</div>
+
+<script>
+// ---- Settings Brian can change ----
+const WHATSAPP = "41767360520";            // e.g. "41791234567" (country code, no + or spaces)
+const RATE_WALL = 13, RATE_CEIL = 16, DOOR = 120, RAD = 80, MIN_JOB = 350, LOW = 0.9, HIGH = 1.2;
+const VISIT = { weekday:[], sat:["08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00"], sun:["09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00"] }; // viewing slots
+// -----------------------------------
+const TXT = {
+ de:{h1:'Fotos hoch, <em>Preis in 30 Sek.</em>',lead:'Lade Fotos deiner Wohnung hoch, wähle die Räume und sieh sofort deinen Richtpreis. Passt er, buchst du direkt die Besichtigung. Dort bekommst du den Fixpreis.',
+  f1:'📷 Fotos',f2:'⚡ Richtpreis',f3:'📅 Termin',
+  s1:'Fotos deiner Wohnung',s1h:'2–6 Fotos reichen: jede Wand einmal, gern mit Löchern oder Flecken im Bild.',drop:'📷 Fotos auswählen',dropS:'oder hierher ziehen',
+  s2:'Räume und Arbeiten',s2h:'Bodenfläche reicht, wir rechnen Wände und Decke daraus.',add:'+ Raum hinzufügen',
+  o1:'Decken mitstreichen',o1s:'Meist sinnvoll bei Auszug',o2:'Dunkle oder farbige Wand → hell',o2s:'Braucht einen Anstrich mehr',o3:'Nikotin oder starke Flecken',o3s:'Mit Isoliergrund',o4:'Räume sind möbliert',o4s:'Wir rücken Möbel und decken alles ab',o5:'Türen inkl. Rahmen lackieren',o5s:'pro Tür, beidseitig',o6:'Heizkörper lackieren',o6s:'pro Stück',
+  c1:'Gut',c1s:'Kaum Löcher',c2:'Normal',c2s:'Dübellöcher, kleine Risse',c3:'Viel Arbeit',c3s:'Risse, alte Tapete',h1b:'Bis 2.5 m',h1s:'Standard',h2b:'Bis 2.8 m',h2s:'Etwas höher',h3b:'Über 2.8 m',h3s:'Altbau',
+  s3:'Dein Richtpreis',calc:'Berechnet',pfine:'Richtpreis inkl. Material, Abdecken, Abkleben und Reinigung. Keine MWST. Den verbindlichen Fixpreis bekommst du bei der Besichtigung, danach ändert er sich nicht mehr.',
+  gT:'🔒 Wohin dürfen wir deinen Richtpreis schicken?',gS:'Gib Name und Handynummer ein, dann siehst du deinen Preis sofort und bekommst ihn auch per WhatsApp. Kostenlos und unverbindlich.',tel:'Handynummer',gBtn:'Preis anzeigen',gErrN:'Bitte gib deinen Namen ein.',gErrT:'Bitte gib eine gültige Handynummer ein.',lockedDock:'🔒 Nummer eingeben',
+  lead2:(o)=>`Hallo Artmar Malerei!\n\nMein Richtpreis laut Rechner: ${o.range}\n${o.rooms}\nOptionen: ${o.opts}\n\nName: ${o.name}\nTel: ${o.tel}\n\nBitte meldet euch für einen Besichtigungstermin.`,
+  s4:'Besichtigung buchen',s4h:'15 Minuten vor Ort mit unserem Maler. Unter der Woche sind wir auf Baustellen, darum machen wir Besichtigungen am Samstag und Sonntag. Wähle Tag und Uhrzeit, wir bestätigen per WhatsApp.',name:'Name',plz:'PLZ / Ort',
+  photos0:'Noch keine Fotos ausgewählt. Du kannst sie auch direkt im WhatsApp-Chat schicken.',photosN:n=>`📷 ${n} Foto${n>1?'s':''} ausgewählt. Hänge sie im WhatsApp-Chat an diese Nachricht an.`,
+  send:'💬 Termin anfragen',copy:'Text kopieren',copied:'Kopiert',selected:'Text markiert, jetzt kopieren',pick:'Bitte Tag und Uhrzeit wählen',
+  how:"So läuft's",hw1:'Fotos hochladen',hw1s:'Von jeder Wand eins.',hw2:'Richtpreis in 30 Sek.',hw2s:'Sofort auf dieser Seite.',hw3:'Besichtigung',hw3s:'Am Wochenende, 15 Min. vor Ort, dann Fixpreis.',hw4:'Fertig am Wochenende',hw4s:'Abgedeckt, gestrichen, sauber.',
+  inc:['Fixpreis, der nicht steigt','Material inklusive','Böden und Möbel abgedeckt','Kanten sauber abgeklebt','Mit Garantie auf die Arbeit','40× 5 Sterne (Bewertungen aus Spanien)'],
+  dock:'Dein Richtpreis',dockBtn:'Termin buchen',walls:'Wände',ceils:'Decken',cond:'Zustand',prep:'% Vorarbeit',dark:'Farbwechsel',darkV:'+1 Anstrich',nic:'Isoliergrund',incl:'inklusive',furn:'Möbel & Abdecken',doors:'Türen',rads:'Heizkörper',min:'Mindestauftrag',
+  types:['Schlafzimmer','Kinderzimmer','Wohnzimmer','Küche','Bad','Korridor','Büro','Anderer Raum'],dow:['So','Mo','Di','Mi','Do','Fr','Sa'],ca:'ca.',
+  m:(o)=>`Hallo Artmar Malerei!\n\nIch möchte eine Besichtigung buchen.\n📅 Wunschtermin: ${o.when}\n\n${o.rooms}\nOptionen: ${o.opts}\nZustand: ${o.cond}\nRichtpreis laut Rechner: ${o.range}\n\nName: ${o.name}\nTel: ${o.tel}\nOrt: ${o.plz}\n${o.photos}`,
+  mPhotos:n=>n?`📷 ${n} Fotos hänge ich hier an.`:'📷 Fotos schicke ich gleich.',withC:'mit Decken',noC:'ohne Decken',condV:['gut','normal (Dübellöcher)','viel Arbeit']},
+ es:{h1:'Sube fotos, <em>precio en 30 s</em>',lead:'Sube fotos de tu piso, elige las habitaciones y ve al momento tu precio orientativo. Si te encaja, reservas la visita y allí te damos el precio fijo.',
+  f1:'📷 Fotos',f2:'⚡ Precio',f3:'📅 Cita',
+  s1:'Fotos de tu piso',s1h:'Con 2–6 fotos basta: cada pared una vez, mejor si se ven agujeros o manchas.',drop:'📷 Elegir fotos',dropS:'o arrástralas aquí',
+  s2:'Habitaciones y trabajos',s2h:'Con los m² del suelo basta, nosotros calculamos paredes y techo.',add:'+ Añadir habitación',
+  o1:'Pintar también los techos',o1s:'Casi siempre al dejar un piso',o2:'Pared oscura o de color → clara',o2s:'Necesita una mano más',o3:'Nicotina o manchas fuertes',o3s:'Con imprimación aislante',o4:'Habitaciones amuebladas',o4s:'Movemos muebles y tapamos todo',o5:'Lacar puertas con marco',o5s:'por puerta, por ambas caras',o6:'Lacar radiadores',o6s:'por unidad',
+  c1:'Bien',c1s:'Casi sin agujeros',c2:'Normal',c2s:'Agujeros de tacos, grietas pequeñas',c3:'Mucho trabajo',c3s:'Grietas, papel viejo',h1b:'Hasta 2,5 m',h1s:'Estándar',h2b:'Hasta 2,8 m',h2s:'Algo más alto',h3b:'Más de 2,8 m',h3s:'Edificio antiguo',
+  s3:'Tu precio orientativo',calc:'Calculado',pfine:'Precio orientativo con material, protección, encintado y limpieza incluidos. Sin IVA. El precio fijo y definitivo te lo damos en la visita, y después ya no cambia.',
+  gT:'🔒 ¿A dónde te mandamos tu precio?',gS:'Pon tu nombre y tu móvil y verás tu precio al momento, y además te lo mandamos por WhatsApp. Gratis y sin compromiso.',tel:'Móvil',gBtn:'Ver mi precio',gErrN:'Escribe tu nombre.',gErrT:'Escribe un número de móvil válido.',lockedDock:'🔒 Pon tu número',
+  lead2:(o)=>`¡Hola Artmar Malerei!\n\nMi precio orientativo de la calculadora: ${o.range}\n${o.rooms}\nOpciones: ${o.opts}\n\nNombre: ${o.name}\nTel: ${o.tel}\n\nPor favor, contactadme para la visita.`,
+  s4:'Reserva la visita',s4h:'15 minutos en tu casa con nuestro pintor. Entre semana estamos en obra, así que las visitas las hacemos el sábado y el domingo. Elige día y hora y te lo confirmamos por WhatsApp.',name:'Nombre',plz:'Código postal / ciudad',
+  photos0:'Aún no has elegido fotos. También puedes mandarlas directamente en el chat de WhatsApp.',photosN:n=>`📷 ${n} foto${n>1?'s':''} elegida${n>1?'s':''}. Adjúntalas en el chat de WhatsApp junto a este mensaje.`,
+  send:'💬 Pedir cita',copy:'Copiar texto',copied:'Copiado',selected:'Texto marcado, cópialo ahora',pick:'Elige día y hora',
+  how:'Cómo funciona',hw1:'Sube fotos',hw1s:'Una de cada pared.',hw2:'Precio en 30 s',hw2s:'Al momento, en esta página.',hw3:'Visita',hw3s:'El finde, 15 min en tu casa y precio fijo.',hw4:'Terminado el finde',hw4s:'Protegido, pintado, limpio.',
+  inc:['Precio fijo que no sube','Material incluido','Suelos y muebles protegidos','Bordes encintados con cuidado','Trabajo con garantía','40× 5 estrellas (reseñas en España)'],
+  dock:'Tu precio orientativo',dockBtn:'Reservar cita',walls:'Paredes',ceils:'Techos',cond:'Estado',prep:'% preparación',dark:'Cambio de color',darkV:'+1 mano',nic:'Imprimación aislante',incl:'incluida',furn:'Muebles y protección',doors:'Puertas',rads:'Radiadores',min:'Pedido mínimo',
+  types:['Dormitorio','Habitación infantil','Salón','Cocina','Baño','Pasillo','Despacho','Otra habitación'],dow:['dom','lun','mar','mié','jue','vie','sáb'],ca:'aprox.',
+  m:(o)=>`¡Hola Artmar Malerei!\n\nMe gustaría reservar una visita.\n📅 Fecha deseada: ${o.when}\n\n${o.rooms}\nOpciones: ${o.opts}\nEstado: ${o.cond}\nPrecio orientativo de la calculadora: ${o.range}\n\nNombre: ${o.name}\nTel: ${o.tel}\nLugar: ${o.plz}\n${o.photos}`,
+  mPhotos:n=>n?`📷 Te adjunto ${n} fotos aquí.`:'📷 Ahora te mando las fotos.',withC:'con techos',noC:'sin techos',condV:['bien','normal (agujeros de tacos)','mucho trabajo']}
+};
+const AREAS=[14,11,24,10,6,8,11,12];
+let lang='de'; try{const s=localStorage.getItem('artmar-lang'); if(s==='es'||s==='de') lang=s}catch(e){}
+let rooms=[{t:0,a:14}], photos=[], day=null, slot=null, unlocked=false; const counts={doors:0,rads:0};
+const $=id=>document.getElementById(id);
+const fmt=n=>(Math.round(n/10)*10).toLocaleString('de-CH');
+const L=()=>TXT[lang];
+
+function applyLang(){
+ document.documentElement.lang=lang;
+ document.querySelectorAll('[data-i]').forEach(e=>{const v=L()[e.dataset.i]; if(typeof v==='string') e.innerHTML=v});
+ document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===lang));
+ $('inc').innerHTML=L().inc.map(x=>`<li>${x}</li>`).join('');
+ drawRooms(); drawDays(); calc();
+}
+document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>{lang=b.dataset.lang;try{localStorage.setItem('artmar-lang',lang)}catch(e){};applyLang()});
+
+// photos (kept in this browser only; the client attaches them in WhatsApp)
+$('photos').addEventListener('change',e=>{[...e.target.files].slice(0,12-photos.length).forEach(f=>photos.push({name:f.name,url:URL.createObjectURL(f)}));e.target.value='';drawThumbs();calc()});
+const drop=document.querySelector('.drop');
+['dragover','dragenter'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault()}));
+drop.addEventListener('drop',e=>{e.preventDefault();[...e.dataTransfer.files].filter(f=>f.type.startsWith('image/')).slice(0,12-photos.length).forEach(f=>photos.push({name:f.name,url:URL.createObjectURL(f)}));drawThumbs();calc()});
+function drawThumbs(){$('thumbs').innerHTML='';photos.forEach((p,i)=>{const f=document.createElement('figure');const im=document.createElement('img');im.src=p.url;im.alt=p.name;const b=document.createElement('button');b.type='button';b.textContent='×';b.setAttribute('aria-label','Foto entfernen');b.onclick=()=>{URL.revokeObjectURL(p.url);photos.splice(i,1);drawThumbs();calc()};f.append(im,b);$('thumbs').appendChild(f)})}
+
+function drawRooms(){
+ const box=$('rooms'); box.innerHTML='';
+ rooms.forEach((r,i)=>{
+  const row=document.createElement('div'); row.className='room';
+  const sel=document.createElement('select'); sel.id='rt'+i; sel.setAttribute('aria-label',L().s2+' '+(i+1));
+  L().types.forEach((n,k)=>{const o=document.createElement('option');o.value=k;o.textContent=n;if(k===r.t)o.selected=true;sel.appendChild(o)});
+  sel.onchange=()=>{r.t=+sel.value;r.a=AREAS[r.t];drawRooms();calc()};
+  const w=document.createElement('div'); w.className='m2';
+  const inp=document.createElement('input'); inp.type='number'; inp.min=2; inp.max=200; inp.value=r.a; inp.id='ra'+i; inp.inputMode='numeric'; inp.setAttribute('aria-label','m²');
+  inp.oninput=()=>{r.a=Math.max(0,+inp.value||0);calc()};
+  w.appendChild(inp);
+  const del=document.createElement('button'); del.type='button'; del.className='icon-btn'; del.textContent='×'; del.setAttribute('aria-label','−');
+  del.disabled=rooms.length===1; del.style.opacity=rooms.length===1?.35:1; del.onclick=()=>{rooms.splice(i,1);drawRooms();calc()};
+  row.append(sel,w,del); box.appendChild(row);
+ });
+}
+$('addRoom').onclick=()=>{rooms.push({t:0,a:14});drawRooms();calc()};
+document.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{const k=b.dataset.c;counts[k]=Math.max(0,Math.min(20,counts[k]+ +b.dataset.d));$(k).textContent=counts[k];calc()});
+document.querySelectorAll('main input,main select').forEach(e=>e.addEventListener('change',calc));
+['name','tel','plz'].forEach(id=>$(id).addEventListener('input',calc));
+
+function nextDays(){const out=[];const d=new Date();d.setHours(0,0,0,0);for(let i=1;out.length<8&&i<40;i++){const x=new Date(d);x.setDate(d.getDate()+i);const w=x.getDay();const s=w===0?VISIT.sun:w===6?VISIT.sat:VISIT.weekday;if(s.length)out.push({date:x,slots:s})}return out}
+let DAYS=nextDays();
+function drawDays(){
+ const box=$('days');box.innerHTML='';
+ DAYS.forEach((d,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed',day===i);
+  b.innerHTML=`<small>${L().dow[d.date.getDay()]}</small><b>${d.date.getDate()}.</b><small>${d.date.toLocaleDateString(lang==='de'?'de-CH':'es-ES',{month:'short'})}</small>`;
+  b.onclick=()=>{day=i;slot=null;drawDays();calc()};box.appendChild(b)});
+ const sb=$('slots');sb.innerHTML='';
+ if(day!==null) DAYS[day].slots.forEach(s=>{const b=document.createElement('button');b.type='button';b.textContent=s;b.setAttribute('aria-pressed',slot===s);b.onclick=()=>{slot=s;drawDays();calc()};sb.appendChild(b)});
+}
+
+let lastKey='', LAST={};
+const telOk=v=>{const d=v.replace(/[^0-9+]/g,'');const n=d.replace(/^\+/,'');return /^\+?[0-9]{9,15}$/.test(d)&&!/^0{3}/.test(n)};
+function calc(){
+ const T=L();
+ const h=+document.querySelector('input[name=h]:checked').value;
+ const condV=+document.querySelector('input[name=cond]:checked').value;
+ const ceilOn=$('ceil').checked,dark=$('dark').checked,nic=$('nic').checked,furn=$('furn').checked;
+ let wall=0,ceil=0; rooms.forEach(r=>{const a=r.a||0;wall+=4*Math.sqrt(a)*h*0.88;if(ceilOn)ceil+=a});
+ const base=wall*RATE_WALL+ceil*RATE_CEIL;
+ let est=base*(1+condV+(dark?0.25:0)+(nic?0.3:0)+(furn?0.1:0))+counts.doors*DOOR+counts.rads*RAD;
+ const minApplied=est<MIN_JOB; est=Math.max(est,MIN_JOB);
+ const range='CHF '+fmt(est*LOW)+' – '+fmt(est*HIGH);
+ $('rangeBig').textContent=range; $('rangeBig').classList.toggle('locked',!unlocked);
+ $('range').textContent=unlocked?range:T.lockedDock; $('gate').hidden=unlocked;
+ document.querySelector('.dock .cta').setAttribute('href',unlocked?'#book':'#priceCard');
+ const key=range; if(key!==lastKey){lastKey=key;const b=$('bar');b.style.transition='none';b.style.width='0';requestAnimationFrame(()=>{b.style.transition='';b.style.width='100%'})}
+ const lines=[[T.walls,Math.round(wall)+' m²'],...(ceilOn?[[T.ceils,Math.round(ceil)+' m²']]:[]),...(condV?[[T.cond,'+'+Math.round(condV*100)+' '+T.prep]]:[]),
+  ...(dark?[[T.dark,T.darkV]]:[]),...(nic?[[T.nic,T.incl]]:[]),...(furn?[[T.furn,T.incl]]:[]),...(counts.doors?[[T.doors,counts.doors+' ×']]:[]),...(counts.rads?[[T.rads,counts.rads+' ×']]:[]),...(minApplied?[[T.min,'CHF '+fmt(MIN_JOB)]]:[])];
+ $('break').innerHTML=lines.map(([a,b])=>`<div><span>${a}</span><span>${b}</span></div>`).join('');
+ $('photoNote').textContent=photos.length?T.photosN(photos.length):T.photos0;
+ const when=(day!==null&&slot)?`${T.dow[DAYS[day].date.getDay()]} ${DAYS[day].date.toLocaleDateString(lang==='de'?'de-CH':'es-ES',{day:'numeric',month:'long'})}, ${slot}`:'…';
+ const opts=[ceilOn?T.withC:T.noC,dark&&T.dark,nic&&T.nic,furn&&T.furn,counts.doors&&counts.doors+' '+T.doors,counts.rads&&counts.rads+' '+T.rads].filter(Boolean).join(', ');
+ const m=T.m({when,rooms:rooms.map(r=>`• ${T.types[r.t]}, ${T.ca} ${r.a} m²`).join('\n'),opts,cond:T.condV[[0,0.15,0.35].indexOf(condV)]+', '+(h===3.2?'> 2.8':h)+' m',range,name:$('name').value||'…',tel:$('tel').value||'…',plz:$('plz').value||'…',photos:T.mPhotos(photos.length)});
+ $('msg').textContent=m;
+ const ok=unlocked&&day!==null&&slot;
+ LAST={range,rooms:rooms.map(r=>`• ${T.types[r.t]}, ${T.ca} ${r.a} m²`).join('\n'),opts};
+ const a=$('wa2'); a.textContent=ok?T.send:T.pick; a.setAttribute('aria-disabled',!ok);
+ a.href=(WHATSAPP?'https://wa.me/'+WHATSAPP:'https://wa.me/')+'?text='+encodeURIComponent(m);
+ $('waNum').textContent=WHATSAPP?'WhatsApp: +'+WHATSAPP:'';
+}
+$('unlock').onclick=()=>{const T=L();const n=$('name').value.trim(),t=$('tel').value.trim();
+ if(!n){$('gErr').textContent=T.gErrN;$('name').focus();return}
+ if(!telOk(t)){$('gErr').textContent=T.gErrT;$('tel').focus();return}
+ $('gErr').textContent='';unlocked=true;calc();
+ const m=T.lead2({...LAST,name:n,tel:t});
+ window.open((WHATSAPP?'https://wa.me/'+WHATSAPP:'https://wa.me/')+'?text='+encodeURIComponent(m),'_blank','noopener');
+ $('priceCard').scrollIntoView({behavior:'smooth',block:'start'})};
+$('copy').onclick=async()=>{const T=L();try{await navigator.clipboard.writeText($('msg').textContent);$('copy').textContent=T.copied}catch(e){const r=document.createRange();r.selectNodeContents($('msg'));const s=getSelection();s.removeAllRanges();s.addRange(r);$('copy').textContent=T.selected}setTimeout(()=>$('copy').textContent=T.copy,2500)};
+applyLang();
+</script>
+
+</body></html>
