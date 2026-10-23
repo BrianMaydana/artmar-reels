@@ -203,6 +203,7 @@ ul.inc li::before{content:"✓ ";color:var(--ok);font-weight:800}
   <h2 id="s6" style="font-family:var(--display);margin:0;font-size:21px" data-i="how"></h2>
   <div class="how"><div><b data-i="hw1"></b><small data-i="hw1s"></small></div><div><b data-i="hw2"></b><small data-i="hw2s"></small></div><div><b data-i="hw3"></b><small data-i="hw3s"></small></div><div><b data-i="hw4"></b><small data-i="hw4s"></small></div></div>
   <ul class="inc" id="inc"></ul>
+  <div style="display:flex;flex-direction:column;gap:6px"><a class="cta sun" style="align-self:flex-start" href="https://share.google/Q0aba34GznFFTA015" target="_blank" rel="noopener" data-i="rev"></a><p class="fine" data-i="revS"></p></div>
  </section>
 </main>
 
@@ -229,11 +230,12 @@ const TXT = {
   s3:'Dein Richtpreis',calc:'Berechnet',pfine:'Richtpreis inkl. Material, Abdecken, Abkleben und Reinigung. Keine MWST. Den verbindlichen Fixpreis bekommst du bei der Besichtigung, danach ändert er sich nicht mehr.',
   gT:'🔒 Wohin dürfen wir deinen Richtpreis schicken?',gS:'Gib Name und Handynummer ein, dann siehst du deinen Preis sofort und bekommst ihn auch per WhatsApp. Kostenlos und unverbindlich.',tel:'Handynummer',gBtn:'Preis anzeigen',gErrN:'Bitte gib deinen Namen ein.',gErrT:'Bitte gib eine gültige Handynummer ein.',lockedDock:'🔒 Nummer eingeben',
   lead2:(o)=>`Hallo Artmar Malerei!\n\nMein Richtpreis laut Rechner: ${o.range}\n${o.rooms}\nOptionen: ${o.opts}\n\nName: ${o.name}\nTel: ${o.tel}\n\nBitte meldet euch für einen Besichtigungstermin.`,
+  rev:'⭐ Echte Google-Bewertungen ansehen',revS:'Bewertungen unseres Familienbetriebs in Spanien (Artmar Pinturas). Google übersetzt sie automatisch.',
   s4:'Besichtigung buchen',s4h:'15 Minuten vor Ort mit unserem Maler. Unter der Woche sind wir auf Baustellen, darum machen wir Besichtigungen am Samstag und Sonntag. Wähle Tag und Uhrzeit, wir bestätigen per WhatsApp.',name:'Name',plz:'PLZ / Ort',
   photos0:'Noch keine Fotos ausgewählt. Du kannst sie auch direkt im WhatsApp-Chat schicken.',photosN:n=>`📷 ${n} Foto${n>1?'s':''} ausgewählt. Hänge sie im WhatsApp-Chat an diese Nachricht an.`,
   send:'💬 Termin anfragen',copy:'Text kopieren',copied:'Kopiert',selected:'Text markiert, jetzt kopieren',pick:'Bitte Tag und Uhrzeit wählen',
   how:"So läuft's",hw1:'Fotos hochladen',hw1s:'Von jeder Wand eins.',hw2:'Richtpreis in 30 Sek.',hw2s:'Sofort auf dieser Seite.',hw3:'Besichtigung',hw3s:'Am Wochenende, 15 Min. vor Ort, dann Fixpreis.',hw4:'Fertig am Wochenende',hw4s:'Abgedeckt, gestrichen, sauber.',
-  inc:['Fixpreis, der nicht steigt','Material inklusive','Böden und Möbel abgedeckt','Kanten sauber abgeklebt','Mit Garantie auf die Arbeit','40× 5 Sterne (Bewertungen aus Spanien)'],
+  inc:['Fixpreis, der nicht steigt','Material inklusive','Böden und Möbel abgedeckt','Kanten sauber abgeklebt','Mit Garantie auf die Arbeit','Familienbetrieb: hunderte Wohnungen gestrichen','⭐ 5-Sterne-Bewertungen aus Spanien'],
   dock:'Dein Richtpreis',dockBtn:'Termin buchen',walls:'Wände',ceils:'Decken',cond:'Zustand',prep:'% Vorarbeit',dark:'Farbwechsel',darkV:'+1 Anstrich',nic:'Isoliergrund',incl:'inklusive',furn:'Möbel & Abdecken',doors:'Türen',rads:'Heizkörper',min:'Mindestauftrag',
   types:['Schlafzimmer','Kinderzimmer','Wohnzimmer','Küche','Bad','Korridor','Büro','Anderer Raum'],dow:['So','Mo','Di','Mi','Do','Fr','Sa'],ca:'ca.',
   m:(o)=>`Hallo Artmar Malerei!\n\nIch möchte eine Besichtigung buchen.\n📅 Wunschtermin: ${o.when}\n\n${o.rooms}\nOptionen: ${o.opts}\nZustand: ${o.cond}\nRichtpreis laut Rechner: ${o.range}\n\nName: ${o.name}\nTel: ${o.tel}\nOrt: ${o.plz}\n${o.photos}`,
@@ -247,11 +249,12 @@ const TXT = {
   s3:'Tu precio orientativo',calc:'Calculado',pfine:'Precio orientativo con material, protección, encintado y limpieza incluidos. Sin IVA. El precio fijo y definitivo te lo damos en la visita, y después ya no cambia.',
   gT:'🔒 ¿A dónde te mandamos tu precio?',gS:'Pon tu nombre y tu móvil y verás tu precio al momento, y además te lo mandamos por WhatsApp. Gratis y sin compromiso.',tel:'Móvil',gBtn:'Ver mi precio',gErrN:'Escribe tu nombre.',gErrT:'Escribe un número de móvil válido.',lockedDock:'🔒 Pon tu número',
   lead2:(o)=>`¡Hola Artmar Malerei!\n\nMi precio orientativo de la calculadora: ${o.range}\n${o.rooms}\nOpciones: ${o.opts}\n\nNombre: ${o.name}\nTel: ${o.tel}\n\nPor favor, contactadme para la visita.`,
+  rev:'⭐ Ver reseñas reales en Google',revS:'Reseñas de nuestra empresa familiar en España (Artmar Pinturas).',
   s4:'Reserva la visita',s4h:'15 minutos en tu casa con nuestro pintor. Entre semana estamos en obra, así que las visitas las hacemos el sábado y el domingo. Elige día y hora y te lo confirmamos por WhatsApp.',name:'Nombre',plz:'Código postal / ciudad',
   photos0:'Aún no has elegido fotos. También puedes mandarlas directamente en el chat de WhatsApp.',photosN:n=>`📷 ${n} foto${n>1?'s':''} elegida${n>1?'s':''}. Adjúntalas en el chat de WhatsApp junto a este mensaje.`,
   send:'💬 Pedir cita',copy:'Copiar texto',copied:'Copiado',selected:'Texto marcado, cópialo ahora',pick:'Elige día y hora',
   how:'Cómo funciona',hw1:'Sube fotos',hw1s:'Una de cada pared.',hw2:'Precio en 30 s',hw2s:'Al momento, en esta página.',hw3:'Visita',hw3s:'El finde, 15 min en tu casa y precio fijo.',hw4:'Terminado el finde',hw4s:'Protegido, pintado, limpio.',
-  inc:['Precio fijo que no sube','Material incluido','Suelos y muebles protegidos','Bordes encintados con cuidado','Trabajo con garantía','40× 5 estrellas (reseñas en España)'],
+  inc:['Precio fijo que no sube','Material incluido','Suelos y muebles protegidos','Bordes encintados con cuidado','Trabajo con garantía','Empresa familiar: cientos de pisos pintados','⭐ Reseñas de 5 estrellas en España'],
   dock:'Tu precio orientativo',dockBtn:'Reservar cita',walls:'Paredes',ceils:'Techos',cond:'Estado',prep:'% preparación',dark:'Cambio de color',darkV:'+1 mano',nic:'Imprimación aislante',incl:'incluida',furn:'Muebles y protección',doors:'Puertas',rads:'Radiadores',min:'Pedido mínimo',
   types:['Dormitorio','Habitación infantil','Salón','Cocina','Baño','Pasillo','Despacho','Otra habitación'],dow:['dom','lun','mar','mié','jue','vie','sáb'],ca:'aprox.',
   m:(o)=>`¡Hola Artmar Malerei!\n\nMe gustaría reservar una visita.\n📅 Fecha deseada: ${o.when}\n\n${o.rooms}\nOpciones: ${o.opts}\nEstado: ${o.cond}\nPrecio orientativo de la calculadora: ${o.range}\n\nNombre: ${o.name}\nTel: ${o.tel}\nLugar: ${o.plz}\n${o.photos}`,
