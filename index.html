@@ -1,5 +1,10 @@
 <!doctype html>
 <html lang="de"><head><meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18535066954"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-18535066954');
+var AW_LEAD_LABEL='';function trackLead(){try{gtag('event','generate_lead');if(AW_LEAD_LABEL)gtag('event','conversion',{send_to:'AW-18535066954/'+AW_LEAD_LABEL,value:50.0,currency:'CHF'});}catch(e){}}</script>
+
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="Artmar Malerei – Maler in Luzern, Zug & Zürich. Fotos hochladen, Richtpreis in 30 Sekunden, Besichtigung am Wochenende.">
 <meta property="og:title" content="Artmar Malerei – Richtpreis in 30 Sekunden">
@@ -348,7 +353,7 @@ function calc(){
 $('unlock').onclick=()=>{const T=L();const n=$('name').value.trim(),t=$('tel').value.trim();
  if(!n){$('gErr').textContent=T.gErrN;$('name').focus();return}
  if(!telOk(t)){$('gErr').textContent=T.gErrT;$('tel').focus();return}
- $('gErr').textContent='';unlocked=true;calc();
+ $('gErr').textContent='';unlocked=true;calc();trackLead();
  const m=T.lead2({...LAST,name:n,tel:t});
  window.open((WHATSAPP?'https://wa.me/'+WHATSAPP:'https://wa.me/')+'?text='+encodeURIComponent(m),'_blank','noopener');
  $('priceCard').scrollIntoView({behavior:'smooth',block:'start'})};
