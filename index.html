@@ -157,6 +157,7 @@ ul.inc li::before{content:"✓ ";color:var(--ok);font-weight:800}
   <button class="add" id="addRoom" type="button" data-i="add"></button>
   <div>
    <div class="toggle"><div class="t"><b data-i="o1"></b><small data-i="o1s"></small></div><input class="sw" type="checkbox" id="ceil" checked></div>
+   <div class="toggle"><div class="t"><b data-i="o2"></b><small data-i="o2s"></small></div><input class="sw" type="checkbox" id="dark"></div>
    <div class="toggle"><div class="t"><b data-i="o3"></b><small data-i="o3s"></small></div><input class="sw" type="checkbox" id="nic"></div>
    <div class="toggle"><div class="t"><b data-i="o4"></b><small data-i="o4s"></small></div><input class="sw" type="checkbox" id="furn"></div>
   </div>
@@ -233,7 +234,7 @@ const TXT = {
   f1:'📷 Fotos',f2:'⚡ Richtpreis',f3:'📅 Termin',
   s1:'Fotos deiner Wohnung',s1h:'2–6 Fotos reichen: jede Wand einmal, gern mit Löchern oder Flecken im Bild.',drop:'📷 Fotos auswählen',dropS:'oder hierher ziehen',
   s2:'Räume und Arbeiten',s2h:'Bodenfläche reicht, wir rechnen Wände und Decke daraus.',add:'+ Raum hinzufügen',
-  o1:'Decken mitstreichen',o1s:'Meist sinnvoll bei Auszug',o2:'Dunkle oder farbige Wand → hell',o2s:'Braucht einen Anstrich mehr',o3:'Nikotin oder starke Flecken',o3s:'Mit Isoliergrund',o4:'Räume sind möbliert',o4s:'Wir rücken Möbel und decken alles ab',o5:'Türen inkl. Rahmen lackieren',o5s:'pro Tür, beidseitig',o6:'Heizkörper lackieren',o6s:'pro Stück',
+  o1:'Decken mitstreichen',o1s:'Meist sinnvoll bei Auszug',o2:'Farbige Wände (statt Weiss)',o2s:'Welche Farbe, besprechen wir bei der Besichtigung',o3:'Nikotin oder starke Flecken',o3s:'Mit Isoliergrund',o4:'Räume sind möbliert',o4s:'Wir rücken Möbel und decken alles ab',o5:'Türen inkl. Rahmen lackieren',o5s:'pro Tür, beidseitig',o6:'Heizkörper lackieren',o6s:'pro Stück',
   c1:'Gut',c1s:'Kaum Löcher',c2:'Normal',c2s:'Dübellöcher, kleine Risse',c3:'Viel Arbeit',c3s:'Risse, alte Tapete',h1b:'Bis 2.5 m',h1s:'Standard',h2b:'Bis 2.8 m',h2s:'Etwas höher',h3b:'Über 2.8 m',h3s:'Altbau',
   s3:'Dein Richtpreis',calc:'Berechnet',pfine:'Richtpreis inkl. Material, Abdecken, Abkleben und Reinigung. Keine MWST. Den verbindlichen Fixpreis bekommst du bei der Besichtigung, danach ändert er sich nicht mehr.',
   gT:'🔒 Wohin dürfen wir deinen Richtpreis schicken?',gS:'Gib Name und Handynummer ein, dann siehst du deinen Preis sofort. Kostenlos und unverbindlich.',tel:'Handynummer',gBtn:'Preis anzeigen',priv:'Deine Angaben nutzen wir nur, um dir den Preis zu schicken und einen Termin abzustimmen. Keine Weitergabe an Dritte, kein Newsletter.',gErrN:'Bitte gib deinen Namen ein.',gErrT:'Bitte gib eine gültige Handynummer ein.',lockedDock:'🔒 Nummer eingeben',
@@ -244,7 +245,7 @@ const TXT = {
   send:'💬 Termin anfragen',copy:'Text kopieren',copied:'Kopiert',selected:'Text markiert, jetzt kopieren',pick:'Bitte Tag und Uhrzeit wählen',
   how:"So läuft's",hw1:'Fotos hochladen',hw1s:'Von jeder Wand eins.',hw2:'Richtpreis in 30 Sek.',hw2s:'Sofort auf dieser Seite.',hw3:'Besichtigung',hw3s:'Am Wochenende, 15 Min. vor Ort, dann Fixpreis.',hw4:'Fertig am Wochenende',hw4s:'Zimmer in 1 Tag · bis 60 m² Sa–So · bis 100 m² Fr–So. Abgedeckt, gestrichen, sauber.',dur:'Dauer',durV:a=>a<=25?'1 Tag':a<=60?'Wochenende (Sa–So)':a<=100?'3 Tage (Fr–So)':'nach Absprache',
   inc:['Fixpreis, der nicht steigt','Material inklusive','Böden und Möbel abgedeckt','Kanten sauber abgeklebt','Mit Garantie auf die Arbeit','Familienbetrieb mit über 25 Jahren Erfahrung','Hunderte Wohnungen gestrichen','⭐ 5,0 bei 31 Google-Bewertungen (Spanien)'],
-  dock:'Dein Richtpreis',dockBtn:'Termin buchen',walls:'Wände',ceils:'Decken',cond:'Zustand',prep:'% Vorarbeit',dark:'Farbwechsel',darkV:'+1 Anstrich',nic:'Isoliergrund',incl:'inklusive',furn:'Möbel & Abdecken',doors:'Türen',rads:'Heizkörper',min:'Mindestauftrag',
+  dock:'Dein Richtpreis',dockBtn:'Termin buchen',walls:'Wände',ceils:'Decken',cond:'Zustand',prep:'% Vorarbeit',dark:'Farbe statt Weiss',darkV:'Aufpreis',nic:'Isoliergrund',incl:'inklusive',furn:'Möbel & Abdecken',doors:'Türen',rads:'Heizkörper',min:'Mindestauftrag',
   types:['Ganze Wohnung','Ganzes Haus','Schlafzimmer','Kinderzimmer','Wohnzimmer','Küche','Bad','Korridor','Büro','Anderer Raum'],dow:['So','Mo','Di','Mi','Do','Fr','Sa'],ca:'ca.',
   m:(o)=>`Hallo Artmar Malerei!\n\nIch möchte eine Besichtigung buchen.\n📅 Wunschtermin: ${o.when}\n\n${o.rooms}\nOptionen: ${o.opts}\nZustand: ${o.cond}\nRichtpreis laut Rechner: ${o.range}\n\nName: ${o.name}\nTel: ${o.tel}\nOrt: ${o.plz}\n${o.photos}`,
   mPhotos:n=>n?`📷 ${n} Fotos hänge ich hier an.`:'📷 Fotos schicke ich gleich.',withC:'mit Decken',noC:'ohne Decken',condV:['gut','normal (Dübellöcher)','viel Arbeit']},
@@ -252,7 +253,7 @@ const TXT = {
   f1:'📷 Fotos',f2:'⚡ Precio',f3:'📅 Cita',
   s1:'Fotos de tu piso',s1h:'Con 2–6 fotos basta: cada pared una vez, mejor si se ven agujeros o manchas.',drop:'📷 Elegir fotos',dropS:'o arrástralas aquí',
   s2:'Habitaciones y trabajos',s2h:'Con los m² del suelo basta, nosotros calculamos paredes y techo.',add:'+ Añadir habitación',
-  o1:'Pintar también los techos',o1s:'Casi siempre al dejar un piso',o2:'Pared oscura o de color → clara',o2s:'Necesita una mano más',o3:'Nicotina o manchas fuertes',o3s:'Con imprimación aislante',o4:'Habitaciones amuebladas',o4s:'Movemos muebles y tapamos todo',o5:'Lacar puertas con marco',o5s:'por puerta, por ambas caras',o6:'Lacar radiadores',o6s:'por unidad',
+  o1:'Pintar también los techos',o1s:'Casi siempre al dejar un piso',o2:'Paredes de color (en vez de blanco)',o2s:'El color lo hablamos en la visita',o3:'Nicotina o manchas fuertes',o3s:'Con imprimación aislante',o4:'Habitaciones amuebladas',o4s:'Movemos muebles y tapamos todo',o5:'Lacar puertas con marco',o5s:'por puerta, por ambas caras',o6:'Lacar radiadores',o6s:'por unidad',
   c1:'Bien',c1s:'Casi sin agujeros',c2:'Normal',c2s:'Agujeros de tacos, grietas pequeñas',c3:'Mucho trabajo',c3s:'Grietas, papel viejo',h1b:'Hasta 2,5 m',h1s:'Estándar',h2b:'Hasta 2,8 m',h2s:'Algo más alto',h3b:'Más de 2,8 m',h3s:'Edificio antiguo',
   s3:'Tu precio orientativo',calc:'Calculado',pfine:'Precio orientativo con material, protección, encintado y limpieza incluidos. Sin IVA. El precio fijo y definitivo te lo damos en la visita, y después ya no cambia.',
   gT:'🔒 ¿A dónde te mandamos tu precio?',gS:'Pon tu nombre y tu móvil y verás tu precio al momento. Gratis y sin compromiso.',tel:'Móvil',gBtn:'Ver mi precio',priv:'Usamos tus datos solo para enviarte el precio y acordar la visita. No los compartimos con nadie ni enviamos newsletters.',gErrN:'Escribe tu nombre.',gErrT:'Escribe un número de móvil válido.',lockedDock:'🔒 Pon tu número',
@@ -263,7 +264,7 @@ const TXT = {
   send:'💬 Pedir cita',copy:'Copiar texto',copied:'Copiado',selected:'Texto marcado, cópialo ahora',pick:'Elige día y hora',
   how:'Cómo funciona',hw1:'Sube fotos',hw1s:'Una de cada pared.',hw2:'Precio en 30 s',hw2s:'Al momento, en esta página.',hw3:'Visita',hw3s:'El finde, 15 min en tu casa y precio fijo.',hw4:'Terminado el finde',hw4s:'Habitación en 1 día · hasta 60 m² sáb–dom · hasta 100 m² vie–dom. Protegido, pintado, limpio.',dur:'Duración',durV:a=>a<=25?'1 día':a<=60?'Fin de semana (sáb–dom)':a<=100?'3 días (vie–dom)':'a convenir',
   inc:['Precio fijo que no sube','Material incluido','Suelos y muebles protegidos','Bordes encintados con cuidado','Trabajo con garantía','Empresa familiar: cientos de pisos pintados','⭐ Reseñas de 5 estrellas en España'],
-  dock:'Tu precio orientativo',dockBtn:'Reservar cita',walls:'Paredes',ceils:'Techos',cond:'Estado',prep:'% preparación',dark:'Cambio de color',darkV:'+1 mano',nic:'Imprimación aislante',incl:'incluida',furn:'Muebles y protección',doors:'Puertas',rads:'Radiadores',min:'Pedido mínimo',
+  dock:'Tu precio orientativo',dockBtn:'Reservar cita',walls:'Paredes',ceils:'Techos',cond:'Estado',prep:'% preparación',dark:'Color en vez de blanco',darkV:'Suplemento',nic:'Imprimación aislante',incl:'incluida',furn:'Muebles y protección',doors:'Puertas',rads:'Radiadores',min:'Pedido mínimo',
   types:['Piso completo','Casa completa','Dormitorio','Habitación infantil','Salón','Cocina','Baño','Pasillo','Despacho','Otra habitación'],dow:['dom','lun','mar','mié','jue','vie','sáb'],ca:'aprox.',
   m:(o)=>`¡Hola Artmar Malerei!\n\nMe gustaría reservar una visita.\n📅 Fecha deseada: ${o.when}\n\n${o.rooms}\nOpciones: ${o.opts}\nEstado: ${o.cond}\nPrecio orientativo de la calculadora: ${o.range}\n\nNombre: ${o.name}\nTel: ${o.tel}\nLugar: ${o.plz}\n${o.photos}`,
   mPhotos:n=>n?`📷 Te adjunto ${n} fotos aquí.`:'📷 Ahora te mando las fotos.',withC:'con techos',noC:'sin techos',condV:['bien','normal (agujeros de tacos)','mucho trabajo']}
@@ -335,7 +336,7 @@ function calc(){
  const T=L();
  const h=+document.querySelector('input[name=h]:checked').value;
  const condV=+document.querySelector('input[name=cond]:checked').value;
- const ceilOn=$('ceil').checked,dark=false,nic=$('nic').checked,furn=$('furn').checked;
+ const ceilOn=$('ceil').checked,dark=$('dark').checked,nic=$('nic').checked,furn=$('furn').checked;
  let wall=0,ceil=0; const floor=rooms.reduce((x,r)=>x+(r.a||0),0); rooms.forEach(r=>{const a=r.a||0;wall+=r.t<2?a*2.2*(h/2.5):4*Math.sqrt(a)*h*0.88;if(ceilOn)ceil+=a});
  const base=wall*RATE_WALL+ceil*RATE_CEIL;
  let est=base*(1+condV+(dark?0.25:0)+(nic?0.3:0)+(furn?0.1:0))+counts.doors*DOOR+counts.rads*RAD;
