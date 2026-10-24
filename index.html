@@ -166,8 +166,15 @@ ul.inc li::before{content:"✓ ";color:var(--ok);font-weight:800}
   </div>
  </section>
 
+ <section class="card" aria-labelledby="s1">
+  <div class="step"><span>2</span><h2 id="s1" data-i="s1"></h2></div>
+  <p class="hint" data-i="s1h"></p>
+  <label class="drop" for="photos"><input type="file" id="photos" accept="image/*" multiple><b data-i="drop"></b><small data-i="dropS"></small></label>
+  <div class="thumbs" id="thumbs"></div>
+ </section>
+
  <section class="card" aria-labelledby="s3" id="priceCard">
-  <div class="step"><span>2</span><h2 id="s3" data-i="s3"></h2></div>
+  <div class="step"><span>3</span><h2 id="s3" data-i="s3"></h2></div>
   <div class="calc" aria-hidden="true"><span data-i="calc"></span><div class="bar"><i id="bar"></i></div></div>
   <div class="gate" id="gate">
    <b data-i="gT"></b><small class="hint" data-i="gS"></small>
@@ -184,12 +191,6 @@ ul.inc li::before{content:"✓ ";color:var(--ok);font-weight:800}
   <p class="next" id="nextHint" data-i="next" hidden></p>
  </section>
 
- <section class="card" aria-labelledby="s1">
-  <div class="step"><span>3</span><h2 id="s1" data-i="s1"></h2></div>
-  <p class="hint" data-i="s1h"></p>
-  <label class="drop" for="photos"><input type="file" id="photos" accept="image/*" multiple><b data-i="drop"></b><small data-i="dropS"></small></label>
-  <div class="thumbs" id="thumbs"></div>
- </section>
 
  <section class="card" aria-labelledby="s4" id="book">
   <div class="step"><span>4</span><h2 id="s4" data-i="s4"></h2></div>
