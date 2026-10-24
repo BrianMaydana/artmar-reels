@@ -9,7 +9,8 @@ var AW_LEAD_LABEL='IhaDCPOhnKgdEMramoZF';function trackLead(){try{gtag('event','
 <meta name="description" content="Artmar Malerei – Maler in Luzern, Zug & Zürich. Fotos hochladen, Richtpreis in 30 Sekunden, Besichtigung am Wochenende.">
 <meta property="og:title" content="Artmar Malerei – Richtpreis in 30 Sekunden">
 <meta property="og:description" content="Maler in Luzern, Zug & Zürich. Fixpreis inkl. Material, fertig am Wochenende.">
-<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}.priv{margin:10px 0 0;font-size:12px;line-height:1.4;color:var(--muted,#6b6b6b)}
+</style>
 </head><body>
 <title>Artmar Preisrechner</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -182,6 +183,7 @@ ul.inc li::before{content:"✓ ";color:var(--ok);font-weight:800}
    </div>
    <div class="err" id="gErr" role="alert"></div>
    <button class="unlock" id="unlock" type="button" data-i="gBtn"></button>
+   <p class="priv" data-i="priv"></p>
   </div>
   <div class="price"><div class="big locked" id="rangeBig">CHF –</div><div class="break" id="break"></div></div>
   <p class="fine" data-i="pfine"></p>
@@ -233,7 +235,7 @@ const TXT = {
   o1:'Decken mitstreichen',o1s:'Meist sinnvoll bei Auszug',o2:'Dunkle oder farbige Wand → hell',o2s:'Braucht einen Anstrich mehr',o3:'Nikotin oder starke Flecken',o3s:'Mit Isoliergrund',o4:'Räume sind möbliert',o4s:'Wir rücken Möbel und decken alles ab',o5:'Türen inkl. Rahmen lackieren',o5s:'pro Tür, beidseitig',o6:'Heizkörper lackieren',o6s:'pro Stück',
   c1:'Gut',c1s:'Kaum Löcher',c2:'Normal',c2s:'Dübellöcher, kleine Risse',c3:'Viel Arbeit',c3s:'Risse, alte Tapete',h1b:'Bis 2.5 m',h1s:'Standard',h2b:'Bis 2.8 m',h2s:'Etwas höher',h3b:'Über 2.8 m',h3s:'Altbau',
   s3:'Dein Richtpreis',calc:'Berechnet',pfine:'Richtpreis inkl. Material, Abdecken, Abkleben und Reinigung. Keine MWST. Den verbindlichen Fixpreis bekommst du bei der Besichtigung, danach ändert er sich nicht mehr.',
-  gT:'🔒 Wohin dürfen wir deinen Richtpreis schicken?',gS:'Gib Name und Handynummer ein, dann siehst du deinen Preis sofort und bekommst ihn auch per WhatsApp. Kostenlos und unverbindlich.',tel:'Handynummer',gBtn:'Preis anzeigen',gErrN:'Bitte gib deinen Namen ein.',gErrT:'Bitte gib eine gültige Handynummer ein.',lockedDock:'🔒 Nummer eingeben',
+  gT:'🔒 Wohin dürfen wir deinen Richtpreis schicken?',gS:'Gib Name und Handynummer ein, dann siehst du deinen Preis sofort und bekommst ihn auch per WhatsApp. Kostenlos und unverbindlich.',tel:'Handynummer',gBtn:'Preis anzeigen',priv:'Deine Angaben nutzen wir nur, um dir den Preis zu schicken und einen Termin abzustimmen. Keine Weitergabe an Dritte, kein Newsletter.',gErrN:'Bitte gib deinen Namen ein.',gErrT:'Bitte gib eine gültige Handynummer ein.',lockedDock:'🔒 Nummer eingeben',
   lead2:(o)=>`Hallo Artmar Malerei!\n\nMein Richtpreis laut Rechner: ${o.range}\n${o.rooms}\nOptionen: ${o.opts}\n\nName: ${o.name}\nTel: ${o.tel}\n\nBitte meldet euch für einen Besichtigungstermin.`,
   rev:'⭐ Echte Google-Bewertungen ansehen',revS:'Bewertungen unseres Familienbetriebs in Spanien (Artmar Pinturas). Google übersetzt sie automatisch.',
   s4:'Besichtigung buchen',s4h:'15 Minuten vor Ort mit unserem Maler. Unter der Woche sind wir auf Baustellen, darum machen wir Besichtigungen am Samstag und Sonntag. Wähle Tag und Uhrzeit, wir bestätigen per WhatsApp.',name:'Name',plz:'PLZ / Ort',
@@ -252,7 +254,7 @@ const TXT = {
   o1:'Pintar también los techos',o1s:'Casi siempre al dejar un piso',o2:'Pared oscura o de color → clara',o2s:'Necesita una mano más',o3:'Nicotina o manchas fuertes',o3s:'Con imprimación aislante',o4:'Habitaciones amuebladas',o4s:'Movemos muebles y tapamos todo',o5:'Lacar puertas con marco',o5s:'por puerta, por ambas caras',o6:'Lacar radiadores',o6s:'por unidad',
   c1:'Bien',c1s:'Casi sin agujeros',c2:'Normal',c2s:'Agujeros de tacos, grietas pequeñas',c3:'Mucho trabajo',c3s:'Grietas, papel viejo',h1b:'Hasta 2,5 m',h1s:'Estándar',h2b:'Hasta 2,8 m',h2s:'Algo más alto',h3b:'Más de 2,8 m',h3s:'Edificio antiguo',
   s3:'Tu precio orientativo',calc:'Calculado',pfine:'Precio orientativo con material, protección, encintado y limpieza incluidos. Sin IVA. El precio fijo y definitivo te lo damos en la visita, y después ya no cambia.',
-  gT:'🔒 ¿A dónde te mandamos tu precio?',gS:'Pon tu nombre y tu móvil y verás tu precio al momento, y además te lo mandamos por WhatsApp. Gratis y sin compromiso.',tel:'Móvil',gBtn:'Ver mi precio',gErrN:'Escribe tu nombre.',gErrT:'Escribe un número de móvil válido.',lockedDock:'🔒 Pon tu número',
+  gT:'🔒 ¿A dónde te mandamos tu precio?',gS:'Pon tu nombre y tu móvil y verás tu precio al momento, y además te lo mandamos por WhatsApp. Gratis y sin compromiso.',tel:'Móvil',gBtn:'Ver mi precio',priv:'Usamos tus datos solo para enviarte el precio y acordar la visita. No los compartimos con nadie ni enviamos newsletters.',gErrN:'Escribe tu nombre.',gErrT:'Escribe un número de móvil válido.',lockedDock:'🔒 Pon tu número',
   lead2:(o)=>`¡Hola Artmar Malerei!\n\nMi precio orientativo de la calculadora: ${o.range}\n${o.rooms}\nOpciones: ${o.opts}\n\nNombre: ${o.name}\nTel: ${o.tel}\n\nPor favor, contactadme para la visita.`,
   rev:'⭐ Ver reseñas reales en Google',revS:'Reseñas de nuestra empresa familiar en España (Artmar Pinturas).',
   s4:'Reserva la visita',s4h:'15 minutos en tu casa con nuestro pintor. Entre semana estamos en obra, así que las visitas las hacemos el sábado y el domingo. Elige día y hora y te lo confirmamos por WhatsApp.',name:'Nombre',plz:'Código postal / ciudad',
@@ -271,6 +273,12 @@ let rooms=[{t:0,a:14}], photos=[], day=null, slot=null, unlocked=false; const co
 const $=id=>document.getElementById(id);
 const fmt=n=>(Math.round(n/10)*10).toLocaleString('de-CH');
 const L=()=>TXT[lang];
+
+// lead log (Google Sheet via Apps Script): visit / calc / unlock / book
+const LOG_URL="https://script.google.com/macros/s/AKfycbz2lSCSD24gw2-rhU6shPzHgexH8dbfNNljDtRSUd_KpIfv5UyQkLpM2eqxCP1ZvywH/exec";
+let SID='';try{SID=localStorage.getItem('artmar-sid')||'';if(!SID){SID=Math.random().toString(36).slice(2,8)+Date.now().toString(36).slice(-4);localStorage.setItem('artmar-sid',SID)}}catch(e){SID=Math.random().toString(36).slice(2,10)}
+const SRC=(()=>{try{const q=new URLSearchParams(location.search);if(q.get('gclid'))return 'google-ads';if(q.get('utm_source'))return q.get('utm_source');if(document.referrer)return new URL(document.referrer).hostname;}catch(e){}return 'direkt'})();
+function track(ev,x){try{const body=JSON.stringify(Object.assign({ev,sid:SID,src:SRC,lang},x||{}));if(navigator.sendBeacon){navigator.sendBeacon(LOG_URL,new Blob([body],{type:'text/plain'}))}else{fetch(LOG_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body,keepalive:true})}}catch(e){}}
 
 function applyLang(){
  document.documentElement.lang=lang;
@@ -354,11 +362,16 @@ $('unlock').onclick=()=>{const T=L();const n=$('name').value.trim(),t=$('tel').v
  if(!n){$('gErr').textContent=T.gErrN;$('name').focus();return}
  if(!telOk(t)){$('gErr').textContent=T.gErrT;$('tel').focus();return}
  $('gErr').textContent='';unlocked=true;calc();trackLead();
+ track('unlock',{name:n,tel:t,plz:$('plz').value.trim(),range:LAST.range,det:LAST.rooms+'\n'+LAST.opts});
  const m=T.lead2({...LAST,name:n,tel:t});
  window.open((WHATSAPP?'https://wa.me/'+WHATSAPP:'https://wa.me/')+'?text='+encodeURIComponent(m),'_blank','noopener');
  $('priceCard').scrollIntoView({behavior:'smooth',block:'start'})};
 $('copy').onclick=async()=>{const T=L();try{await navigator.clipboard.writeText($('msg').textContent);$('copy').textContent=T.copied}catch(e){const r=document.createRange();r.selectNodeContents($('msg'));const s=getSelection();s.removeAllRanges();s.addRange(r);$('copy').textContent=T.selected}setTimeout(()=>$('copy').textContent=T.copy,2500)};
 applyLang();
+track('visit');
+let _calcSent=false;document.querySelector('main').addEventListener('input',()=>{if(!_calcSent){_calcSent=true;track('calc',{range:LAST.range})}});
+document.querySelector('main').addEventListener('change',()=>{if(!_calcSent){_calcSent=true;track('calc',{range:LAST.range})}});
+$('wa2').addEventListener('click',()=>{if($('wa2').getAttribute('aria-disabled')==='false'){track('book',{name:$('name').value.trim(),tel:$('tel').value.trim(),plz:$('plz').value.trim(),range:LAST.range,when:(day!==null&&slot)?`${DAYS[day].date.toLocaleDateString('de-CH')} ${slot}`:'',det:LAST.rooms+'\n'+LAST.opts})}});
 </script>
 
 </body></html>
