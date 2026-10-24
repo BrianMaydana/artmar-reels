@@ -143,15 +143,8 @@ ul.inc li::before{content:"✓ ";color:var(--ok);font-weight:800}
 </header>
 
 <main class="wrap" style="margin-top:18px">
- <section class="card" aria-labelledby="s1">
-  <div class="step"><span>1</span><h2 id="s1" data-i="s1"></h2></div>
-  <p class="hint" data-i="s1h"></p>
-  <label class="drop" for="photos"><input type="file" id="photos" accept="image/*" multiple><b data-i="drop"></b><small data-i="dropS"></small></label>
-  <div class="thumbs" id="thumbs"></div>
- </section>
-
  <section class="card" aria-labelledby="s2">
-  <div class="step"><span>2</span><h2 id="s2" data-i="s2"></h2></div>
+  <div class="step"><span>1</span><h2 id="s2" data-i="s2"></h2></div>
   <p class="hint" data-i="s2h"></p>
   <div id="rooms" style="display:flex;flex-direction:column;gap:8px"></div>
   <button class="add" id="addRoom" type="button" data-i="add"></button>
@@ -174,7 +167,7 @@ ul.inc li::before{content:"✓ ";color:var(--ok);font-weight:800}
  </section>
 
  <section class="card" aria-labelledby="s3" id="priceCard">
-  <div class="step"><span>3</span><h2 id="s3" data-i="s3"></h2></div>
+  <div class="step"><span>2</span><h2 id="s3" data-i="s3"></h2></div>
   <div class="calc" aria-hidden="true"><span data-i="calc"></span><div class="bar"><i id="bar"></i></div></div>
   <div class="gate" id="gate">
    <b data-i="gT"></b><small class="hint" data-i="gS"></small>
@@ -189,6 +182,13 @@ ul.inc li::before{content:"✓ ";color:var(--ok);font-weight:800}
   <div class="price"><div class="big locked" id="rangeBig">CHF –</div><div class="break" id="break"></div></div>
   <p class="fine" data-i="pfine"></p>
   <p class="next" id="nextHint" data-i="next" hidden></p>
+ </section>
+
+ <section class="card" aria-labelledby="s1">
+  <div class="step"><span>3</span><h2 id="s1" data-i="s1"></h2></div>
+  <p class="hint" data-i="s1h"></p>
+  <label class="drop" for="photos"><input type="file" id="photos" accept="image/*" multiple><b data-i="drop"></b><small data-i="dropS"></small></label>
+  <div class="thumbs" id="thumbs"></div>
  </section>
 
  <section class="card" aria-labelledby="s4" id="book">
@@ -230,9 +230,9 @@ const RATE_WALL = 13, RATE_CEIL = 16, DOOR = 120, RAD = 80, MIN_JOB = 350, LOW =
 const VISIT = { weekday:[], sat:["08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00"], sun:["09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00"] }; // viewing slots
 // -----------------------------------
 const TXT = {
- de:{h1:'Fotos hoch, <em>Preis in 30 Sek.</em>',lead:'Lade Fotos deiner Wohnung hoch, wähle die Räume und sieh sofort deinen Richtpreis. Passt er, buchst du direkt die Besichtigung. Dort bekommst du den Fixpreis.',
-  f1:'📷 Fotos',f2:'⚡ Richtpreis',f3:'📅 Termin',
-  s1:'Fotos deiner Wohnung',s1h:'2–6 Fotos reichen: jede Wand einmal, gern mit Löchern oder Flecken im Bild.',drop:'📷 Fotos auswählen',dropS:'oder hierher ziehen',
+ de:{h1:'Preis in <em>30 Sek.</em>',lead:'Wähle die Räume und sieh sofort deinen Richtpreis. Passt er, buchst du direkt die Besichtigung. Dort bekommst du den Fixpreis.',
+  f1:'📐 Räume',f2:'⚡ Richtpreis',f3:'📅 Termin',
+  s1:'Fotos (optional)',s1h:'Für den Preis nicht nötig. Mit Fotos können wir dir aber ein genaueres Angebot machen: jede Wand einmal, gern mit Löchern oder Flecken im Bild.',drop:'📷 Fotos auswählen',dropS:'oder hierher ziehen',
   s2:'Räume und Arbeiten',s2h:'Bodenfläche reicht, wir rechnen Wände und Decke daraus.',add:'+ Raum hinzufügen',
   o1:'Decken mitstreichen',o1s:'Meist sinnvoll bei Auszug',o2:'Farbige Wände (statt Weiss)',o2s:'Welche Farbe, besprechen wir bei der Besichtigung',o3:'Nikotin oder starke Flecken',o3s:'Mit Isoliergrund',o4:'Räume sind möbliert',o4s:'Wir rücken Möbel und decken alles ab',o5:'Türen inkl. Rahmen lackieren',o5s:'pro Tür, beidseitig',o6:'Heizkörper lackieren',o6s:'pro Stück',
   c1:'Gut',c1s:'Kaum Löcher',c2:'Normal',c2s:'Dübellöcher, kleine Risse',c3:'Viel Arbeit',c3s:'Risse, alte Tapete',h1b:'Bis 2.5 m',h1s:'Standard',h2b:'Bis 2.8 m',h2s:'Etwas höher',h3b:'Über 2.8 m',h3s:'Altbau',
@@ -243,15 +243,15 @@ const TXT = {
   gErrA:'Bitte gib zuerst die Fläche in m² ein.',next:'👇 Passt der Preis? Dann wähle unten einen freien Termin für die Besichtigung.',s4:'Passt der Preis? Besichtigung buchen',s4h:'Das sind die freien Zeiten unseres Malers. 15 Minuten vor Ort, dann bekommst du den Fixpreis. Unter der Woche sind wir auf Baustellen, darum Samstag und Sonntag. Wähle Tag und Uhrzeit, wir bestätigen per WhatsApp.',name:'Name',plz:'PLZ / Ort',
   photos0:'Noch keine Fotos ausgewählt. Du kannst sie auch direkt im WhatsApp-Chat schicken.',photosN:n=>`📷 ${n} Foto${n>1?'s':''} ausgewählt. Hänge sie im WhatsApp-Chat an diese Nachricht an.`,
   send:'💬 Termin anfragen',copy:'Text kopieren',copied:'Kopiert',selected:'Text markiert, jetzt kopieren',pick:'Bitte Tag und Uhrzeit wählen',
-  how:"So läuft's",hw1:'Fotos hochladen',hw1s:'Von jeder Wand eins.',hw2:'Richtpreis in 30 Sek.',hw2s:'Sofort auf dieser Seite.',hw3:'Besichtigung',hw3s:'Am Wochenende, 15 Min. vor Ort, dann Fixpreis.',hw4:'Schnell fertig',hw4s:'Zimmer in 1 Tag · Wohnung in 2–3 Tagen · Haus in 3–4 Tagen. Wir arbeiten zu zweit. Abgedeckt, gestrichen, sauber.',dur:'Dauer',durV:a=>a<=25?'1 Tag':a<=60?'2 Tage':a<=100?'3 Tage':a<=160?'3–4 Tage':'nach Absprache',
+  how:"So läuft's",hw1:'Räume angeben',hw1s:'Fläche reicht. Fotos sind optional.',hw2:'Richtpreis in 30 Sek.',hw2s:'Sofort auf dieser Seite.',hw3:'Besichtigung',hw3s:'Am Wochenende, 15 Min. vor Ort, dann Fixpreis.',hw4:'Schnell fertig',hw4s:'Zimmer in 1 Tag · Wohnung in 2–3 Tagen · Haus in 3–4 Tagen. Wir arbeiten zu zweit. Abgedeckt, gestrichen, sauber.',dur:'Dauer',durV:a=>a<=25?'1 Tag':a<=60?'2 Tage':a<=100?'3 Tage':a<=160?'3–4 Tage':'nach Absprache',
   inc:['Fixpreis, der nicht steigt','Material inklusive','Böden und Möbel abgedeckt','Kanten sauber abgeklebt','Mit Garantie auf die Arbeit','Familienbetrieb mit über 25 Jahren Erfahrung','Hunderte Wohnungen gestrichen','⭐ 5,0 bei 31 Google-Bewertungen (Spanien)'],
   dock:'Dein Richtpreis',dockBtn:'Termin buchen',walls:'Wände',ceils:'Decken',cond:'Zustand',prep:'% Vorarbeit',dark:'Farbe statt Weiss',darkV:'Aufpreis',nic:'Isoliergrund',incl:'inklusive',furn:'Möbel & Abdecken',doors:'Türen',rads:'Heizkörper',min:'Mindestauftrag',
   types:['Ganze Wohnung','Ganzes Haus','Schlafzimmer','Kinderzimmer','Wohnzimmer','Küche','Bad','Korridor','Büro','Anderer Raum'],dow:['So','Mo','Di','Mi','Do','Fr','Sa'],ca:'ca.',
   m:(o)=>`Hallo Artmar Malerei!\n\nIch möchte eine Besichtigung buchen.\n📅 Wunschtermin: ${o.when}\n\n${o.rooms}\nOptionen: ${o.opts}\nZustand: ${o.cond}\nRichtpreis laut Rechner: ${o.range}\n\nName: ${o.name}\nTel: ${o.tel}\nOrt: ${o.plz}\n${o.photos}`,
   mPhotos:n=>n?`📷 ${n} Fotos hänge ich hier an.`:'📷 Fotos schicke ich gleich.',withC:'mit Decken',noC:'ohne Decken',condV:['gut','normal (Dübellöcher)','viel Arbeit']},
- es:{h1:'Sube fotos, <em>precio en 30 s</em>',lead:'Sube fotos de tu piso, elige las habitaciones y ve al momento tu precio orientativo. Si te encaja, reservas la visita y allí te damos el precio fijo.',
-  f1:'📷 Fotos',f2:'⚡ Precio',f3:'📅 Cita',
-  s1:'Fotos de tu piso',s1h:'Con 2–6 fotos basta: cada pared una vez, mejor si se ven agujeros o manchas.',drop:'📷 Elegir fotos',dropS:'o arrástralas aquí',
+ es:{h1:'Precio en <em>30 s</em>',lead:'Elige las habitaciones y ve al momento tu precio orientativo. Si te encaja, reservas la visita y allí te damos el precio fijo.',
+  f1:'📐 Habitaciones',f2:'⚡ Precio',f3:'📅 Cita',
+  s1:'Fotos (opcional)',s1h:'No hacen falta para ver el precio. Pero con fotos podemos darte un presupuesto más exacto: cada pared una vez, mejor si se ven agujeros o manchas.',drop:'📷 Elegir fotos',dropS:'o arrástralas aquí',
   s2:'Habitaciones y trabajos',s2h:'Con los m² del suelo basta, nosotros calculamos paredes y techo.',add:'+ Añadir habitación',
   o1:'Pintar también los techos',o1s:'Casi siempre al dejar un piso',o2:'Paredes de color (en vez de blanco)',o2s:'El color lo hablamos en la visita',o3:'Nicotina o manchas fuertes',o3s:'Con imprimación aislante',o4:'Habitaciones amuebladas',o4s:'Movemos muebles y tapamos todo',o5:'Lacar puertas con marco',o5s:'por puerta, por ambas caras',o6:'Lacar radiadores',o6s:'por unidad',
   c1:'Bien',c1s:'Casi sin agujeros',c2:'Normal',c2s:'Agujeros de tacos, grietas pequeñas',c3:'Mucho trabajo',c3s:'Grietas, papel viejo',h1b:'Hasta 2,5 m',h1s:'Estándar',h2b:'Hasta 2,8 m',h2s:'Algo más alto',h3b:'Más de 2,8 m',h3s:'Edificio antiguo',
@@ -262,7 +262,7 @@ const TXT = {
   gErrA:'Primero indica los m² de la superficie.',next:'👇 ¿Te parece bien el precio? Elige abajo un horario libre para la visita.',s4:'¿Te parece bien? Reserva la visita',s4h:'Estos son los horarios libres de nuestro pintor. 15 minutos en tu casa y te damos el precio fijo. Entre semana estamos en obra, así que el sábado y el domingo. Elige día y hora y te lo confirmamos por WhatsApp.',name:'Nombre',plz:'Código postal / ciudad',
   photos0:'Aún no has elegido fotos. También puedes mandarlas directamente en el chat de WhatsApp.',photosN:n=>`📷 ${n} foto${n>1?'s':''} elegida${n>1?'s':''}. Adjúntalas en el chat de WhatsApp junto a este mensaje.`,
   send:'💬 Pedir cita',copy:'Copiar texto',copied:'Copiado',selected:'Texto marcado, cópialo ahora',pick:'Elige día y hora',
-  how:'Cómo funciona',hw1:'Sube fotos',hw1s:'Una de cada pared.',hw2:'Precio en 30 s',hw2s:'Al momento, en esta página.',hw3:'Visita',hw3s:'El finde, 15 min en tu casa y precio fijo.',hw4:'Listo en pocos días',hw4s:'Habitación en 1 día · piso en 2–3 días · casa en 3–4 días. Trabajamos en equipo. Protegido, pintado, limpio.',dur:'Duración',durV:a=>a<=25?'1 día':a<=60?'2 días':a<=100?'3 días':a<=160?'3–4 días':'a convenir',
+  how:'Cómo funciona',hw1:'Indica las habitaciones',hw1s:'Con los m² basta. Las fotos son opcionales.',hw2:'Precio en 30 s',hw2s:'Al momento, en esta página.',hw3:'Visita',hw3s:'El finde, 15 min en tu casa y precio fijo.',hw4:'Listo en pocos días',hw4s:'Habitación en 1 día · piso en 2–3 días · casa en 3–4 días. Trabajamos en equipo. Protegido, pintado, limpio.',dur:'Duración',durV:a=>a<=25?'1 día':a<=60?'2 días':a<=100?'3 días':a<=160?'3–4 días':'a convenir',
   inc:['Precio fijo que no sube','Material incluido','Suelos y muebles protegidos','Bordes encintados con cuidado','Trabajo con garantía','Empresa familiar: cientos de pisos pintados','⭐ Reseñas de 5 estrellas en España'],
   dock:'Tu precio orientativo',dockBtn:'Reservar cita',walls:'Paredes',ceils:'Techos',cond:'Estado',prep:'% preparación',dark:'Color en vez de blanco',darkV:'Suplemento',nic:'Imprimación aislante',incl:'incluida',furn:'Muebles y protección',doors:'Puertas',rads:'Radiadores',min:'Pedido mínimo',
   types:['Piso completo','Casa completa','Dormitorio','Habitación infantil','Salón','Cocina','Baño','Pasillo','Despacho','Otra habitación'],dow:['dom','lun','mar','mié','jue','vie','sáb'],ca:'aprox.',
