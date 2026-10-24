@@ -234,7 +234,7 @@ const TXT = {
   s4:'Besichtigung buchen',s4h:'15 Minuten vor Ort mit unserem Maler. Unter der Woche sind wir auf Baustellen, darum machen wir Besichtigungen am Samstag und Sonntag. Wähle Tag und Uhrzeit, wir bestätigen per WhatsApp.',name:'Name',plz:'PLZ / Ort',
   photos0:'Noch keine Fotos ausgewählt. Du kannst sie auch direkt im WhatsApp-Chat schicken.',photosN:n=>`📷 ${n} Foto${n>1?'s':''} ausgewählt. Hänge sie im WhatsApp-Chat an diese Nachricht an.`,
   send:'💬 Termin anfragen',copy:'Text kopieren',copied:'Kopiert',selected:'Text markiert, jetzt kopieren',pick:'Bitte Tag und Uhrzeit wählen',
-  how:"So läuft's",hw1:'Fotos hochladen',hw1s:'Von jeder Wand eins.',hw2:'Richtpreis in 30 Sek.',hw2s:'Sofort auf dieser Seite.',hw3:'Besichtigung',hw3s:'Am Wochenende, 15 Min. vor Ort, dann Fixpreis.',hw4:'Fertig am Wochenende',hw4s:'Wohnungen bis ca. 60 m². Abgedeckt, gestrichen, sauber.',
+  how:"So läuft's",hw1:'Fotos hochladen',hw1s:'Von jeder Wand eins.',hw2:'Richtpreis in 30 Sek.',hw2s:'Sofort auf dieser Seite.',hw3:'Besichtigung',hw3s:'Am Wochenende, 15 Min. vor Ort, dann Fixpreis.',hw4:'Fertig am Wochenende',hw4s:'Zimmer in 1 Tag · bis 60 m² Sa–So · bis 100 m² Fr–So. Abgedeckt, gestrichen, sauber.',dur:'Dauer',durV:a=>a<=25?'1 Tag':a<=60?'Wochenende (Sa–So)':a<=100?'3 Tage (Fr–So)':'nach Absprache',
   inc:['Fixpreis, der nicht steigt','Material inklusive','Böden und Möbel abgedeckt','Kanten sauber abgeklebt','Mit Garantie auf die Arbeit','Familienbetrieb mit über 25 Jahren Erfahrung','Hunderte Wohnungen gestrichen','⭐ 5,0 bei 31 Google-Bewertungen (Spanien)'],
   dock:'Dein Richtpreis',dockBtn:'Termin buchen',walls:'Wände',ceils:'Decken',cond:'Zustand',prep:'% Vorarbeit',dark:'Farbwechsel',darkV:'+1 Anstrich',nic:'Isoliergrund',incl:'inklusive',furn:'Möbel & Abdecken',doors:'Türen',rads:'Heizkörper',min:'Mindestauftrag',
   types:['Schlafzimmer','Kinderzimmer','Wohnzimmer','Küche','Bad','Korridor','Büro','Anderer Raum'],dow:['So','Mo','Di','Mi','Do','Fr','Sa'],ca:'ca.',
@@ -253,7 +253,7 @@ const TXT = {
   s4:'Reserva la visita',s4h:'15 minutos en tu casa con nuestro pintor. Entre semana estamos en obra, así que las visitas las hacemos el sábado y el domingo. Elige día y hora y te lo confirmamos por WhatsApp.',name:'Nombre',plz:'Código postal / ciudad',
   photos0:'Aún no has elegido fotos. También puedes mandarlas directamente en el chat de WhatsApp.',photosN:n=>`📷 ${n} foto${n>1?'s':''} elegida${n>1?'s':''}. Adjúntalas en el chat de WhatsApp junto a este mensaje.`,
   send:'💬 Pedir cita',copy:'Copiar texto',copied:'Copiado',selected:'Texto marcado, cópialo ahora',pick:'Elige día y hora',
-  how:'Cómo funciona',hw1:'Sube fotos',hw1s:'Una de cada pared.',hw2:'Precio en 30 s',hw2s:'Al momento, en esta página.',hw3:'Visita',hw3s:'El finde, 15 min en tu casa y precio fijo.',hw4:'Terminado el finde',hw4s:'Pisos de hasta unos 60 m². Protegido, pintado, limpio.',
+  how:'Cómo funciona',hw1:'Sube fotos',hw1s:'Una de cada pared.',hw2:'Precio en 30 s',hw2s:'Al momento, en esta página.',hw3:'Visita',hw3s:'El finde, 15 min en tu casa y precio fijo.',hw4:'Terminado el finde',hw4s:'Habitación en 1 día · hasta 60 m² sáb–dom · hasta 100 m² vie–dom. Protegido, pintado, limpio.',dur:'Duración',durV:a=>a<=25?'1 día':a<=60?'Fin de semana (sáb–dom)':a<=100?'3 días (vie–dom)':'a convenir',
   inc:['Precio fijo que no sube','Material incluido','Suelos y muebles protegidos','Bordes encintados con cuidado','Trabajo con garantía','Empresa familiar: cientos de pisos pintados','⭐ Reseñas de 5 estrellas en España'],
   dock:'Tu precio orientativo',dockBtn:'Reservar cita',walls:'Paredes',ceils:'Techos',cond:'Estado',prep:'% preparación',dark:'Cambio de color',darkV:'+1 mano',nic:'Imprimación aislante',incl:'incluida',furn:'Muebles y protección',doors:'Puertas',rads:'Radiadores',min:'Pedido mínimo',
   types:['Dormitorio','Habitación infantil','Salón','Cocina','Baño','Pasillo','Despacho','Otra habitación'],dow:['dom','lun','mar','mié','jue','vie','sáb'],ca:'aprox.',
@@ -322,7 +322,7 @@ function calc(){
  const h=+document.querySelector('input[name=h]:checked').value;
  const condV=+document.querySelector('input[name=cond]:checked').value;
  const ceilOn=$('ceil').checked,dark=$('dark').checked,nic=$('nic').checked,furn=$('furn').checked;
- let wall=0,ceil=0; rooms.forEach(r=>{const a=r.a||0;wall+=4*Math.sqrt(a)*h*0.88;if(ceilOn)ceil+=a});
+ let wall=0,ceil=0; const floor=rooms.reduce((x,r)=>x+(r.a||0),0); rooms.forEach(r=>{const a=r.a||0;wall+=4*Math.sqrt(a)*h*0.88;if(ceilOn)ceil+=a});
  const base=wall*RATE_WALL+ceil*RATE_CEIL;
  let est=base*(1+condV+(dark?0.25:0)+(nic?0.3:0)+(furn?0.1:0))+counts.doors*DOOR+counts.rads*RAD;
  const minApplied=est<MIN_JOB; est=Math.max(est,MIN_JOB);
@@ -332,11 +332,11 @@ function calc(){
  document.querySelector('.dock .cta').setAttribute('href',unlocked?'#book':'#priceCard');
  const key=range; if(key!==lastKey){lastKey=key;const b=$('bar');b.style.transition='none';b.style.width='0';requestAnimationFrame(()=>{b.style.transition='';b.style.width='100%'})}
  const lines=[[T.walls,Math.round(wall)+' m²'],...(ceilOn?[[T.ceils,Math.round(ceil)+' m²']]:[]),...(condV?[[T.cond,'+'+Math.round(condV*100)+' '+T.prep]]:[]),
-  ...(dark?[[T.dark,T.darkV]]:[]),...(nic?[[T.nic,T.incl]]:[]),...(furn?[[T.furn,T.incl]]:[]),...(counts.doors?[[T.doors,counts.doors+' ×']]:[]),...(counts.rads?[[T.rads,counts.rads+' ×']]:[]),...(minApplied?[[T.min,'CHF '+fmt(MIN_JOB)]]:[])];
+  ...(dark?[[T.dark,T.darkV]]:[]),...(nic?[[T.nic,T.incl]]:[]),...(furn?[[T.furn,T.incl]]:[]),...(counts.doors?[[T.doors,counts.doors+' ×']]:[]),...(counts.rads?[[T.rads,counts.rads+' ×']]:[]),...(minApplied?[[T.min,'CHF '+fmt(MIN_JOB)]]:[]),[T.dur,T.durV(floor)]];
  $('break').innerHTML=lines.map(([a,b])=>`<div><span>${a}</span><span>${b}</span></div>`).join('');
  $('photoNote').textContent=photos.length?T.photosN(photos.length):T.photos0;
  const when=(day!==null&&slot)?`${T.dow[DAYS[day].date.getDay()]} ${DAYS[day].date.toLocaleDateString(lang==='de'?'de-CH':'es-ES',{day:'numeric',month:'long'})}, ${slot}`:'…';
- const opts=[ceilOn?T.withC:T.noC,dark&&T.dark,nic&&T.nic,furn&&T.furn,counts.doors&&counts.doors+' '+T.doors,counts.rads&&counts.rads+' '+T.rads].filter(Boolean).join(', ');
+ const opts=[T.dur+': '+T.durV(floor),ceilOn?T.withC:T.noC,dark&&T.dark,nic&&T.nic,furn&&T.furn,counts.doors&&counts.doors+' '+T.doors,counts.rads&&counts.rads+' '+T.rads].filter(Boolean).join(', ');
  const m=T.m({when,rooms:rooms.map(r=>`• ${T.types[r.t]}, ${T.ca} ${r.a} m²`).join('\n'),opts,cond:T.condV[[0,0.15,0.35].indexOf(condV)]+', '+(h===3.2?'> 2.8':h)+' m',range,name:$('name').value||'…',tel:$('tel').value||'…',plz:$('plz').value||'…',photos:T.mPhotos(photos.length)});
  $('msg').textContent=m;
  const ok=unlocked&&day!==null&&slot;
