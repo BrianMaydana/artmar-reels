@@ -123,6 +123,7 @@ ul.inc li::before{content:"✓ ";color:var(--ok);font-weight:800}
 .gate b{font-size:16px}
 .gate .err{color:#c2362b;font-size:13px;min-height:1em}
 .locked{filter:blur(9px);user-select:none}
+.next{margin:12px 0 0;font-weight:800;color:var(--ink)}
 .unlock{font:inherit;font-weight:800;border:0;border-radius:14px;padding:13px 18px;background:var(--wa);color:#fff;cursor:pointer;justify-self:start}
 .unlock:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
 .calc .bar i{display:block;height:100%;width:0;background:var(--violet);transition:width .6s ease}
@@ -187,6 +188,7 @@ ul.inc li::before{content:"✓ ";color:var(--ok);font-weight:800}
   </div>
   <div class="price"><div class="big locked" id="rangeBig">CHF –</div><div class="break" id="break"></div></div>
   <p class="fine" data-i="pfine"></p>
+  <p class="next" id="nextHint" data-i="next" hidden></p>
  </section>
 
  <section class="card" aria-labelledby="s4" id="book">
@@ -235,16 +237,16 @@ const TXT = {
   o1:'Decken mitstreichen',o1s:'Meist sinnvoll bei Auszug',o2:'Dunkle oder farbige Wand → hell',o2s:'Braucht einen Anstrich mehr',o3:'Nikotin oder starke Flecken',o3s:'Mit Isoliergrund',o4:'Räume sind möbliert',o4s:'Wir rücken Möbel und decken alles ab',o5:'Türen inkl. Rahmen lackieren',o5s:'pro Tür, beidseitig',o6:'Heizkörper lackieren',o6s:'pro Stück',
   c1:'Gut',c1s:'Kaum Löcher',c2:'Normal',c2s:'Dübellöcher, kleine Risse',c3:'Viel Arbeit',c3s:'Risse, alte Tapete',h1b:'Bis 2.5 m',h1s:'Standard',h2b:'Bis 2.8 m',h2s:'Etwas höher',h3b:'Über 2.8 m',h3s:'Altbau',
   s3:'Dein Richtpreis',calc:'Berechnet',pfine:'Richtpreis inkl. Material, Abdecken, Abkleben und Reinigung. Keine MWST. Den verbindlichen Fixpreis bekommst du bei der Besichtigung, danach ändert er sich nicht mehr.',
-  gT:'🔒 Wohin dürfen wir deinen Richtpreis schicken?',gS:'Gib Name und Handynummer ein, dann siehst du deinen Preis sofort und bekommst ihn auch per WhatsApp. Kostenlos und unverbindlich.',tel:'Handynummer',gBtn:'Preis anzeigen',priv:'Deine Angaben nutzen wir nur, um dir den Preis zu schicken und einen Termin abzustimmen. Keine Weitergabe an Dritte, kein Newsletter.',gErrN:'Bitte gib deinen Namen ein.',gErrT:'Bitte gib eine gültige Handynummer ein.',lockedDock:'🔒 Nummer eingeben',
+  gT:'🔒 Wohin dürfen wir deinen Richtpreis schicken?',gS:'Gib Name und Handynummer ein, dann siehst du deinen Preis sofort. Kostenlos und unverbindlich.',tel:'Handynummer',gBtn:'Preis anzeigen',priv:'Deine Angaben nutzen wir nur, um dir den Preis zu schicken und einen Termin abzustimmen. Keine Weitergabe an Dritte, kein Newsletter.',gErrN:'Bitte gib deinen Namen ein.',gErrT:'Bitte gib eine gültige Handynummer ein.',lockedDock:'🔒 Nummer eingeben',
   lead2:(o)=>`Hallo Artmar Malerei!\n\nMein Richtpreis laut Rechner: ${o.range}\n${o.rooms}\nOptionen: ${o.opts}\n\nName: ${o.name}\nTel: ${o.tel}\n\nBitte meldet euch für einen Besichtigungstermin.`,
   rev:'⭐ Echte Google-Bewertungen ansehen',revS:'Bewertungen unseres Familienbetriebs in Spanien (Artmar Pinturas). Google übersetzt sie automatisch.',
-  s4:'Besichtigung buchen',s4h:'15 Minuten vor Ort mit unserem Maler. Unter der Woche sind wir auf Baustellen, darum machen wir Besichtigungen am Samstag und Sonntag. Wähle Tag und Uhrzeit, wir bestätigen per WhatsApp.',name:'Name',plz:'PLZ / Ort',
+  next:'👇 Passt der Preis? Dann wähle unten einen freien Termin für die Besichtigung.',s4:'Passt der Preis? Besichtigung buchen',s4h:'Das sind die freien Zeiten unseres Malers. 15 Minuten vor Ort, dann bekommst du den Fixpreis. Unter der Woche sind wir auf Baustellen, darum Samstag und Sonntag. Wähle Tag und Uhrzeit, wir bestätigen per WhatsApp.',name:'Name',plz:'PLZ / Ort',
   photos0:'Noch keine Fotos ausgewählt. Du kannst sie auch direkt im WhatsApp-Chat schicken.',photosN:n=>`📷 ${n} Foto${n>1?'s':''} ausgewählt. Hänge sie im WhatsApp-Chat an diese Nachricht an.`,
   send:'💬 Termin anfragen',copy:'Text kopieren',copied:'Kopiert',selected:'Text markiert, jetzt kopieren',pick:'Bitte Tag und Uhrzeit wählen',
   how:"So läuft's",hw1:'Fotos hochladen',hw1s:'Von jeder Wand eins.',hw2:'Richtpreis in 30 Sek.',hw2s:'Sofort auf dieser Seite.',hw3:'Besichtigung',hw3s:'Am Wochenende, 15 Min. vor Ort, dann Fixpreis.',hw4:'Fertig am Wochenende',hw4s:'Zimmer in 1 Tag · bis 60 m² Sa–So · bis 100 m² Fr–So. Abgedeckt, gestrichen, sauber.',dur:'Dauer',durV:a=>a<=25?'1 Tag':a<=60?'Wochenende (Sa–So)':a<=100?'3 Tage (Fr–So)':'nach Absprache',
   inc:['Fixpreis, der nicht steigt','Material inklusive','Böden und Möbel abgedeckt','Kanten sauber abgeklebt','Mit Garantie auf die Arbeit','Familienbetrieb mit über 25 Jahren Erfahrung','Hunderte Wohnungen gestrichen','⭐ 5,0 bei 31 Google-Bewertungen (Spanien)'],
   dock:'Dein Richtpreis',dockBtn:'Termin buchen',walls:'Wände',ceils:'Decken',cond:'Zustand',prep:'% Vorarbeit',dark:'Farbwechsel',darkV:'+1 Anstrich',nic:'Isoliergrund',incl:'inklusive',furn:'Möbel & Abdecken',doors:'Türen',rads:'Heizkörper',min:'Mindestauftrag',
-  types:['Schlafzimmer','Kinderzimmer','Wohnzimmer','Küche','Bad','Korridor','Büro','Anderer Raum'],dow:['So','Mo','Di','Mi','Do','Fr','Sa'],ca:'ca.',
+  types:['Ganze Wohnung','Ganzes Haus','Schlafzimmer','Kinderzimmer','Wohnzimmer','Küche','Bad','Korridor','Büro','Anderer Raum'],dow:['So','Mo','Di','Mi','Do','Fr','Sa'],ca:'ca.',
   m:(o)=>`Hallo Artmar Malerei!\n\nIch möchte eine Besichtigung buchen.\n📅 Wunschtermin: ${o.when}\n\n${o.rooms}\nOptionen: ${o.opts}\nZustand: ${o.cond}\nRichtpreis laut Rechner: ${o.range}\n\nName: ${o.name}\nTel: ${o.tel}\nOrt: ${o.plz}\n${o.photos}`,
   mPhotos:n=>n?`📷 ${n} Fotos hänge ich hier an.`:'📷 Fotos schicke ich gleich.',withC:'mit Decken',noC:'ohne Decken',condV:['gut','normal (Dübellöcher)','viel Arbeit']},
  es:{h1:'Sube fotos, <em>precio en 30 s</em>',lead:'Sube fotos de tu piso, elige las habitaciones y ve al momento tu precio orientativo. Si te encaja, reservas la visita y allí te damos el precio fijo.',
@@ -254,22 +256,22 @@ const TXT = {
   o1:'Pintar también los techos',o1s:'Casi siempre al dejar un piso',o2:'Pared oscura o de color → clara',o2s:'Necesita una mano más',o3:'Nicotina o manchas fuertes',o3s:'Con imprimación aislante',o4:'Habitaciones amuebladas',o4s:'Movemos muebles y tapamos todo',o5:'Lacar puertas con marco',o5s:'por puerta, por ambas caras',o6:'Lacar radiadores',o6s:'por unidad',
   c1:'Bien',c1s:'Casi sin agujeros',c2:'Normal',c2s:'Agujeros de tacos, grietas pequeñas',c3:'Mucho trabajo',c3s:'Grietas, papel viejo',h1b:'Hasta 2,5 m',h1s:'Estándar',h2b:'Hasta 2,8 m',h2s:'Algo más alto',h3b:'Más de 2,8 m',h3s:'Edificio antiguo',
   s3:'Tu precio orientativo',calc:'Calculado',pfine:'Precio orientativo con material, protección, encintado y limpieza incluidos. Sin IVA. El precio fijo y definitivo te lo damos en la visita, y después ya no cambia.',
-  gT:'🔒 ¿A dónde te mandamos tu precio?',gS:'Pon tu nombre y tu móvil y verás tu precio al momento, y además te lo mandamos por WhatsApp. Gratis y sin compromiso.',tel:'Móvil',gBtn:'Ver mi precio',priv:'Usamos tus datos solo para enviarte el precio y acordar la visita. No los compartimos con nadie ni enviamos newsletters.',gErrN:'Escribe tu nombre.',gErrT:'Escribe un número de móvil válido.',lockedDock:'🔒 Pon tu número',
+  gT:'🔒 ¿A dónde te mandamos tu precio?',gS:'Pon tu nombre y tu móvil y verás tu precio al momento. Gratis y sin compromiso.',tel:'Móvil',gBtn:'Ver mi precio',priv:'Usamos tus datos solo para enviarte el precio y acordar la visita. No los compartimos con nadie ni enviamos newsletters.',gErrN:'Escribe tu nombre.',gErrT:'Escribe un número de móvil válido.',lockedDock:'🔒 Pon tu número',
   lead2:(o)=>`¡Hola Artmar Malerei!\n\nMi precio orientativo de la calculadora: ${o.range}\n${o.rooms}\nOpciones: ${o.opts}\n\nNombre: ${o.name}\nTel: ${o.tel}\n\nPor favor, contactadme para la visita.`,
   rev:'⭐ Ver reseñas reales en Google',revS:'Reseñas de nuestra empresa familiar en España (Artmar Pinturas).',
-  s4:'Reserva la visita',s4h:'15 minutos en tu casa con nuestro pintor. Entre semana estamos en obra, así que las visitas las hacemos el sábado y el domingo. Elige día y hora y te lo confirmamos por WhatsApp.',name:'Nombre',plz:'Código postal / ciudad',
+  next:'👇 ¿Te parece bien el precio? Elige abajo un horario libre para la visita.',s4:'¿Te parece bien? Reserva la visita',s4h:'Estos son los horarios libres de nuestro pintor. 15 minutos en tu casa y te damos el precio fijo. Entre semana estamos en obra, así que el sábado y el domingo. Elige día y hora y te lo confirmamos por WhatsApp.',name:'Nombre',plz:'Código postal / ciudad',
   photos0:'Aún no has elegido fotos. También puedes mandarlas directamente en el chat de WhatsApp.',photosN:n=>`📷 ${n} foto${n>1?'s':''} elegida${n>1?'s':''}. Adjúntalas en el chat de WhatsApp junto a este mensaje.`,
   send:'💬 Pedir cita',copy:'Copiar texto',copied:'Copiado',selected:'Texto marcado, cópialo ahora',pick:'Elige día y hora',
   how:'Cómo funciona',hw1:'Sube fotos',hw1s:'Una de cada pared.',hw2:'Precio en 30 s',hw2s:'Al momento, en esta página.',hw3:'Visita',hw3s:'El finde, 15 min en tu casa y precio fijo.',hw4:'Terminado el finde',hw4s:'Habitación en 1 día · hasta 60 m² sáb–dom · hasta 100 m² vie–dom. Protegido, pintado, limpio.',dur:'Duración',durV:a=>a<=25?'1 día':a<=60?'Fin de semana (sáb–dom)':a<=100?'3 días (vie–dom)':'a convenir',
   inc:['Precio fijo que no sube','Material incluido','Suelos y muebles protegidos','Bordes encintados con cuidado','Trabajo con garantía','Empresa familiar: cientos de pisos pintados','⭐ Reseñas de 5 estrellas en España'],
   dock:'Tu precio orientativo',dockBtn:'Reservar cita',walls:'Paredes',ceils:'Techos',cond:'Estado',prep:'% preparación',dark:'Cambio de color',darkV:'+1 mano',nic:'Imprimación aislante',incl:'incluida',furn:'Muebles y protección',doors:'Puertas',rads:'Radiadores',min:'Pedido mínimo',
-  types:['Dormitorio','Habitación infantil','Salón','Cocina','Baño','Pasillo','Despacho','Otra habitación'],dow:['dom','lun','mar','mié','jue','vie','sáb'],ca:'aprox.',
+  types:['Piso completo','Casa completa','Dormitorio','Habitación infantil','Salón','Cocina','Baño','Pasillo','Despacho','Otra habitación'],dow:['dom','lun','mar','mié','jue','vie','sáb'],ca:'aprox.',
   m:(o)=>`¡Hola Artmar Malerei!\n\nMe gustaría reservar una visita.\n📅 Fecha deseada: ${o.when}\n\n${o.rooms}\nOpciones: ${o.opts}\nEstado: ${o.cond}\nPrecio orientativo de la calculadora: ${o.range}\n\nNombre: ${o.name}\nTel: ${o.tel}\nLugar: ${o.plz}\n${o.photos}`,
   mPhotos:n=>n?`📷 Te adjunto ${n} fotos aquí.`:'📷 Ahora te mando las fotos.',withC:'con techos',noC:'sin techos',condV:['bien','normal (agujeros de tacos)','mucho trabajo']}
 };
-const AREAS=[14,11,24,10,6,8,11,12];
+const AREAS=[70,140,14,11,24,10,6,8,11,12];
 let lang='de'; try{const s=localStorage.getItem('artmar-lang'); if(s==='es'||s==='de') lang=s}catch(e){}
-let rooms=[{t:0,a:14}], photos=[], day=null, slot=null, unlocked=false; const counts={doors:0,rads:0};
+let rooms=[{t:2,a:14}], photos=[], day=null, slot=null, unlocked=false; const counts={doors:0,rads:0};
 const $=id=>document.getElementById(id);
 const fmt=n=>(Math.round(n/10)*10).toLocaleString('de-CH');
 const L=()=>TXT[lang];
@@ -304,7 +306,7 @@ function drawRooms(){
   L().types.forEach((n,k)=>{const o=document.createElement('option');o.value=k;o.textContent=n;if(k===r.t)o.selected=true;sel.appendChild(o)});
   sel.onchange=()=>{r.t=+sel.value;r.a=AREAS[r.t];drawRooms();calc()};
   const w=document.createElement('div'); w.className='m2';
-  const inp=document.createElement('input'); inp.type='number'; inp.min=2; inp.max=200; inp.value=r.a; inp.id='ra'+i; inp.inputMode='numeric'; inp.setAttribute('aria-label','m²');
+  const inp=document.createElement('input'); inp.type='number'; inp.min=2; inp.max=400; inp.value=r.a; inp.id='ra'+i; inp.inputMode='numeric'; inp.setAttribute('aria-label','m²');
   inp.oninput=()=>{r.a=Math.max(0,+inp.value||0);calc()};
   w.appendChild(inp);
   const del=document.createElement('button'); del.type='button'; del.className='icon-btn'; del.textContent='×'; del.setAttribute('aria-label','−');
@@ -312,7 +314,7 @@ function drawRooms(){
   row.append(sel,w,del); box.appendChild(row);
  });
 }
-$('addRoom').onclick=()=>{rooms.push({t:0,a:14});drawRooms();calc()};
+$('addRoom').onclick=()=>{rooms.push({t:2,a:14});drawRooms();calc()};
 document.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{const k=b.dataset.c;counts[k]=Math.max(0,Math.min(20,counts[k]+ +b.dataset.d));$(k).textContent=counts[k];calc()});
 document.querySelectorAll('main input,main select').forEach(e=>e.addEventListener('change',calc));
 ['name','tel','plz'].forEach(id=>$(id).addEventListener('input',calc));
@@ -335,13 +337,13 @@ function calc(){
  const h=+document.querySelector('input[name=h]:checked').value;
  const condV=+document.querySelector('input[name=cond]:checked').value;
  const ceilOn=$('ceil').checked,dark=$('dark').checked,nic=$('nic').checked,furn=$('furn').checked;
- let wall=0,ceil=0; const floor=rooms.reduce((x,r)=>x+(r.a||0),0); rooms.forEach(r=>{const a=r.a||0;wall+=4*Math.sqrt(a)*h*0.88;if(ceilOn)ceil+=a});
+ let wall=0,ceil=0; const floor=rooms.reduce((x,r)=>x+(r.a||0),0); rooms.forEach(r=>{const a=r.a||0;wall+=r.t<2?a*2.2*(h/2.5):4*Math.sqrt(a)*h*0.88;if(ceilOn)ceil+=a});
  const base=wall*RATE_WALL+ceil*RATE_CEIL;
  let est=base*(1+condV+(dark?0.25:0)+(nic?0.3:0)+(furn?0.1:0))+counts.doors*DOOR+counts.rads*RAD;
  const minApplied=est<MIN_JOB; est=Math.max(est,MIN_JOB);
  const range='CHF '+fmt(est*LOW)+' – '+fmt(est*HIGH);
  $('rangeBig').textContent=range; $('rangeBig').classList.toggle('locked',!unlocked);
- $('range').textContent=unlocked?range:T.lockedDock; $('gate').hidden=unlocked;
+ $('range').textContent=unlocked?range:T.lockedDock; $('gate').hidden=unlocked; $('nextHint').hidden=!unlocked;
  document.querySelector('.dock .cta').setAttribute('href',unlocked?'#book':'#priceCard');
  const key=range; if(key!==lastKey){lastKey=key;const b=$('bar');b.style.transition='none';b.style.width='0';requestAnimationFrame(()=>{b.style.transition='';b.style.width='100%'})}
  const lines=[[T.walls,Math.round(wall)+' m²'],...(ceilOn?[[T.ceils,Math.round(ceil)+' m²']]:[]),...(condV?[[T.cond,'+'+Math.round(condV*100)+' '+T.prep]]:[]),
@@ -363,8 +365,6 @@ $('unlock').onclick=()=>{const T=L();const n=$('name').value.trim(),t=$('tel').v
  if(!telOk(t)){$('gErr').textContent=T.gErrT;$('tel').focus();return}
  $('gErr').textContent='';unlocked=true;calc();trackLead();
  track('unlock',{name:n,tel:t,plz:$('plz').value.trim(),range:LAST.range,det:LAST.rooms+'\n'+LAST.opts});
- const m=T.lead2({...LAST,name:n,tel:t});
- window.open((WHATSAPP?'https://wa.me/'+WHATSAPP:'https://wa.me/')+'?text='+encodeURIComponent(m),'_blank','noopener');
  $('priceCard').scrollIntoView({behavior:'smooth',block:'start'})};
 $('copy').onclick=async()=>{const T=L();try{await navigator.clipboard.writeText($('msg').textContent);$('copy').textContent=T.copied}catch(e){const r=document.createRange();r.selectNodeContents($('msg'));const s=getSelection();s.removeAllRanges();s.addRange(r);$('copy').textContent=T.selected}setTimeout(()=>$('copy').textContent=T.copy,2500)};
 applyLang();
