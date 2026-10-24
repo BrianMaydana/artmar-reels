@@ -240,7 +240,7 @@ const TXT = {
   gT:'🔒 Wohin dürfen wir deinen Richtpreis schicken?',gS:'Gib Name und Handynummer ein, dann siehst du deinen Preis sofort. Kostenlos und unverbindlich.',tel:'Handynummer',gBtn:'Preis anzeigen',priv:'Deine Angaben nutzen wir nur, um dir den Preis zu schicken und einen Termin abzustimmen. Keine Weitergabe an Dritte, kein Newsletter.',gErrN:'Bitte gib deinen Namen ein.',gErrT:'Bitte gib eine gültige Handynummer ein.',lockedDock:'🔒 Nummer eingeben',
   lead2:(o)=>`Hallo Artmar Malerei!\n\nMein Richtpreis laut Rechner: ${o.range}\n${o.rooms}\nOptionen: ${o.opts}\n\nName: ${o.name}\nTel: ${o.tel}\n\nBitte meldet euch für einen Besichtigungstermin.`,
   rev:'⭐ Echte Google-Bewertungen ansehen',revS:'Bewertungen unseres Familienbetriebs in Spanien (Artmar Pinturas). Google übersetzt sie automatisch.',
-  next:'👇 Passt der Preis? Dann wähle unten einen freien Termin für die Besichtigung.',s4:'Passt der Preis? Besichtigung buchen',s4h:'Das sind die freien Zeiten unseres Malers. 15 Minuten vor Ort, dann bekommst du den Fixpreis. Unter der Woche sind wir auf Baustellen, darum Samstag und Sonntag. Wähle Tag und Uhrzeit, wir bestätigen per WhatsApp.',name:'Name',plz:'PLZ / Ort',
+  gErrA:'Bitte gib zuerst die Fläche in m² ein.',next:'👇 Passt der Preis? Dann wähle unten einen freien Termin für die Besichtigung.',s4:'Passt der Preis? Besichtigung buchen',s4h:'Das sind die freien Zeiten unseres Malers. 15 Minuten vor Ort, dann bekommst du den Fixpreis. Unter der Woche sind wir auf Baustellen, darum Samstag und Sonntag. Wähle Tag und Uhrzeit, wir bestätigen per WhatsApp.',name:'Name',plz:'PLZ / Ort',
   photos0:'Noch keine Fotos ausgewählt. Du kannst sie auch direkt im WhatsApp-Chat schicken.',photosN:n=>`📷 ${n} Foto${n>1?'s':''} ausgewählt. Hänge sie im WhatsApp-Chat an diese Nachricht an.`,
   send:'💬 Termin anfragen',copy:'Text kopieren',copied:'Kopiert',selected:'Text markiert, jetzt kopieren',pick:'Bitte Tag und Uhrzeit wählen',
   how:"So läuft's",hw1:'Fotos hochladen',hw1s:'Von jeder Wand eins.',hw2:'Richtpreis in 30 Sek.',hw2s:'Sofort auf dieser Seite.',hw3:'Besichtigung',hw3s:'Am Wochenende, 15 Min. vor Ort, dann Fixpreis.',hw4:'Fertig am Wochenende',hw4s:'Zimmer in 1 Tag · bis 60 m² Sa–So · bis 100 m² Fr–So. Abgedeckt, gestrichen, sauber.',dur:'Dauer',durV:a=>a<=25?'1 Tag':a<=60?'Wochenende (Sa–So)':a<=100?'3 Tage (Fr–So)':'nach Absprache',
@@ -259,7 +259,7 @@ const TXT = {
   gT:'🔒 ¿A dónde te mandamos tu precio?',gS:'Pon tu nombre y tu móvil y verás tu precio al momento. Gratis y sin compromiso.',tel:'Móvil',gBtn:'Ver mi precio',priv:'Usamos tus datos solo para enviarte el precio y acordar la visita. No los compartimos con nadie ni enviamos newsletters.',gErrN:'Escribe tu nombre.',gErrT:'Escribe un número de móvil válido.',lockedDock:'🔒 Pon tu número',
   lead2:(o)=>`¡Hola Artmar Malerei!\n\nMi precio orientativo de la calculadora: ${o.range}\n${o.rooms}\nOpciones: ${o.opts}\n\nNombre: ${o.name}\nTel: ${o.tel}\n\nPor favor, contactadme para la visita.`,
   rev:'⭐ Ver reseñas reales en Google',revS:'Reseñas de nuestra empresa familiar en España (Artmar Pinturas).',
-  next:'👇 ¿Te parece bien el precio? Elige abajo un horario libre para la visita.',s4:'¿Te parece bien? Reserva la visita',s4h:'Estos son los horarios libres de nuestro pintor. 15 minutos en tu casa y te damos el precio fijo. Entre semana estamos en obra, así que el sábado y el domingo. Elige día y hora y te lo confirmamos por WhatsApp.',name:'Nombre',plz:'Código postal / ciudad',
+  gErrA:'Primero indica los m² de la superficie.',next:'👇 ¿Te parece bien el precio? Elige abajo un horario libre para la visita.',s4:'¿Te parece bien? Reserva la visita',s4h:'Estos son los horarios libres de nuestro pintor. 15 minutos en tu casa y te damos el precio fijo. Entre semana estamos en obra, así que el sábado y el domingo. Elige día y hora y te lo confirmamos por WhatsApp.',name:'Nombre',plz:'Código postal / ciudad',
   photos0:'Aún no has elegido fotos. También puedes mandarlas directamente en el chat de WhatsApp.',photosN:n=>`📷 ${n} foto${n>1?'s':''} elegida${n>1?'s':''}. Adjúntalas en el chat de WhatsApp junto a este mensaje.`,
   send:'💬 Pedir cita',copy:'Copiar texto',copied:'Copiado',selected:'Texto marcado, cópialo ahora',pick:'Elige día y hora',
   how:'Cómo funciona',hw1:'Sube fotos',hw1s:'Una de cada pared.',hw2:'Precio en 30 s',hw2s:'Al momento, en esta página.',hw3:'Visita',hw3s:'El finde, 15 min en tu casa y precio fijo.',hw4:'Terminado el finde',hw4s:'Habitación en 1 día · hasta 60 m² sáb–dom · hasta 100 m² vie–dom. Protegido, pintado, limpio.',dur:'Duración',durV:a=>a<=25?'1 día':a<=60?'Fin de semana (sáb–dom)':a<=100?'3 días (vie–dom)':'a convenir',
@@ -269,7 +269,7 @@ const TXT = {
   m:(o)=>`¡Hola Artmar Malerei!\n\nMe gustaría reservar una visita.\n📅 Fecha deseada: ${o.when}\n\n${o.rooms}\nOpciones: ${o.opts}\nEstado: ${o.cond}\nPrecio orientativo de la calculadora: ${o.range}\n\nNombre: ${o.name}\nTel: ${o.tel}\nLugar: ${o.plz}\n${o.photos}`,
   mPhotos:n=>n?`📷 Te adjunto ${n} fotos aquí.`:'📷 Ahora te mando las fotos.',withC:'con techos',noC:'sin techos',condV:['bien','normal (agujeros de tacos)','mucho trabajo']}
 };
-const AREAS=[70,140,14,11,24,10,6,8,11,12];
+const AREAS=[0,0,14,11,24,10,6,8,11,12];
 let lang='de'; try{const s=localStorage.getItem('artmar-lang'); if(s==='es'||s==='de') lang=s}catch(e){}
 let rooms=[{t:2,a:14}], photos=[], day=null, slot=null, unlocked=false; const counts={doors:0,rads:0};
 const $=id=>document.getElementById(id);
@@ -306,7 +306,7 @@ function drawRooms(){
   L().types.forEach((n,k)=>{const o=document.createElement('option');o.value=k;o.textContent=n;if(k===r.t)o.selected=true;sel.appendChild(o)});
   sel.onchange=()=>{r.t=+sel.value;r.a=AREAS[r.t];drawRooms();calc()};
   const w=document.createElement('div'); w.className='m2';
-  const inp=document.createElement('input'); inp.type='number'; inp.min=2; inp.max=400; inp.value=r.a; inp.id='ra'+i; inp.inputMode='numeric'; inp.setAttribute('aria-label','m²');
+  const inp=document.createElement('input'); inp.type='number'; inp.min=2; inp.max=400; inp.value=r.a||''; inp.placeholder=r.t<2?'m²':''; inp.id='ra'+i; inp.inputMode='numeric'; inp.setAttribute('aria-label','m²');
   inp.oninput=()=>{r.a=Math.max(0,+inp.value||0);calc()};
   w.appendChild(inp);
   const del=document.createElement('button'); del.type='button'; del.className='icon-btn'; del.textContent='×'; del.setAttribute('aria-label','−');
@@ -361,6 +361,7 @@ function calc(){
  $('waNum').textContent=WHATSAPP?'WhatsApp: +'+WHATSAPP:'';
 }
 $('unlock').onclick=()=>{const T=L();const n=$('name').value.trim(),t=$('tel').value.trim();
+ if(!rooms.some(r=>r.a>0)){$('gErr').textContent=T.gErrA;const f=document.querySelector('#rooms input');if(f)f.focus();return}
  if(!n){$('gErr').textContent=T.gErrN;$('name').focus();return}
  if(!telOk(t)){$('gErr').textContent=T.gErrT;$('tel').focus();return}
  $('gErr').textContent='';unlocked=true;calc();trackLead();
