@@ -166,6 +166,15 @@ ul.inc li::before{content:"✓ ";color:var(--ok);font-weight:800}
 .faq summary::after{content:"+";font-size:22px;color:var(--muted);flex:none}
 .faq details[open] summary::after{content:"–"}
 .faq p{margin:0 0 13px;color:var(--muted);font-size:15px}
+.rv-h{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:700}
+.stars{color:#f5b301;letter-spacing:1px}
+.rv{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:thin}
+.rv article{flex:0 0 84%;max-width:330px;scroll-snap-align:start;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:6px}
+.rv .who{display:flex;gap:10px;align-items:center}
+.rv .av{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;flex:none}
+.rv .who b{display:block;line-height:1.2}.rv .who small{color:var(--muted);font-size:12px}
+.rv p{margin:0;font-size:14.5px;line-height:1.45}
+.rv details{font-size:13px;color:var(--muted)}.rv details summary{cursor:pointer;font-weight:600}.rv details p{font-size:13px;margin-top:4px;color:var(--muted)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
@@ -226,6 +235,14 @@ ul.inc li::before{content:"✓ ";color:var(--ok);font-weight:800}
   <p class="hint" data-i="s1h"></p>
   <label class="drop" for="photos"><input type="file" id="photos" accept="image/*" multiple><b data-i="drop"></b><small data-i="dropS"></small></label>
   <div class="thumbs" id="thumbs"></div>
+ </section>
+
+ <section class="card" aria-labelledby="sr">
+  <h2 id="sr" style="font-family:var(--display);margin:0;font-size:21px" data-i="rvT"></h2>
+  <div class="rv-h"><span class="stars" aria-hidden="true">★★★★★</span><span data-i="rvScore"></span></div>
+  <div class="rv" id="rv"></div>
+  <p class="fine" data-i="revS"></p>
+  <a class="cta sun" style="align-self:flex-start" href="https://share.google/Q0aba34GznFFTA015" target="_blank" rel="noopener" data-i="rev"></a>
  </section>
 
  <section class="card" aria-labelledby="s4" id="book">
@@ -292,6 +309,7 @@ const TXT = {
   whyT:'Warum Artmar Malerei',why:[['🏅','Garantie auf die Arbeit','Wir stehen für unsere Arbeit gerade, auch nach dem letzten Pinselstrich.'],['❤️','Familienbetrieb','Über 25 Jahre Erfahrung in der Familie. Wir behandeln dein Zuhause wie unser eigenes.'],['💬','Direkter Ansprechpartner','Du schreibst direkt mit uns per WhatsApp, ohne Callcenter und ohne Warten.'],['🔒','Fixpreis','Nach der Besichtigung bekommst du deinen Fixpreis. Material inklusive, keine MWST, und er steigt nicht.']],
   areaT:'Einsatzgebiet',areas:['Luzern','Zug','Zürich','und Umgebung'],areaS:'Du wohnst woanders? Schreib uns kurz, wir schauen, ob es passt.',
   faqT:'Häufige Fragen',faqCta:'Zum Richtpreis',faq:[['Was kostet das Streichen?','Das hängt von Fläche und Zustand ab. Oben siehst du in 30 Sekunden deinen Richtpreis. Den verbindlichen Fixpreis bekommst du nach der Besichtigung, Material inklusive, ohne MWST.'],['Wo arbeitet ihr?','In Luzern, Zug, Zürich und Umgebung. Bei einer anderen Region frag uns einfach kurz per WhatsApp.'],['Welche Arbeiten bietet ihr an?','Wir streichen Wände und Decken in Wohnungen und Häusern, innen und matt. Fassaden und Lackierarbeiten (Türen, Heizkörper) machen wir derzeit nicht.'],['Wie lange dauert es?','Ein Zimmer in 1 Tag, eine Wohnung in 2–3 Tagen, ein Haus in 3–4 Tagen. Wir arbeiten zu zweit.'],['Muss ich Möbel wegräumen?','Nein. Wir rücken Möbel zusammen und decken Möbel und Böden sauber ab.'],['Wie bekomme ich einen Termin?','Wähle oben einen freien Termin für die Besichtigung. Unter der Woche sind wir auf Baustellen, darum Samstag und Sonntag. Wir bestätigen per WhatsApp.']],
+  rvT:'Das sagen Kunden',rvScore:'5,0 · 31 Google-Bewertungen (Spanien)',rvOrig:'Original anzeigen',rvLang:{es:'Spanisch',en:'Englisch'},rvTag:'Google-Bewertung',
   gErrA:'Bitte gib zuerst die Fläche in m² ein.',next:'👇 Passt der Preis? Dann wähle unten einen freien Termin für die Besichtigung.',s4:'Passt der Preis? Besichtigung buchen',s4h:'Das sind die freien Zeiten unseres Malers. 15 Minuten vor Ort, dann bekommst du den Fixpreis. Unter der Woche sind wir auf Baustellen, darum Samstag und Sonntag. Wähle Tag und Uhrzeit, wir bestätigen per WhatsApp.',name:'Name (optional)',plz:'PLZ / Ort',
   photos0:'Noch keine Fotos ausgewählt. Du kannst sie auch direkt im WhatsApp-Chat schicken.',photosN:n=>`📷 ${n} Foto${n>1?'s':''} ausgewählt. Hänge sie im WhatsApp-Chat an diese Nachricht an.`,
   send:'💬 Termin anfragen',copy:'Text kopieren',copied:'Kopiert',selected:'Text markiert, jetzt kopieren',pick:'Bitte Tag und Uhrzeit wählen',
@@ -314,6 +332,7 @@ const TXT = {
   whyT:'Por qué Artmar Malerei',why:[['🏅','Garantía en el trabajo','Respondemos por nuestro trabajo, también después de la última pincelada.'],['❤️','Empresa familiar','Más de 25 años de experiencia en la familia. Tratamos tu casa como si fuera la nuestra.'],['💬','Trato directo','Hablas directamente con nosotros por WhatsApp, sin centralita y sin esperas.'],['🔒','Precio fijo','Tras la visita recibes tu precio fijo. Material incluido, sin IVA, y no sube.']],
   areaT:'Zona de trabajo',areas:['Lucerna','Zug','Zúrich','y alrededores'],areaS:'¿Vives en otro sitio? Escríbenos y vemos si podemos.',
   faqT:'Preguntas frecuentes',faqCta:'Ir al precio',faq:[['¿Cuánto cuesta pintar?','Depende de la superficie y del estado. Arriba ves tu precio orientativo en 30 segundos. El precio fijo y definitivo te lo damos tras la visita, con material incluido y sin IVA.'],['¿Dónde trabajáis?','En Lucerna, Zug, Zúrich y alrededores. Si estás en otra zona, escríbenos por WhatsApp.'],['¿Qué trabajos hacéis?','Pintamos paredes y techos de pisos y casas, por dentro y en acabado mate. De momento no hacemos fachadas ni lacados (puertas, radiadores).'],['¿Cuánto se tarda?','Una habitación en 1 día, un piso en 2–3 días, una casa en 3–4 días. Trabajamos en equipo.'],['¿Tengo que quitar los muebles?','No. Juntamos los muebles y los cubrimos, igual que los suelos.'],['¿Cómo consigo una cita?','Elige arriba un horario libre para la visita. Entre semana estamos en obra, así que sábado y domingo. Lo confirmamos por WhatsApp.']],
+  rvT:'Lo que dicen los clientes',rvScore:'5,0 · 31 reseñas en Google (España)',rvOrig:'Ver original',rvLang:{es:'español',en:'inglés'},rvTag:'Reseña de Google',
   gErrA:'Primero indica los m² de la superficie.',next:'👇 ¿Te parece bien el precio? Elige abajo un horario libre para la visita.',s4:'¿Te parece bien? Reserva la visita',s4h:'Estos son los horarios libres de nuestro pintor. 15 minutos en tu casa y te damos el precio fijo. Entre semana estamos en obra, así que el sábado y el domingo. Elige día y hora y te lo confirmamos por WhatsApp.',name:'Nombre (opcional)',plz:'Código postal / ciudad',
   photos0:'Aún no has elegido fotos. También puedes mandarlas directamente en el chat de WhatsApp.',photosN:n=>`📷 ${n} foto${n>1?'s':''} elegida${n>1?'s':''}. Adjúntalas en el chat de WhatsApp junto a este mensaje.`,
   send:'💬 Pedir cita',copy:'Copiar texto',copied:'Copiado',selected:'Texto marcado, cópialo ahora',pick:'Elige día y hora',
@@ -324,6 +343,20 @@ const TXT = {
   m:(o)=>`¡Hola Artmar Malerei!\n\nMe gustaría reservar una visita.\n📅 Fecha deseada: ${o.when}\n\n${o.rooms}\nOpciones: ${o.opts}\nEstado: ${o.cond}\nPrecio orientativo de la calculadora: ${o.range}\n\nNombre: ${o.name}\nTel: ${o.tel}\nLugar: ${o.plz}\n${o.photos}`,
   mPhotos:n=>n?`📷 Te adjunto ${n} fotos aquí.`:'📷 Ahora te mando las fotos.',withC:'con techos',noC:'sin techos',condV:['bien','normal (agujeros de tacos)','mucho trabajo']}
 };
+const REVIEWS=[
+ {n:'Bas I.',c:'#1f6feb',o:'en',orig:"Miguel recently removed the gotelé from the walls in my apartment, smoothed them perfectly, and painted the whole place. The result looks fantastic. His attention to detail was excellent, and the finish is beautiful. He was professional, flexible, and very trustworthy throughout the process. I would highly recommend Miguel to anyone looking for a great painter.",
+  de:"Miguel hat bei mir kürzlich den Gotelé (Spritzputz) von den Wänden meiner Wohnung entfernt, sie perfekt geglättet und die ganze Wohnung gestrichen. Das Ergebnis sieht fantastisch aus. Er arbeitet sehr genau und die Oberfläche ist wunderschön. Er war professionell, flexibel und während des ganzen Vorgangs sehr vertrauenswürdig. Ich kann Miguel jedem empfehlen, der einen guten Maler sucht.",
+  es:"Miguel quitó hace poco el gotelé de las paredes de mi apartamento, las alisó perfectamente y pintó todo el piso. El resultado es fantástico. Cuida muchísimo los detalles y el acabado es precioso. Fue profesional, flexible y muy de fiar durante todo el proceso. Recomiendo a Miguel a cualquiera que busque un buen pintor."},
+ {n:'Miguel G.',c:'#8e5ea2',o:'es',orig:"Decir que estoy muy contento con Miguel pintor muy profesional. Nos pintó toda la casa y nos encantó, la calidad, acabados y su trato muy correcto. Lo recomiendo a todos. Muy serio, todo lo que nos dijo lo cumplió. Un 10 en todo.",
+  de:"Ich bin sehr zufrieden mit Miguel, einem sehr professionellen Maler. Er hat unser ganzes Haus gestrichen und wir sind begeistert: Qualität, Ausführung und sein korrekter Umgang. Ich empfehle ihn allen. Sehr seriös, alles, was er gesagt hat, hat er eingehalten. Eine 10 in allem."},
+ {n:'Ma Dolores M.',c:'#e8590c',o:'es',orig:"Han venido a casa a pintar las terrazas Miguel y Esteban. Ha sido una gran suerte dar con ellos ya que han resultado ser unos grande profesionales y unas estupendas personas. Han realizado un buen trabajo y ha un precio estupendo. Sin duda los recomendamos a cualquiera que necesite pintores. Saludos de Rosita y su hermana (M. Dolores)",
+  de:"Miguel und Esteban sind zu uns gekommen, um die Terrassen zu streichen. Wir hatten grosses Glück, sie zu finden: Sie sind grossartige Profis und wunderbare Menschen. Sie haben gute Arbeit zu einem tollen Preis geleistet. Wir empfehlen sie ohne Zweifel jedem, der Maler braucht. Liebe Grüsse von Rosita und ihrer Schwester (M. Dolores)."},
+ {n:'Daniel F.',c:'#c2255c',o:'es',orig:"Excelente experiencia con Miguel pintando mi apartamento en Cullera. Miguel es muy profesional, te escucha y te aconseja para que tu casa quede lo mejor posible. Tanto él como su empleado Juan Carlos cuidaron de todos los detalles y limpieza posterior. Contaré con él sin duda ara futuros proyectos.",
+  de:"Hervorragende Erfahrung mit Miguel, der meine Wohnung in Cullera gestrichen hat. Miguel ist sehr professionell, hört zu und berät dich, damit dein Zuhause so gut wie möglich wird. Er und sein Mitarbeiter Juan Carlos haben sich um alle Details und die anschliessende Reinigung gekümmert. Ich werde ihn ohne Zweifel für künftige Projekte wieder beauftragen."},
+ {n:'Keith S.',c:'#2f9e44',o:'en',orig:"Punctual, experienced, hardworking and reliable professional painters, who only use the best quality materials. They do a great job and I have no hesitation in recommending them! Robbie",
+  de:"Pünktliche, erfahrene, fleissige und zuverlässige Profimaler, die nur Material bester Qualität verwenden. Sie leisten grossartige Arbeit und ich empfehle sie ohne zu zögern! Robbie",
+  es:"Pintores profesionales puntuales, con experiencia, trabajadores y fiables, que solo usan materiales de la mejor calidad. ¡Hacen un gran trabajo y los recomiendo sin dudarlo! Robbie"}
+];
 const AREAS=[0,0,14,11,24,10,6,8,11,12];
 let lang='de'; try{const s=localStorage.getItem('artmar-lang'); if(s==='es'||s==='de') lang=s}catch(e){}
 let rooms=[{t:0,a:0}], photos=[], day=null, slot=null, unlocked=false; const counts={doors:0,rads:0};
@@ -345,6 +378,7 @@ function applyLang(){
  $('why').innerHTML=L().why.map(x=>`<div><span>${x[0]}</span><b>${x[1]}</b><small>${x[2]}</small></div>`).join('');
  $('chips').innerHTML=L().areas.map(x=>`<span>${x}</span>`).join('');
  $('faq').innerHTML=L().faq.map(x=>`<details><summary>${x[0]}</summary><p>${x[1]}</p></details>`).join('');
+ $('rv').innerHTML=REVIEWS.map(r=>{const t=r[lang]||r.de,show=r.o!==lang;return `<article><div class="who"><span class="av" style="background:${r.c}">${r.n[0]}</span><div><b>${r.n}</b><small>${L().rvTag} · <span class="stars">★★★★★</span></small></div></div><p>${t}</p>${show?`<details><summary>${L().rvOrig} (${L().rvLang[r.o]})</summary><p lang="${r.o}">${r.orig}</p></details>`:''}</article>`}).join('');
  drawDays(); calc();
  document.querySelectorAll('[data-ph]').forEach(e=>{e.placeholder=L()[e.dataset.ph]});
 }
