@@ -1,9 +1,25 @@
 <!doctype html>
 <html lang="de"><head><meta charset="utf-8">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2389013738576374');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2389013738576374&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18535066954"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-18535066954');
-var AW_LEAD_LABEL='IhaDCPOhnKgdEMramoZF';function trackLead(){try{gtag('event','generate_lead');if(AW_LEAD_LABEL)gtag('event','conversion',{send_to:'AW-18535066954/'+AW_LEAD_LABEL,value:50.0,currency:'CHF'});}catch(e){}}</script>
+var AW_LEAD_LABEL='IhaDCPOhnKgdEMramoZF';function trackLead(){try{if(window.fbq)fbq('track','Lead',{value:50.0,currency:'CHF'});}catch(e){}try{gtag('event','generate_lead');if(AW_LEAD_LABEL)gtag('event','conversion',{send_to:'AW-18535066954/'+AW_LEAD_LABEL,value:50.0,currency:'CHF'});}catch(e){}}</script>
 
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="Artmar Malerei – Maler in Luzern, Zug & Zürich. Fotos hochladen, Richtpreis in 30 Sekunden, Besichtigung am Wochenende.">
@@ -373,7 +389,7 @@ applyLang();
 track('visit');
 let _calcSent=false;document.querySelector('main').addEventListener('input',()=>{if(!_calcSent){_calcSent=true;track('calc',{range:LAST.range})}});
 document.querySelector('main').addEventListener('change',()=>{if(!_calcSent){_calcSent=true;track('calc',{range:LAST.range})}});
-$('wa2').addEventListener('click',()=>{if($('wa2').getAttribute('aria-disabled')==='false'){track('book',{name:$('name').value.trim(),tel:$('tel').value.trim(),plz:$('plz').value.trim(),range:LAST.range,when:(day!==null&&slot)?`${DAYS[day].date.toLocaleDateString('de-CH')} ${slot}`:'',det:LAST.rooms+'\n'+LAST.opts})}});
+$('wa2').addEventListener('click',()=>{if($('wa2').getAttribute('aria-disabled')==='false'){try{if(window.fbq)fbq('track','Schedule');}catch(e){}track('book',{name:$('name').value.trim(),tel:$('tel').value.trim(),plz:$('plz').value.trim(),range:LAST.range,when:(day!==null&&slot)?`${DAYS[day].date.toLocaleDateString('de-CH')} ${slot}`:'',det:LAST.rooms+'\n'+LAST.opts})}});
 </script>
 
 </body></html>
