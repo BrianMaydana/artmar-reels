@@ -154,6 +154,18 @@ ul.inc li::before{content:"✓ ";color:var(--ok);font-weight:800}
 .unlock{font:inherit;font-weight:800;border:0;border-radius:14px;padding:13px 18px;background:var(--wa);color:#fff;cursor:pointer;justify-self:start}
 .unlock:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
 .calc .bar i{display:block;height:100%;width:0;background:var(--violet);transition:width .6s ease}
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.why div{background:var(--bg);border-radius:16px;padding:14px}
+.why b{display:block;font-family:var(--display);font-size:16px}.why small{color:var(--muted);font-size:14px;line-height:1.4;display:block;margin-top:2px}
+.why span{font-size:24px;line-height:1;display:block;margin-bottom:6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips span{background:var(--plum);color:#fff;border-radius:999px;padding:7px 14px;font-weight:700;font-size:14px}
+.faq details{border:1.5px solid var(--line);border-radius:14px;background:var(--bg);padding:0 14px}
+.faq details+details{margin-top:8px}
+.faq summary{cursor:pointer;font-weight:700;padding:13px 0;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:22px;color:var(--muted);flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin:0 0 13px;color:var(--muted);font-size:15px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
@@ -240,6 +252,17 @@ ul.inc li::before{content:"✓ ";color:var(--ok);font-weight:800}
   <ul class="inc" id="inc"></ul>
   <div style="display:flex;flex-direction:column;gap:6px"><a class="cta sun" style="align-self:flex-start" href="https://share.google/Q0aba34GznFFTA015" target="_blank" rel="noopener" data-i="rev"></a><p class="fine" data-i="revS"></p></div>
  </section>
+ <section class="card" aria-labelledby="sw">
+  <h2 id="sw" style="font-family:var(--display);margin:0;font-size:21px" data-i="whyT"></h2>
+  <div class="why" id="why"></div>
+  <div style="display:flex;flex-direction:column;gap:8px"><b data-i="areaT"></b><div class="chips" id="chips"></div><p class="fine" data-i="areaS"></p></div>
+ </section>
+
+ <section class="card faq" aria-labelledby="sf">
+  <h2 id="sf" style="font-family:var(--display);margin:0;font-size:21px" data-i="faqT"></h2>
+  <div id="faq"></div>
+  <a class="cta sun" style="align-self:flex-start" href="#priceCard" data-i="faqCta"></a>
+ </section>
 </main>
 
 <div class="dock" role="region" aria-label="Richtpreis">
@@ -266,6 +289,9 @@ const TXT = {
   gT:'🔒 Handynummer eingeben und Preis sehen',gS:'Wir melden uns kurz bei dir, um den Preis zu besprechen. Kostenlos und unverbindlich.',tel:'Handynummer',gBtn:'Preis anzeigen',priv:'Deine Nummer nutzen wir nur, um dich zum Preis und zu einem Termin zu kontaktieren. Keine Weitergabe an Dritte, kein Newsletter.',gErrN:'Bitte gib deinen Namen ein.',gErrT:'Bitte gib eine gültige Handynummer ein.',lockedDock:'🔒 Preis freischalten',
   lead2:(o)=>`Hallo Artmar Malerei!\n\nMein Richtpreis laut Rechner: ${o.range}\n${o.rooms}\nOptionen: ${o.opts}\n\nName: ${o.name}\nTel: ${o.tel}\n\nBitte meldet euch für einen Besichtigungstermin.`,
   rev:'⭐ Echte Google-Bewertungen ansehen',revS:'Bewertungen unseres Familienbetriebs in Spanien (Artmar Pinturas). Google übersetzt sie automatisch.',
+  whyT:'Warum Artmar Malerei',why:[['🏅','Garantie auf die Arbeit','Wir stehen für unsere Arbeit gerade, auch nach dem letzten Pinselstrich.'],['❤️','Familienbetrieb','Über 25 Jahre Erfahrung in der Familie. Wir behandeln dein Zuhause wie unser eigenes.'],['💬','Direkter Ansprechpartner','Du schreibst direkt mit uns per WhatsApp, ohne Callcenter und ohne Warten.'],['🔒','Fixpreis','Nach der Besichtigung bekommst du deinen Fixpreis. Material inklusive, keine MWST, und er steigt nicht.']],
+  areaT:'Einsatzgebiet',areas:['Luzern','Zug','Zürich','und Umgebung'],areaS:'Du wohnst woanders? Schreib uns kurz, wir schauen, ob es passt.',
+  faqT:'Häufige Fragen',faqCta:'Zum Richtpreis',faq:[['Was kostet das Streichen?','Das hängt von Fläche und Zustand ab. Oben siehst du in 30 Sekunden deinen Richtpreis. Den verbindlichen Fixpreis bekommst du nach der Besichtigung, Material inklusive, ohne MWST.'],['Wo arbeitet ihr?','In Luzern, Zug, Zürich und Umgebung. Bei einer anderen Region frag uns einfach kurz per WhatsApp.'],['Welche Arbeiten bietet ihr an?','Wir streichen Wände und Decken in Wohnungen und Häusern, innen und matt. Fassaden und Lackierarbeiten (Türen, Heizkörper) machen wir derzeit nicht.'],['Wie lange dauert es?','Ein Zimmer in 1 Tag, eine Wohnung in 2–3 Tagen, ein Haus in 3–4 Tagen. Wir arbeiten zu zweit.'],['Muss ich Möbel wegräumen?','Nein. Wir rücken Möbel zusammen und decken Möbel und Böden sauber ab.'],['Wie bekomme ich einen Termin?','Wähle oben einen freien Termin für die Besichtigung. Unter der Woche sind wir auf Baustellen, darum Samstag und Sonntag. Wir bestätigen per WhatsApp.']],
   gErrA:'Bitte gib zuerst die Fläche in m² ein.',next:'👇 Passt der Preis? Dann wähle unten einen freien Termin für die Besichtigung.',s4:'Passt der Preis? Besichtigung buchen',s4h:'Das sind die freien Zeiten unseres Malers. 15 Minuten vor Ort, dann bekommst du den Fixpreis. Unter der Woche sind wir auf Baustellen, darum Samstag und Sonntag. Wähle Tag und Uhrzeit, wir bestätigen per WhatsApp.',name:'Name (optional)',plz:'PLZ / Ort',
   photos0:'Noch keine Fotos ausgewählt. Du kannst sie auch direkt im WhatsApp-Chat schicken.',photosN:n=>`📷 ${n} Foto${n>1?'s':''} ausgewählt. Hänge sie im WhatsApp-Chat an diese Nachricht an.`,
   send:'💬 Termin anfragen',copy:'Text kopieren',copied:'Kopiert',selected:'Text markiert, jetzt kopieren',pick:'Bitte Tag und Uhrzeit wählen',
@@ -285,6 +311,9 @@ const TXT = {
   gT:'🔒 Pon tu móvil y ve tu precio',gS:'Te contactamos brevemente para comentar el precio. Gratis y sin compromiso.',tel:'Móvil',gBtn:'Ver mi precio',priv:'Usamos tu número solo para contactarte sobre el precio y la visita. No lo compartimos con nadie ni enviamos newsletters.',gErrN:'Escribe tu nombre.',gErrT:'Escribe un número de móvil válido.',lockedDock:'🔒 Desbloquea tu precio',
   lead2:(o)=>`¡Hola Artmar Malerei!\n\nMi precio orientativo de la calculadora: ${o.range}\n${o.rooms}\nOpciones: ${o.opts}\n\nNombre: ${o.name}\nTel: ${o.tel}\n\nPor favor, contactadme para la visita.`,
   rev:'⭐ Ver reseñas reales en Google',revS:'Reseñas de nuestra empresa familiar en España (Artmar Pinturas).',
+  whyT:'Por qué Artmar Malerei',why:[['🏅','Garantía en el trabajo','Respondemos por nuestro trabajo, también después de la última pincelada.'],['❤️','Empresa familiar','Más de 25 años de experiencia en la familia. Tratamos tu casa como si fuera la nuestra.'],['💬','Trato directo','Hablas directamente con nosotros por WhatsApp, sin centralita y sin esperas.'],['🔒','Precio fijo','Tras la visita recibes tu precio fijo. Material incluido, sin IVA, y no sube.']],
+  areaT:'Zona de trabajo',areas:['Lucerna','Zug','Zúrich','y alrededores'],areaS:'¿Vives en otro sitio? Escríbenos y vemos si podemos.',
+  faqT:'Preguntas frecuentes',faqCta:'Ir al precio',faq:[['¿Cuánto cuesta pintar?','Depende de la superficie y del estado. Arriba ves tu precio orientativo en 30 segundos. El precio fijo y definitivo te lo damos tras la visita, con material incluido y sin IVA.'],['¿Dónde trabajáis?','En Lucerna, Zug, Zúrich y alrededores. Si estás en otra zona, escríbenos por WhatsApp.'],['¿Qué trabajos hacéis?','Pintamos paredes y techos de pisos y casas, por dentro y en acabado mate. De momento no hacemos fachadas ni lacados (puertas, radiadores).'],['¿Cuánto se tarda?','Una habitación en 1 día, un piso en 2–3 días, una casa en 3–4 días. Trabajamos en equipo.'],['¿Tengo que quitar los muebles?','No. Juntamos los muebles y los cubrimos, igual que los suelos.'],['¿Cómo consigo una cita?','Elige arriba un horario libre para la visita. Entre semana estamos en obra, así que sábado y domingo. Lo confirmamos por WhatsApp.']],
   gErrA:'Primero indica los m² de la superficie.',next:'👇 ¿Te parece bien el precio? Elige abajo un horario libre para la visita.',s4:'¿Te parece bien? Reserva la visita',s4h:'Estos son los horarios libres de nuestro pintor. 15 minutos en tu casa y te damos el precio fijo. Entre semana estamos en obra, así que el sábado y el domingo. Elige día y hora y te lo confirmamos por WhatsApp.',name:'Nombre (opcional)',plz:'Código postal / ciudad',
   photos0:'Aún no has elegido fotos. También puedes mandarlas directamente en el chat de WhatsApp.',photosN:n=>`📷 ${n} foto${n>1?'s':''} elegida${n>1?'s':''}. Adjúntalas en el chat de WhatsApp junto a este mensaje.`,
   send:'💬 Pedir cita',copy:'Copiar texto',copied:'Copiado',selected:'Texto marcado, cópialo ahora',pick:'Elige día y hora',
@@ -313,6 +342,9 @@ function applyLang(){
  document.querySelectorAll('[data-i]').forEach(e=>{const v=L()[e.dataset.i]; if(typeof v==='string') e.innerHTML=v});
  document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===lang));
  $('inc').innerHTML=L().inc.map(x=>`<li>${x}</li>`).join('');
+ $('why').innerHTML=L().why.map(x=>`<div><span>${x[0]}</span><b>${x[1]}</b><small>${x[2]}</small></div>`).join('');
+ $('chips').innerHTML=L().areas.map(x=>`<span>${x}</span>`).join('');
+ $('faq').innerHTML=L().faq.map(x=>`<details><summary>${x[0]}</summary><p>${x[1]}</p></details>`).join('');
  drawDays(); calc();
  document.querySelectorAll('[data-ph]').forEach(e=>{e.placeholder=L()[e.dataset.ph]});
 }
