@@ -90,6 +90,9 @@ select:focus,input:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 .seg label:has(input:checked){border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
 .seg input{position:absolute;opacity:0;pointer-events:none}
 .seg b{font-weight:700}.seg small{color:var(--muted);font-size:13px}
+.seg.two{grid-template-columns:1fr 1fr}
+.colq{display:grid;gap:10px;padding:14px 0;border-bottom:1px solid var(--line)}
+.colq .t b{display:block;font-size:16px}.colq .t small{color:var(--muted);font-size:13px}
 .toggle{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:6px 0;border-top:1px solid var(--line)}
 .toggle .t{min-width:0}.toggle .t small{display:block;color:var(--muted);font-size:13px}
 .sw{appearance:none;width:50px;height:30px;border-radius:999px;background:var(--line);position:relative;cursor:pointer;flex:none;transition:background .15s}
@@ -166,19 +169,17 @@ ul.inc li::before{content:"✓ ";color:var(--ok);font-weight:800}
   <button class="add" id="addRoom" type="button" data-i="add"></button>
   <div>
    <div class="toggle"><div class="t"><b data-i="o1"></b><small data-i="o1s"></small></div><input class="sw" type="checkbox" id="ceil" checked></div>
-   <div class="toggle"><div class="t"><b data-i="o2"></b><small data-i="o2s"></small></div><input class="sw" type="checkbox" id="dark"></div>
-   <div class="toggle"><div class="t"><b data-i="o3"></b><small data-i="o3s"></small></div><input class="sw" type="checkbox" id="nic"></div>
+   <div class="colq"><div class="t"><b data-i="o2"></b><small data-i="o2s"></small></div>
+    <div class="seg two" role="radiogroup" id="colG">
+     <label><input type="radio" name="col" value="0" checked><b data-i="col0"></b><small data-i="col0s"></small></label>
+     <label><input type="radio" name="col" value="1"><b data-i="col1"></b><small data-i="col1s"></small></label>
+    </div></div>
    <div class="toggle"><div class="t"><b data-i="o4"></b><small data-i="o4s"></small></div><input class="sw" type="checkbox" id="furn"></div>
   </div>
   <div class="seg" role="radiogroup" id="condG">
    <label><input type="radio" name="cond" value="0" checked><b data-i="c1"></b><small data-i="c1s"></small></label>
    <label><input type="radio" name="cond" value="0.15"><b data-i="c2"></b><small data-i="c2s"></small></label>
    <label><input type="radio" name="cond" value="0.35"><b data-i="c3"></b><small data-i="c3s"></small></label>
-  </div>
-  <div class="seg" role="radiogroup" id="hG">
-   <label><input type="radio" name="h" value="2.5" checked><b data-i="h1b"></b><small data-i="h1s"></small></label>
-   <label><input type="radio" name="h" value="2.8"><b data-i="h2b"></b><small data-i="h2s"></small></label>
-   <label><input type="radio" name="h" value="3.2"><b data-i="h3b"></b><small data-i="h3s"></small></label>
   </div>
  </section>
 
@@ -251,7 +252,7 @@ const TXT = {
   f1:'📐 Räume',f2:'⚡ Richtpreis',f3:'📅 Termin',
   s1:'Fotos (optional)',s1h:'Für den Preis nicht nötig. Mit Fotos können wir dir aber ein genaueres Angebot machen: jede Wand einmal, gern mit Löchern oder Flecken im Bild.',drop:'📷 Fotos auswählen',dropS:'oder hierher ziehen',
   s2:'Räume und Arbeiten',s2h:'Bodenfläche reicht, wir rechnen Wände und Decke daraus.',add:'+ Raum hinzufügen',
-  o1:'Decken mitstreichen',o1s:'Meist sinnvoll bei Auszug',o2:'Farbige Wände (statt Weiss)',o2s:'Welche Farbe, besprechen wir bei der Besichtigung',o3:'Nikotin oder starke Flecken',o3s:'Mit Isoliergrund',o4:'Räume sind möbliert',o4s:'Wir rücken Möbel und decken alles ab',o5:'Türen inkl. Rahmen lackieren',o5s:'pro Tür, beidseitig',o6:'Heizkörper lackieren',o6s:'pro Stück',
+  o1:'Decken mitstreichen',o1s:'Meist sinnvoll bei Auszug',o2:'Wandfarbe',o2s:'Die genaue Farbe besprechen wir bei der Besichtigung',col0:'Weiss',col0s:'Standard, ohne Aufpreis',col1:'Farbig',col1s:'Mit Aufpreis',o3:'Nikotin oder starke Flecken',o3s:'Mit Isoliergrund',o4:'Räume sind möbliert',o4s:'Wir rücken Möbel und decken alles ab',o5:'Türen inkl. Rahmen lackieren',o5s:'pro Tür, beidseitig',o6:'Heizkörper lackieren',o6s:'pro Stück',
   c1:'Gut',c1s:'Kaum Löcher',c2:'Normal',c2s:'Dübellöcher, kleine Risse',c3:'Viel Arbeit',c3s:'Risse, alte Tapete',h1b:'Bis 2.5 m',h1s:'Standard',h2b:'Bis 2.8 m',h2s:'Etwas höher',h3b:'Über 2.8 m',h3s:'Altbau',
   s3:'Dein Richtpreis',calc:'Berechnet',pfine:'Richtpreis inkl. Material, Abdecken, Abkleben und Reinigung. Keine MWST. Den verbindlichen Fixpreis bekommst du bei der Besichtigung, danach ändert er sich nicht mehr.',
   gT:'🔒 Wohin dürfen wir deinen Richtpreis schicken?',gS:'Gib Name und Handynummer ein, dann siehst du deinen Preis sofort. Kostenlos und unverbindlich.',tel:'Handynummer',gBtn:'Preis anzeigen',priv:'Deine Angaben nutzen wir nur, um dir den Preis zu schicken und einen Termin abzustimmen. Keine Weitergabe an Dritte, kein Newsletter.',gErrN:'Bitte gib deinen Namen ein.',gErrT:'Bitte gib eine gültige Handynummer ein.',lockedDock:'🔒 Nummer eingeben',
@@ -270,7 +271,7 @@ const TXT = {
   f1:'📐 Habitaciones',f2:'⚡ Precio',f3:'📅 Cita',
   s1:'Fotos (opcional)',s1h:'No hacen falta para ver el precio. Pero con fotos podemos darte un presupuesto más exacto: cada pared una vez, mejor si se ven agujeros o manchas.',drop:'📷 Elegir fotos',dropS:'o arrástralas aquí',
   s2:'Habitaciones y trabajos',s2h:'Con los m² del suelo basta, nosotros calculamos paredes y techo.',add:'+ Añadir habitación',
-  o1:'Pintar también los techos',o1s:'Casi siempre al dejar un piso',o2:'Paredes de color (en vez de blanco)',o2s:'El color lo hablamos en la visita',o3:'Nicotina o manchas fuertes',o3s:'Con imprimación aislante',o4:'Habitaciones amuebladas',o4s:'Movemos muebles y tapamos todo',o5:'Lacar puertas con marco',o5s:'por puerta, por ambas caras',o6:'Lacar radiadores',o6s:'por unidad',
+  o1:'Pintar también los techos',o1s:'Casi siempre al dejar un piso',o2:'Color de las paredes',o2s:'El color exacto lo hablamos en la visita',col0:'Blanco',col0s:'Estándar, sin suplemento',col1:'De color',col1s:'Con suplemento',o3:'Nicotina o manchas fuertes',o3s:'Con imprimación aislante',o4:'Habitaciones amuebladas',o4s:'Movemos muebles y tapamos todo',o5:'Lacar puertas con marco',o5s:'por puerta, por ambas caras',o6:'Lacar radiadores',o6s:'por unidad',
   c1:'Bien',c1s:'Casi sin agujeros',c2:'Normal',c2s:'Agujeros de tacos, grietas pequeñas',c3:'Mucho trabajo',c3s:'Grietas, papel viejo',h1b:'Hasta 2,5 m',h1s:'Estándar',h2b:'Hasta 2,8 m',h2s:'Algo más alto',h3b:'Más de 2,8 m',h3s:'Edificio antiguo',
   s3:'Tu precio orientativo',calc:'Calculado',pfine:'Precio orientativo con material, protección, encintado y limpieza incluidos. Sin IVA. El precio fijo y definitivo te lo damos en la visita, y después ya no cambia.',
   gT:'🔒 ¿A dónde te mandamos tu precio?',gS:'Pon tu nombre y tu móvil y verás tu precio al momento. Gratis y sin compromiso.',tel:'Móvil',gBtn:'Ver mi precio',priv:'Usamos tus datos solo para enviarte el precio y acordar la visita. No los compartimos con nadie ni enviamos newsletters.',gErrN:'Escribe tu nombre.',gErrT:'Escribe un número de móvil válido.',lockedDock:'🔒 Pon tu número',
@@ -351,9 +352,9 @@ let lastKey='', LAST={};
 const telOk=v=>{const d=v.replace(/[^0-9+]/g,'');const n=d.replace(/^\+/,'');return /^\+?[0-9]{9,15}$/.test(d)&&!/^0{3}/.test(n)};
 function calc(){
  const T=L();
- const h=+document.querySelector('input[name=h]:checked').value;
+ const h=2.5;
  const condV=+document.querySelector('input[name=cond]:checked').value;
- const ceilOn=$('ceil').checked,dark=$('dark').checked,nic=$('nic').checked,furn=$('furn').checked;
+ const ceilOn=$('ceil').checked,dark=document.querySelector('input[name=col]:checked').value==='1',nic=false,furn=$('furn').checked;
  let wall=0,ceil=0; const floor=rooms.reduce((x,r)=>x+(r.a||0),0); rooms.forEach(r=>{const a=r.a||0;wall+=r.t<2?a*2.2*(h/2.5):4*Math.sqrt(a)*h*0.88;if(ceilOn)ceil+=a});
  const base=wall*RATE_WALL+ceil*RATE_CEIL;
  let est=base*(1+condV+(dark?0.25:0)+(nic?0.3:0)+(furn?0.1:0))+counts.doors*DOOR+counts.rads*RAD;
@@ -369,7 +370,7 @@ function calc(){
  $('photoNote').textContent=photos.length?T.photosN(photos.length):T.photos0;
  const when=(day!==null&&slot)?`${T.dow[DAYS[day].date.getDay()]} ${DAYS[day].date.toLocaleDateString(lang==='de'?'de-CH':'es-ES',{day:'numeric',month:'long'})}, ${slot}`:'…';
  const opts=[T.dur+': '+T.durV(floor),ceilOn?T.withC:T.noC,dark&&T.dark,nic&&T.nic,furn&&T.furn,counts.doors&&counts.doors+' '+T.doors,counts.rads&&counts.rads+' '+T.rads].filter(Boolean).join(', ');
- const m=T.m({when,rooms:rooms.map(r=>`• ${T.types[r.t]}, ${T.ca} ${r.a} m²`).join('\n'),opts,cond:T.condV[[0,0.15,0.35].indexOf(condV)]+', '+(h===3.2?'> 2.8':h)+' m',range,name:$('name').value||'…',tel:$('tel').value||'…',plz:$('plz').value||'…',photos:T.mPhotos(photos.length)});
+ const m=T.m({when,rooms:rooms.map(r=>`• ${T.types[r.t]}, ${T.ca} ${r.a} m²`).join('\n'),opts,cond:T.condV[[0,0.15,0.35].indexOf(condV)],range,name:$('name').value||'…',tel:$('tel').value||'…',plz:$('plz').value||'…',photos:T.mPhotos(photos.length)});
  $('msg').textContent=m;
  const ok=unlocked&&day!==null&&slot;
  LAST={range,rooms:rooms.map(r=>`• ${T.types[r.t]}, ${T.ca} ${r.a} m²`).join('\n'),opts};
