@@ -181,7 +181,11 @@ ul.inc li::before{content:"✓ ";color:var(--ok);font-weight:800}
     <label><input type="radio" name="col" value="0" checked><b data-i="col0"></b><small data-i="col0s"></small></label>
     <label><input type="radio" name="col" value="1"><b data-i="col1"></b><small data-i="col1s"></small></label>
    </div></div>
-  <div class="toggle"><div class="t"><b data-i="o4"></b><small data-i="o4s"></small></div><input class="sw" type="checkbox" id="furn"></div>
+  <div class="colq"><div class="t"><b data-i="o4"></b><small data-i="o4s"></small></div>
+   <div class="seg two" role="radiogroup" id="furnG">
+    <label><input type="radio" name="furn" value="1"><b data-i="yes"></b></label>
+    <label><input type="radio" name="furn" value="0" checked><b data-i="no"></b></label>
+   </div></div>
  </section>
 
  
@@ -256,7 +260,7 @@ const TXT = {
   f1:'✍️ Text',f2:'⚡ Richtpreis',f3:'📅 Termin',
   s1:'Fotos (optional)',s1h:'Für den Preis nicht nötig. Mit Fotos können wir dir aber ein genaueres Angebot machen: jede Wand einmal, gern mit Löchern oder Flecken im Bild.',drop:'📷 Fotos auswählen',dropS:'oder hierher ziehen',
   s2:'Was soll gestrichen werden?',s2h:'Schreib kurz, zum Beispiel «3.5-Zimmer-Wohnung, 80 m², alles streichen».',descPh:'z.B. 3.5-Zimmer-Wohnung, 80 m², alles streichen',areaL:'Fläche ca. (m²)',areaOk:a=>`✓ Erkannt: ${a} m². Stimmt nicht? Ändere die Zahl.`,areaNo:'Wie gross ist die Fläche ungefähr? Zum Beispiel 60 m².',teaser:l=>`Dein Preis beginnt ab ${l}`,dockLocked:'Preis ansehen',
-  o1:'Decken mitstreichen',o1s:'Meist sinnvoll bei Auszug',o2:'Wandfarbe',o2s:'Die genaue Farbe besprechen wir bei der Besichtigung',col0:'Weiss',col0s:'Standard, ohne Aufpreis',col1:'Farbig',col1s:'Mit Aufpreis',o3:'Nikotin oder starke Flecken',o3s:'Mit Isoliergrund',o4:'Räume sind möbliert',o4s:'Wir rücken Möbel und decken alles ab',o5:'Türen inkl. Rahmen lackieren',o5s:'pro Tür, beidseitig',o6:'Heizkörper lackieren',o6s:'pro Stück',
+  o1:'Decken mitstreichen',o1s:'Meist sinnvoll bei Auszug',o2:'Wandfarbe',o2s:'Die genaue Farbe besprechen wir bei der Besichtigung',col0:'Weiss',col0s:'Standard, ohne Aufpreis',col1:'Farbig',col1s:'Mit Aufpreis',o3:'Nikotin oder starke Flecken',o3s:'Mit Isoliergrund',yes:'Ja',no:'Nein',o4:'Räume sind möbliert',o4s:'Wir rücken Möbel und decken alles ab',o5:'Türen inkl. Rahmen lackieren',o5s:'pro Tür, beidseitig',o6:'Heizkörper lackieren',o6s:'pro Stück',
   c1:'Gut',c1s:'Kaum Löcher',c2:'Normal',c2s:'Dübellöcher, kleine Risse',c3:'Viel Arbeit',c3s:'Risse, alte Tapete',h1b:'Bis 2.5 m',h1s:'Standard',h2b:'Bis 2.8 m',h2s:'Etwas höher',h3b:'Über 2.8 m',h3s:'Altbau',
   s3:'Dein Richtpreis',calc:'Berechnet',pfine:'Richtpreis inkl. Material, Abdecken, Abkleben und Reinigung. Keine MWST. Den verbindlichen Fixpreis bekommst du bei der Besichtigung, danach ändert er sich nicht mehr.',
   gT:'🔒 Handynummer eingeben und Preis sehen',gS:'Wir melden uns kurz bei dir, um den Preis zu besprechen. Kostenlos und unverbindlich.',tel:'Handynummer',gBtn:'Preis anzeigen',priv:'Deine Nummer nutzen wir nur, um dich zum Preis und zu einem Termin zu kontaktieren. Keine Weitergabe an Dritte, kein Newsletter.',gErrN:'Bitte gib deinen Namen ein.',gErrT:'Bitte gib eine gültige Handynummer ein.',lockedDock:'🔒 Preis freischalten',
@@ -275,7 +279,7 @@ const TXT = {
   f1:'✍️ Texto',f2:'⚡ Precio',f3:'📅 Cita',
   s1:'Fotos (opcional)',s1h:'No hacen falta para ver el precio. Pero con fotos podemos darte un presupuesto más exacto: cada pared una vez, mejor si se ven agujeros o manchas.',drop:'📷 Elegir fotos',dropS:'o arrástralas aquí',
   s2:'¿Qué hay que pintar?',s2h:'Escribe brevemente, por ejemplo «piso de 3,5 habitaciones, 80 m², pintar todo».',descPh:'p. ej. piso de 3,5 habitaciones, 80 m², pintar todo',areaL:'Superficie aprox. (m²)',areaOk:a=>`✓ Detectado: ${a} m². Si no es correcto, cambia el número.`,areaNo:'¿Cuánto mide aproximadamente la superficie? Por ejemplo 60 m².',teaser:l=>`Tu precio empieza desde ${l}`,dockLocked:'Ver precio',
-  o1:'Pintar también los techos',o1s:'Casi siempre al dejar un piso',o2:'Color de las paredes',o2s:'El color exacto lo hablamos en la visita',col0:'Blanco',col0s:'Estándar, sin suplemento',col1:'De color',col1s:'Con suplemento',o3:'Nicotina o manchas fuertes',o3s:'Con imprimación aislante',o4:'Habitaciones amuebladas',o4s:'Movemos muebles y tapamos todo',o5:'Lacar puertas con marco',o5s:'por puerta, por ambas caras',o6:'Lacar radiadores',o6s:'por unidad',
+  o1:'Pintar también los techos',o1s:'Casi siempre al dejar un piso',o2:'Color de las paredes',o2s:'El color exacto lo hablamos en la visita',col0:'Blanco',col0s:'Estándar, sin suplemento',col1:'De color',col1s:'Con suplemento',o3:'Nicotina o manchas fuertes',o3s:'Con imprimación aislante',yes:'Sí',no:'No',o4:'Habitaciones amuebladas',o4s:'Movemos muebles y tapamos todo',o5:'Lacar puertas con marco',o5s:'por puerta, por ambas caras',o6:'Lacar radiadores',o6s:'por unidad',
   c1:'Bien',c1s:'Casi sin agujeros',c2:'Normal',c2s:'Agujeros de tacos, grietas pequeñas',c3:'Mucho trabajo',c3s:'Grietas, papel viejo',h1b:'Hasta 2,5 m',h1s:'Estándar',h2b:'Hasta 2,8 m',h2s:'Algo más alto',h3b:'Más de 2,8 m',h3s:'Edificio antiguo',
   s3:'Tu precio orientativo',calc:'Calculado',pfine:'Precio orientativo con material, protección, encintado y limpieza incluidos. Sin IVA. El precio fijo y definitivo te lo damos en la visita, y después ya no cambia.',
   gT:'🔒 Pon tu móvil y ve tu precio',gS:'Te contactamos brevemente para comentar el precio. Gratis y sin compromiso.',tel:'Móvil',gBtn:'Ver mi precio',priv:'Usamos tu número solo para contactarte sobre el precio y la visita. No lo compartimos con nadie ni enviamos newsletters.',gErrN:'Escribe tu nombre.',gErrT:'Escribe un número de móvil válido.',lockedDock:'🔒 Desbloquea tu precio',
@@ -352,7 +356,7 @@ function calc(){
  const h=2.5;
  const condV=0.15;
  const area=Math.min(400,Math.max(0,Math.round(+$('area').value||0)));rooms=[{t:0,a:area}];
- const ceilOn=true,dark=document.querySelector('input[name=col]:checked').value==='1',nic=false,furn=$('furn').checked;
+ const ceilOn=true,dark=document.querySelector('input[name=col]:checked').value==='1',nic=false,furn=document.querySelector('input[name=furn]:checked').value==='1';
  let wall=0,ceil=0; const floor=rooms.reduce((x,r)=>x+(r.a||0),0); rooms.forEach(r=>{const a=r.a||0;wall+=r.t<2?a*2.2*(h/2.5):4*Math.sqrt(a)*h*0.88;if(ceilOn)ceil+=a});
  const base=wall*RATE_WALL+ceil*RATE_CEIL;
  let est=base*(1+condV+(dark?0.25:0)+(nic?0.3:0)+(furn?0.1:0))+counts.doors*DOOR+counts.rads*RAD;
