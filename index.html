@@ -138,6 +138,11 @@ header.nav nav a:hover,header.nav nav a.on{color:var(--sun2)}
 .svc .top .btn{margin-top:22px}
 .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
 .sc{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 8px 24px rgba(16,33,67,.06);transition:transform .2s}
+.cards.three{grid-template-columns:repeat(3,1fr)}
+.sc .ba{display:grid;grid-template-columns:1fr 1fr;gap:2px;height:230px;padding:0}
+.sc .ba figure{margin:0;position:relative;overflow:hidden}
+.sc .ba img{height:230px}
+.sc .ba figcaption{position:absolute;left:8px;bottom:8px;background:var(--navy);color:#fff;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;padding:3px 8px;border-radius:4px}
 .sc:hover{transform:translateY(-4px)}
 .sc img{width:100%;height:230px;object-fit:cover}
 .sc div{padding:20px;display:flex;flex-direction:column;gap:10px;flex:1}
@@ -273,7 +278,7 @@ footer .ct b{color:#fff;display:block;font-size:13px;letter-spacing:1px;text-tra
  .hero .in{grid-template-columns:1fr;padding-block:56px}
  .badge-logo{max-width:280px;padding:22px}
  .split,.about .in,.faq .in,.fin .box{grid-template-columns:1fr}
- .cards{grid-template-columns:1fr 1fr}
+ .cards,.cards.three{grid-template-columns:1fr 1fr}
  .steps{grid-template-columns:1fr 1fr}
  .wgrid{grid-template-columns:1fr}
  .fgrid{grid-template-columns:1fr 1fr}
@@ -286,7 +291,7 @@ footer .ct b{color:#fff;display:block;font-size:13px;letter-spacing:1px;text-tra
  .hero h1{font-size:32px}
  .annc .card{padding:34px 22px}
  .annc .pic{padding:28px}.annc .pic img{max-width:170px}.annc .pic .fl{position:static;margin-top:14px}
- .cards,.steps,.fgrid{grid-template-columns:1fr}
+ .cards,.cards.three,.steps,.fgrid{grid-template-columns:1fr}
  .fin .box{padding:30px 22px}
  .rv{flex-basis:84%}
  .mq figure,.mq img{width:180px}.mq img{height:240px}
@@ -368,14 +373,13 @@ footer .ct b{color:#fff;display:block;font-size:13px;letter-spacing:1px;text-tra
  <div class="top">
   <span class="lbl" data-k="svL">Maler in Luzern &amp; Zug</span>
   <h2 class="h2" data-k="svT">Unsere Malerarbeiten</h2>
-  <p class="lead" data-k="svP">Wir streichen Wände und Decken in Wohnungen und Häusern, innen und matt. Mit sorgfältigem Abdecken, sauberem Abkleben und guter Farbe sorgen wir für ein gleichmässiges Ergebnis – ob ein Zimmer, eine ganze Wohnung oder vor der Wohnungsabgabe.</p>
+  <p class="lead" data-k="svP">Wir streichen Wohnungen und Häuser – innen und aussen, mit Rolle oder Airless-Spritze. Mit sorgfältigem Abdecken, sauberem Abkleben und guter Farbe sorgen wir für ein gleichmässiges Ergebnis – ob ein Zimmer, eine ganze Wohnung oder vor der Wohnungsabgabe.</p>
   <a class="btn q" href="rechner/" data-k="cta">Gratis Richtpreis</a>
  </div>
- <div class="cards">
-  <article class="sc"><img src="img/innen_zimmer.jpg" alt="" loading="lazy" width="800" height="1422"><div><h3 data-k="s1T">Wohnung streichen</h3><p data-k="s1P">Ein Zimmer oder die ganze Wohnung: Wir rücken Möbel zusammen, decken alles ab und streichen Wände sauber und gleichmässig.</p><a class="q" href="rechner/" data-k="s1A">Richtpreis berechnen</a></div></article>
-  <article class="sc"><img src="img/decke.jpg" alt="" loading="lazy" width="800" height="1422"><div><h3 data-k="s2T">Decken streichen</h3><p data-k="s2P">Decken ohne Ansätze und Streifen – mit Rolle oder Airless-Spritze, je nachdem, was für deinen Raum besser passt.</p><a class="q" href="rechner/" data-k="s1A">Richtpreis berechnen</a></div></article>
-  <article class="sc"><img src="img/ba_vorher.jpg" alt="" loading="lazy" width="800" height="1422"><div><h3 data-k="s3T">Wohnungsabgabe</h3><p data-k="s3P">Dübellöcher, Flecken oder dunkle Wände? Wir machen deine Wohnung wieder hell und abgabebereit – schnell und am Wochenende.</p><a class="q" href="rechner/" data-k="s1A">Richtpreis berechnen</a></div></article>
-  <article class="sc"><img src="img/innen_schlafzimmer.jpg" alt="" loading="lazy" width="800" height="1422"><div><h3 data-k="s4T">Haus innen streichen</h3><p data-k="s4P">Vom Eingang bis zum Schlafzimmer: Ein ganzes Haus streichen wir in 3–4 Tagen, mit Fixpreis inklusive Material.</p><a class="q" href="rechner/" data-k="s1A">Richtpreis berechnen</a></div></article>
+ <div class="cards three">
+  <article class="sc"><div class="ba"><figure><img src="img/ba_vorher.jpg" alt="Vorher" loading="lazy" width="800" height="1422"><figcaption data-k="vor">Vorher</figcaption></figure><figure><img src="img/ba_nachher.jpg" alt="Nachher" loading="lazy" width="800" height="1422"><figcaption data-k="nach">Nachher</figcaption></figure></div><div><h3 data-k="s1T">Innen</h3><p data-k="s1P">Ein Zimmer, die ganze Wohnung oder das ganze Haus: Wände und Decken sauber und gleichmässig, auch vor der Wohnungsabgabe. Wir rücken Möbel zusammen und decken alles ab.</p><a class="q" href="rechner/" data-k="s1A">Richtpreis berechnen</a></div></article>
+  <article class="sc"><img src="img/haus_gelb_1.jpg" alt="" loading="lazy" width="800" height="1422"><div><h3 data-k="s2T">Aussen</h3><p data-k="s2P">Fassaden und Aussenwände von Häusern – mit langen Rollen, gründlich vorbereitet und in der Farbe deiner Wahl.</p><a class="q" href="rechner/" data-k="s1A">Richtpreis berechnen</a></div></article>
+  <article class="sc"><img src="img/decke.jpg" alt="" loading="lazy" width="800" height="1422"><div><h3 data-k="s3T">Airless-Spritze</h3><p data-k="s3P">Für grosse Flächen und Decken spritzen wir mit der Airless-Pistole: schnell, gleichmässig und ohne Ansätze.</p><a class="q" href="rechner/" data-k="s1A">Richtpreis berechnen</a></div></article>
  </div>
 </div></section>
 
@@ -441,7 +445,7 @@ footer .ct b{color:#fff;display:block;font-size:13px;letter-spacing:1px;text-tra
   <div><img src="img/logo_white.png" alt="Artmar Malerei" width="200" height="55" style="width:200px;height:auto" loading="lazy"><p data-k="ftP">Dein freundlicher, zuverlässiger Malerbetrieb für Luzern, Zug und Umgebung.</p>
    <div class="ct"><div><b>WhatsApp</b><a href="https://wa.me/41767360520" target="_blank" rel="noopener">+41 76 736 05 20</a></div><div><b data-k="ftA">Einsatzgebiet</b><span>Luzern · Zug · Zürich</span></div><div><b data-k="ftH">Besichtigungen</b><span data-k="ftHs">Samstag &amp; Sonntag</span></div></div></div>
   <div><h4 data-k="ftQ">Schnelllinks</h4><ul><li><a href="#top" data-k="n1">Start</a></li><li><a href="#leistungen" data-k="n2">Leistungen</a></li><li><a href="#ueber-uns" data-k="n3">Über uns</a></li><li><a href="#bewertungen" data-k="n4">Bewertungen</a></li><li><a class="q" href="rechner/" data-k="ftR">Richtpreis-Rechner</a></li></ul></div>
-  <div><h4 data-k="ftS">Unsere Leistungen</h4><ul><li data-k="s1T">Wohnung streichen</li><li data-k="s2T">Decken streichen</li><li data-k="s3T">Wohnungsabgabe</li><li data-k="s4T">Haus innen streichen</li></ul></div>
+  <div><h4 data-k="ftS">Unsere Leistungen</h4><ul><li data-k="s1T">Innen</li><li data-k="s2T">Aussen</li><li data-k="s3T">Airless-Spritze</li></ul></div>
   <div><h4 data-k="ftG">Einsatzgebiete</h4><ul><li>Luzern</li><li>Zug</li><li>Zürich</li><li data-k="ftU">und Umgebung</li></ul></div>
  </div>
  <div class="copy">© 2026 Artmar Malerei. <span data-k="ftC">Alle Rechte vorbehalten.</span></div>
@@ -518,8 +522,8 @@ const WORK=[
  ['ba_vorher.jpg','vor'],['ba_nachher.jpg','nach'],['innen_wohnraum.jpg','c1'],['haus_gelb_1.jpg','c2'],['innen_zimmer.jpg','c3'],['haus_weiss_2.jpg','c2'],['innen_tuer.jpg','c1'],['innen_klein.jpg','c3'],['haus_weiss_3.jpg','c2'],['innen_schlafzimmer.jpg','c4'],['arbeit_leiter.jpg','c5'],['decke.jpg','c6']
 ];
 const FAQ={
- de:[['Was kostet das Streichen?','Das hängt von Fläche und Zustand ab. Mit unserem Rechner siehst du deinen Richtpreis in 30 Sekunden. Den verbindlichen Fixpreis bekommst du nach der Besichtigung, Material inklusive, ohne MWST.'],['Wo arbeitet ihr?','In Luzern, Zug, Zürich und Umgebung. Bei einer anderen Region frag uns einfach kurz per WhatsApp.'],['Welche Arbeiten bietet ihr an?','Wir streichen Wände und Decken in Wohnungen und Häusern, innen und matt. Fassaden und Lackierarbeiten (Türen, Heizkörper) machen wir derzeit nicht.'],['Wie lange dauert es?','Ein Zimmer in 1 Tag, eine Wohnung in 2–3 Tagen, ein Haus in 3–4 Tagen. Wir arbeiten zu zweit.'],['Muss ich Möbel wegräumen?','Nein. Wir rücken Möbel zusammen und decken Möbel und Böden sauber ab.'],['Wie bekomme ich einen Termin?','Berechne deinen Richtpreis und wähle einen freien Termin für die Besichtigung. Unter der Woche sind wir auf Baustellen, darum Samstag und Sonntag. Wir bestätigen per WhatsApp.']],
- es:[['¿Cuánto cuesta pintar?','Depende de la superficie y del estado. Con nuestra calculadora ves tu precio orientativo en 30 segundos. El precio fijo y definitivo te lo damos tras la visita, con material incluido y sin IVA.'],['¿Dónde trabajáis?','En Lucerna, Zug, Zúrich y alrededores. Si estás en otra zona, escríbenos por WhatsApp.'],['¿Qué trabajos hacéis?','Pintamos paredes y techos de pisos y casas, por dentro y en acabado mate. De momento no hacemos fachadas ni lacados (puertas, radiadores).'],['¿Cuánto se tarda?','Una habitación en 1 día, un piso en 2–3 días, una casa en 3–4 días. Trabajamos en equipo.'],['¿Tengo que quitar los muebles?','No. Juntamos los muebles y los cubrimos, igual que los suelos.'],['¿Cómo consigo una cita?','Calcula tu precio orientativo y elige un horario libre para la visita. Entre semana estamos en obra, así que sábado y domingo. Lo confirmamos por WhatsApp.']]
+ de:[['Was kostet das Streichen?','Das hängt von Fläche und Zustand ab. Mit unserem Rechner siehst du deinen Richtpreis in 30 Sekunden. Den verbindlichen Fixpreis bekommst du nach der Besichtigung, Material inklusive, ohne MWST.'],['Wo arbeitet ihr?','In Luzern, Zug, Zürich und Umgebung. Bei einer anderen Region frag uns einfach kurz per WhatsApp.'],['Welche Arbeiten bietet ihr an?','Wir streichen Wohnungen und Häuser, innen und aussen (Fassaden), mit Rolle oder Airless-Spritze. Lackierarbeiten (Türen, Heizkörper) machen wir derzeit nicht.'],['Wie lange dauert es?','Ein Zimmer in 1 Tag, eine Wohnung in 2–3 Tagen, ein Haus in 3–4 Tagen. Wir arbeiten zu zweit.'],['Muss ich Möbel wegräumen?','Nein. Wir rücken Möbel zusammen und decken Möbel und Böden sauber ab.'],['Wie bekomme ich einen Termin?','Berechne deinen Richtpreis und wähle einen freien Termin für die Besichtigung. Unter der Woche sind wir auf Baustellen, darum Samstag und Sonntag. Wir bestätigen per WhatsApp.']],
+ es:[['¿Cuánto cuesta pintar?','Depende de la superficie y del estado. Con nuestra calculadora ves tu precio orientativo en 30 segundos. El precio fijo y definitivo te lo damos tras la visita, con material incluido y sin IVA.'],['¿Dónde trabajáis?','En Lucerna, Zug, Zúrich y alrededores. Si estás en otra zona, escríbenos por WhatsApp.'],['¿Qué trabajos hacéis?','Pintamos pisos y casas, por dentro y por fuera (fachadas), con rodillo o pistola airless. De momento no hacemos lacados (puertas, radiadores).'],['¿Cuánto se tarda?','Una habitación en 1 día, un piso en 2–3 días, una casa en 3–4 días. Trabajamos en equipo.'],['¿Tengo que quitar los muebles?','No. Juntamos los muebles y los cubrimos, igual que los suelos.'],['¿Cómo consigo una cita?','Calcula tu precio orientativo y elige un horario libre para la visita. Entre semana estamos en obra, así que sábado y domingo. Lo confirmamos por WhatsApp.']]
 };
 const CAP={de:{vor:'Vorher',nach:'Nachher',c1:'Wohnung',c2:'Haus',c3:'Zimmer',c4:'Schlafzimmer',c5:'Bei der Arbeit',c6:'Decke mit Airless'},es:{vor:'Antes',nach:'Después',c1:'Piso',c2:'Casa',c3:'Habitación',c4:'Dormitorio',c5:'Trabajando',c6:'Techo con airless'}};
 const ES={
@@ -538,11 +542,12 @@ const ES={
  abP2:'Creemos en la honestidad, en la comunicación clara y en cumplir nuestra palabra. Recibes un precio fijo que no sube y hablas directamente con nosotros por WhatsApp, sin centralitas. Tratamos cada casa como si fuera la nuestra.',
  abFam:'En Artmar eres más que un cliente: ¡eres parte de la familia!',
  svL:'Pintores en Lucerna y Zug',svT:'Nuestros trabajos de pintura',
- svP:'Pintamos paredes y techos de pisos y casas, por dentro y en mate. Cubriendo con cuidado, encintando bien y con buena pintura, conseguimos un resultado uniforme: una habitación, un piso entero o antes de entregar el piso.',
- s1T:'Pintar el piso',s1P:'Una habitación o el piso entero: juntamos los muebles, lo cubrimos todo y pintamos las paredes limpias y uniformes.',s1A:'Calcular precio',
- s2T:'Pintar techos',s2P:'Techos sin marcas ni rayas, con rodillo o con pistola airless, según lo que mejor vaya en tu espacio.',
- s3T:'Entrega del piso',s3P:'¿Agujeros, manchas o paredes oscuras? Dejamos tu piso otra vez claro y listo para entregar, rápido y en fin de semana.',
+ svP:'Pintamos pisos y casas, por dentro y por fuera, con rodillo o con pistola airless. Cubriendo con cuidado, encintando bien y con buena pintura, conseguimos un resultado uniforme: una habitación, un piso entero o antes de entregar el piso.',
+ s1T:'Interior',s1P:'Una habitación, el piso entero o la casa completa: paredes y techos limpios y uniformes, también para entregar el piso. Juntamos los muebles y lo cubrimos todo.',s1A:'Calcular precio',
+ s2T:'Exterior',s2P:'Fachadas y paredes exteriores de casas: con rodillos largos, bien preparadas y en el color que elijas.',
+ s3T:'Pistola airless',s3P:'Para superficies grandes y techos pintamos con pistola airless: rápido, uniforme y sin marcas.',
  s4T:'Pintar casa por dentro',s4P:'De la entrada al dormitorio: una casa entera la pintamos en 3–4 días, con precio fijo y material incluido.',
+ vor:'Antes',nach:'Después',
  wkL:'Empresa familiar desde hace más de 25 años',wkT:'Nuestro trabajo',wkNote:'Proyectos de nuestra empresa familiar en España.',
  bnT:'Resultados limpios de pintores de la familia, en Lucerna, Zug y alrededores',
  whL:'Por qué Artmar',whT:'Por qué elegirnos',
