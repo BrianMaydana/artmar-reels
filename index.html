@@ -18,482 +18,487 @@ fbq('track', 'PageView');
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18535066954"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-18535066954');
-var AW_LEAD_LABEL='IhaDCPOhnKgdEMramoZF';function trackLead(){try{if(window.fbq)fbq('track','Lead',{value:50.0,currency:'CHF'});}catch(e){}try{gtag('event','generate_lead');if(AW_LEAD_LABEL)gtag('event','conversion',{send_to:'AW-18535066954/'+AW_LEAD_LABEL,value:50.0,currency:'CHF'});}catch(e){}}</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-18535066954');</script>
 
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Artmar Malerei – Maler in Luzern, Zug & Zürich. Fotos hochladen, Richtpreis in 30 Sekunden, Besichtigung am Wochenende.">
-<meta property="og:title" content="Artmar Malerei – Richtpreis in 30 Sekunden">
-<meta property="og:description" content="Maler in Luzern, Zug & Zürich. Fixpreis inkl. Material, fertig am Wochenende.">
-<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}.priv{margin:10px 0 0;font-size:12px;line-height:1.4;color:var(--muted,#6b6b6b)}
-</style>
-</head><body>
-<title>Artmar Preisrechner</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<title>Maler in Luzern &amp; Zug | Artmar Malerei</title>
+<meta name="description" content="Artmar Malerei – Familienbetrieb. Wände und Decken streichen in Luzern, Zug und Umgebung. Fixpreis inkl. Material, 5 Jahre Garantie, Besichtigung am Wochenende.">
+<meta property="og:title" content="Artmar Malerei – Maler in Luzern &amp; Zug">
+<meta property="og:description" content="Familienbetrieb. Fixpreis inkl. Material, 5 Jahre Garantie. Richtpreis in 30 Sekunden.">
+<meta property="og:image" content="https://artmarmalerei.ch/img/innen_wohnraum.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600;700;800&display=swap">
 <style>
-/* Layout: one narrow column like a painter's job sheet: photos, rooms, price, appointment; live price docked at the bottom */
 :root{
- --bg:#f3f5f9; --card:#ffffff; --ink:#102143; --muted:#5d6b85; --line:#dfe4ee;
- --plum:#102143; --sun:#fec945; --sun-ink:#102143; --ok:#15803d; --wa:#1fa855; --violet:#2b5797;
+ --navy:#102143; --navy2:#0a1630; --sun:#fec945; --sun2:#f2b705; --ink:#102143; --text:#33415c; --muted:#5d6b85;
+ --bg:#ffffff; --soft:#f3f5f9; --line:#e2e7f0; --white:#ffffff;
  --display:'Bricolage Grotesque','Figtree',system-ui,sans-serif;
  --body:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
- --bg:#0b1730; --card:#14254a; --ink:#eef2fa; --muted:#9fb0cc; --line:#22365e;
- --plum:#081124; --ok:#4ade80; --wa:#25d366; --violet:#7aa2ff; color-scheme:dark}}
-:root[data-theme="dark"]{
- --bg:#0b1730; --card:#14254a; --ink:#eef2fa; --muted:#9fb0cc; --line:#22365e;
- --plum:#081124; --ok:#4ade80; --wa:#25d366; --violet:#7aa2ff; color-scheme:dark}
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5;
- padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 170px}
-.wrap{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
-header.hero{background:var(--plum);color:#fff;border-radius:0 0 28px 28px;margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px)));padding:24px max(20px,env(safe-area-inset-left,0px)) 26px}
-.hero-in{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
-.top{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.brand{display:flex;align-items:center;gap:12px}
-.brand b{font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.5px;line-height:1}
-.brand small{display:block;color:var(--sun);font-weight:700;letter-spacing:5px;font-size:12px;margin-top:3px}
-.lang{display:flex;background:rgba(255,255,255,.12);border-radius:999px;padding:3px}
-.lang button{font:inherit;font-weight:700;font-size:13px;border:0;border-radius:999px;padding:6px 12px;background:transparent;color:#fff;cursor:pointer}
-.lang button[aria-pressed="true"]{background:var(--sun);color:var(--sun-ink)}
-.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,7vw,40px);line-height:1.05;letter-spacing:-1px;margin:6px 0 0;text-wrap:balance}
-.hero h1 em{font-style:normal;background:var(--sun);color:var(--sun-ink);padding:0 8px;border-radius:10px}
-.hero p{margin:0;color:#d3dbea;max-width:52ch}
-.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;font-weight:700}
-.flow span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:5px 12px}
-.flow i{font-style:normal;color:var(--sun)}
-section.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px;display:flex;flex-direction:column;gap:14px}
-.step{display:flex;align-items:baseline;gap:10px}
-.step span{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--sun);color:var(--sun-ink);font-weight:800;font-size:14px;flex:none}
-.step h2{font-family:var(--display);font-size:21px;margin:0;font-weight:800;letter-spacing:-.3px}
-.hint{color:var(--muted);font-size:14px;margin:-6px 0 0}
-.drop{border:2px dashed var(--muted);border-radius:16px;padding:18px;text-align:center;cursor:pointer;display:flex;flex-direction:column;gap:4px;align-items:center;background:var(--bg)}
-.drop b{font-size:16px}.drop small{color:var(--muted)}
-.drop:focus-within{outline:3px solid var(--sun)}
-.drop input{position:absolute;opacity:0;width:1px;height:1px}
-.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:8px}
-.thumbs figure{margin:0;position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden;background:var(--line)}
-.thumbs img{width:100%;height:100%;object-fit:cover;display:block}
-.thumbs button{position:absolute;top:4px;right:4px;width:26px;height:26px;border-radius:50%;border:0;background:rgba(0,0,0,.6);color:#fff;cursor:pointer;font-size:15px;line-height:1}
-.room{display:grid;grid-template-columns:1fr 92px 40px;gap:8px;align-items:center}
-select,textarea,input[type=number],input[type=text],input[type=tel]{font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:11px 12px;width:100%;min-width:0}
-select:focus,input:focus,button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset:1px}
-.m2{position:relative}.m2 input{padding-right:34px;text-align:right;font-variant-numeric:tabular-nums}
-.m2::after{content:"m²";position:absolute;right:11px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:14px;pointer-events:none}
-.icon-btn{width:40px;height:44px;border-radius:12px;border:1.5px solid var(--line);background:transparent;color:var(--muted);font-size:20px;cursor:pointer}
-.add{align-self:flex-start;background:transparent;border:1.5px dashed var(--muted);color:var(--ink);font:inherit;font-weight:700;border-radius:12px;padding:10px 14px;cursor:pointer}
-.seg{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
-.seg label{display:flex;flex-direction:column;gap:2px;border:1.5px solid var(--line);border-radius:14px;padding:11px 13px;cursor:pointer;background:var(--bg)}
-.seg label:has(input:checked){border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
-.seg input{position:absolute;opacity:0;pointer-events:none}
-.seg b{font-weight:700}.seg small{color:var(--muted);font-size:13px}
-.seg.two{grid-template-columns:1fr 1fr}
-textarea{resize:vertical;min-height:84px;line-height:1.4}
-.arearow{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px}
-.arearow label{font-weight:700}
-.arearow .m2{width:130px}
-.teaser{margin:0 0 10px;font-weight:800;font-size:18px}
-.teaser:empty{display:none}
-.colq{display:grid;gap:10px;padding:14px 0;border-bottom:1px solid var(--line)}
-.colq .t b{display:block;font-size:16px}.colq .t small{color:var(--muted);font-size:13px}
-.toggle{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:6px 0;border-top:1px solid var(--line)}
-.toggle .t{min-width:0}.toggle .t small{display:block;color:var(--muted);font-size:13px}
-.sw{appearance:none;width:50px;height:30px;border-radius:999px;background:var(--line);position:relative;cursor:pointer;flex:none;transition:background .15s}
-.sw::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .15s}
-.sw:checked{background:var(--ok)}.sw:checked::after{transform:translateX(20px)}
-.count{display:flex;align-items:center;gap:6px;flex:none}
-.count button{width:36px;height:36px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font-size:18px;cursor:pointer}
-.count output{width:28px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
-.price{display:flex;flex-direction:column;gap:6px}
-.big{font-family:var(--display);font-weight:800;font-size:clamp(30px,8vw,42px);letter-spacing:-1px;line-height:1;font-variant-numeric:tabular-nums}
-.break{display:flex;flex-direction:column;gap:6px;font-variant-numeric:tabular-nums}
-.break div{display:flex;justify-content:space-between;gap:12px;font-size:15px}
-.break div span:first-child{color:var(--muted)}
-.days{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
-.days button,.slots button{font:inherit;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:14px;cursor:pointer}
-.days button{flex:none;width:66px;padding:8px 0;display:flex;flex-direction:column;align-items:center;line-height:1.15}
-.days button small{color:var(--muted);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
-.days button b{font-size:22px;font-family:var(--display)}
-.days button[aria-pressed="true"]{background:var(--ink);color:var(--card);border-color:var(--ink)}
-.days button[aria-pressed="true"] small{color:var(--sun)}
-.slots{display:flex;flex-wrap:wrap;gap:8px}
-.slots button{padding:9px 14px;font-weight:700;font-variant-numeric:tabular-nums}
-.slots button[aria-pressed="true"]{background:var(--sun);border-color:var(--sun);color:var(--sun-ink)}
-.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
-.grid2 label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:14px}
-.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;counter-reset:s}
-.how div{background:var(--bg);border-radius:16px;padding:14px;counter-increment:s}
-.how div::before{content:counter(s);display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--sun);color:var(--sun-ink);font-weight:800;margin-bottom:6px}
-.how b{display:block}.how small{color:var(--muted)}
-ul.inc{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:6px 14px}
-ul.inc li::before{content:"✓ ";color:var(--ok);font-weight:800}
-.dock{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--plum);color:#fff;border-radius:22px 22px 0 0;box-shadow:0 -10px 30px rgba(0,0,0,.25);
- padding:14px max(16px,env(safe-area-inset-right,0px)) calc(14px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
-.dock-in{max-width:640px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:nowrap}
-.dock .cta{flex:none;white-space:nowrap;padding:12px 16px;font-size:15px}
-.dock .range{font-size:clamp(18px,5.4vw,26px)!important}
-.dock small{color:#c3cde0;font-size:12px;display:block}
-.dock .range{font-family:var(--display);font-weight:800;font-size:clamp(24px,6.5vw,32px);letter-spacing:-.5px;font-variant-numeric:tabular-nums;line-height:1.1}
-.cta{display:inline-flex;align-items:center;gap:8px;background:var(--wa);color:#fff;text-decoration:none;font-weight:800;border-radius:14px;padding:13px 18px;white-space:nowrap}
-.cta.sun{background:var(--sun);color:var(--sun-ink)}
-.cta[aria-disabled="true"]{opacity:.45;pointer-events:none}
-.msg{white-space:pre-wrap;background:var(--bg);border:1.5px solid var(--line);border-radius:14px;padding:12px;font-size:14px;max-height:200px;overflow:auto}
-.copy{align-self:flex-start;font:inherit;font-weight:700;border-radius:12px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);padding:9px 14px;cursor:pointer}
-.note{background:var(--bg);border-radius:14px;padding:12px 14px;font-size:14px}
-.fine{color:var(--muted);font-size:13px;margin:0}
-.calc{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px}
-.calc .bar{flex:1;height:6px;border-radius:3px;background:var(--line);overflow:hidden}
-.gate{display:grid;gap:10px;background:var(--bg);border:1.5px solid var(--line);border-radius:16px;padding:14px}
-.gate b{font-size:16px}
-.gate .err{color:#c2362b;font-size:13px;min-height:1em}
-.locked{filter:blur(9px);user-select:none}
-.next{margin:12px 0 0;font-weight:800;color:var(--ink)}
-.unlock{font:inherit;font-weight:800;border:0;border-radius:14px;padding:13px 18px;background:var(--wa);color:#fff;cursor:pointer;justify-self:start}
-.unlock:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
-.calc .bar i{display:block;height:100%;width:0;background:var(--violet);transition:width .6s ease}
-.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
-.why div{background:var(--bg);border-radius:16px;padding:14px}
-.why b{display:block;font-family:var(--display);font-size:16px}.why small{color:var(--muted);font-size:14px;line-height:1.4;display:block;margin-top:2px}
-.why span{font-size:24px;line-height:1;display:block;margin-bottom:6px}
-.chips{display:flex;flex-wrap:wrap;gap:8px}.chips span{background:var(--plum);color:#fff;border-radius:999px;padding:7px 14px;font-weight:700;font-size:14px}
-.faq details{border:1.5px solid var(--line);border-radius:14px;background:var(--bg);padding:0 14px}
-.faq details+details{margin-top:8px}
-.faq summary{cursor:pointer;font-weight:700;padding:13px 0;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);color:var(--ink);line-height:1.15;margin:0}
+.in{max-width:1180px;margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--sun);color:var(--navy);font-weight:800;text-transform:uppercase;letter-spacing:.6px;font-size:14px;text-decoration:none;padding:15px 26px;border-radius:6px;border:0;cursor:pointer;transition:transform .15s,background .15s;box-shadow:0 6px 18px rgba(254,201,69,.35)}
+.btn:hover{background:var(--sun2);transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--navy);border:2px solid var(--navy);box-shadow:none}
+.lbl{display:inline-block;color:var(--sun2);font-weight:800;letter-spacing:2px;text-transform:uppercase;font-size:13px;margin-bottom:10px}
+.hl{color:var(--sun)}
+section{padding:72px 0}
+.center{text-align:center}
+.h2{font-size:clamp(28px,4.2vw,44px);font-weight:800}
+.lead{max-width:780px;margin:16px auto 0;font-size:17px}
+
+/* top bars */
+.ann{background:var(--navy2);color:var(--sun);font-weight:700;font-size:14px}
+.ann .in{display:flex;gap:16px;justify-content:center;align-items:center;padding-block:8px;flex-wrap:wrap;text-align:center}
+.ann a{background:#fff;color:var(--navy);text-decoration:none;font-size:12px;font-weight:800;padding:4px 12px;border-radius:3px}
+.info{background:var(--sun);color:var(--navy);font-size:14px;font-weight:600}
+.info .in{display:flex;justify-content:space-between;align-items:center;padding-block:8px;gap:12px;flex-wrap:wrap}
+.info .l{display:flex;gap:22px;flex-wrap:wrap}
+.info a{text-decoration:none}
+.info .soc{display:flex;gap:14px;align-items:center}
+.info svg{width:17px;height:17px;fill:var(--navy);display:block}
+.lang{display:flex;background:rgba(16,33,67,.12);border-radius:999px;padding:2px;margin-left:6px}
+.lang button{font:inherit;font-size:12px;font-weight:800;border:0;border-radius:999px;padding:3px 10px;background:transparent;color:var(--navy);cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--navy);color:#fff}
+
+/* header */
+header.nav{position:sticky;top:0;z-index:50;background:#fff;box-shadow:0 2px 14px rgba(16,33,67,.08)}
+header.nav .in{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:12px}
+header.nav .logo img{height:46px;width:auto}
+header.nav nav{display:flex;gap:30px}
+header.nav nav a{text-decoration:none;color:var(--navy);font-weight:600;font-size:15px}
+header.nav nav a:hover,header.nav nav a.on{color:var(--sun2)}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:6px}
+.burger span{display:block;width:26px;height:3px;background:var(--navy);margin:5px 0;border-radius:2px}
+
+/* hero */
+.hero{position:relative;color:#fff;padding:0;min-height:600px;display:flex;align-items:center;overflow:hidden}
+.hero .bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,22,48,.55) 0%,rgba(10,22,48,.78) 55%,rgba(10,22,48,.9) 100%);z-index:1}
+.hero .in{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.05fr;gap:40px;align-items:center;width:100%;padding-block:80px}
+.badge-logo{background:rgba(255,255,255,.06);border:2px solid rgba(254,201,69,.6);border-radius:18px;padding:34px 30px;backdrop-filter:blur(2px);max-width:430px;justify-self:center}
+.badge-logo img{width:100%}
+.badge-logo small{display:block;text-align:center;color:var(--sun);font-weight:800;letter-spacing:6px;margin-top:14px;font-size:15px}
+.hero .txt{text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px}
+.grev{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--navy);border-radius:10px;padding:10px 16px;font-weight:800;font-size:15px;box-shadow:0 8px 24px rgba(0,0,0,.25);text-decoration:none}
+.grev .st{color:#f5b301;letter-spacing:1px}
+.grev small{font-weight:600;color:var(--muted)}
+.hero h1{color:#fff;font-size:clamp(34px,5vw,54px);font-weight:800}
+.hero p{margin:0;max-width:560px;font-size:16.5px;color:#e6ebf5}
+
+/* announce section */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch}
+.annc{background:var(--soft);padding:0}
+.annc .card{background:#fff;padding:48px 44px;display:flex;flex-direction:column;gap:14px;justify-content:center}
+.annc h2{font-size:clamp(24px,3vw,32px);text-transform:uppercase}
+.annc h3{color:var(--sun2);font-size:21px}
+.annc p{margin:0}
+.annc .pic{background:var(--navy);display:grid;place-items:center;padding:40px;position:relative;overflow:hidden}
+.annc .pic img{max-width:300px;border-radius:50%;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+.annc .pic .fl{position:absolute;bottom:18px;left:0;right:0;text-align:center;color:#fff;font-weight:700;font-size:14px;opacity:.9}
+
+/* reviews */
+.revs{background:#fff}
+.rvhead{display:flex;align-items:center;justify-content:center;gap:14px;margin:30px 0 26px;flex-wrap:wrap}
+.rvhead .ex{font-weight:800;font-size:22px;color:var(--navy);letter-spacing:1px}
+.rvhead .st{color:#f5b301;font-size:22px;letter-spacing:2px}
+.rvrow{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 4px 16px}
+.rv{flex:0 0 320px;scroll-snap-align:start;background:var(--soft);border-radius:12px;padding:22px;display:flex;flex-direction:column;gap:10px;border:1px solid var(--line)}
+.rv .who{display:flex;align-items:center;gap:10px}
+.rv .av{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:18px;flex:none}
+.rv b{color:var(--navy);display:block;line-height:1.2}
+.rv small{color:var(--muted);font-size:12.5px}
+.rv .st{color:#f5b301;letter-spacing:1px}
+.rv p{margin:0;font-size:15px}
+.gl{width:20px;height:20px;margin-left:auto;flex:none}
+.rvnote{font-size:13px;color:var(--muted);margin-top:10px}
+.rvnote a{color:var(--navy);font-weight:700}
+
+/* about */
+.about{background:var(--soft)}
+.about .in{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center}
+.about .ph{position:relative}
+.about .ph img{border-radius:14px;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 35%;box-shadow:0 18px 40px rgba(16,33,67,.18)}
+.about .ph .yr{position:absolute;right:-18px;bottom:28px;background:var(--sun);color:var(--navy);border-radius:12px;padding:16px 20px;text-align:center;font-family:var(--display);box-shadow:0 10px 24px rgba(0,0,0,.18)}
+.about .ph .yr b{display:block;font-size:40px;line-height:1}
+.about .ph .yr small{font-weight:700;font-size:12.5px;letter-spacing:1px;text-transform:uppercase}
+.about h2{margin-bottom:18px}
+.about p{margin:0 0 14px}
+.about .fam{margin:22px 0;border-left:4px solid var(--sun);padding-left:16px;font-family:var(--display);color:var(--navy);font-size:20px;font-weight:800;line-height:1.3}
+
+/* services */
+.svc{background:#fff}
+.svc .top{text-align:center;max-width:860px;margin:0 auto 40px}
+.svc .top .btn{margin-top:22px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.sc{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 8px 24px rgba(16,33,67,.06);transition:transform .2s}
+.sc:hover{transform:translateY(-4px)}
+.sc img{width:100%;height:230px;object-fit:cover}
+.sc div{padding:20px;display:flex;flex-direction:column;gap:10px;flex:1}
+.sc h3{font-size:20px}
+.sc p{margin:0;font-size:15px;flex:1}
+.sc a{color:var(--navy);font-weight:800;text-transform:uppercase;font-size:13px;letter-spacing:.6px;text-decoration:none;border-bottom:2px solid var(--sun);align-self:flex-start}
+
+/* work marquee (like team carousel) */
+.work{background:var(--navy);color:#fff;overflow:hidden}
+.work .h2{color:#fff}
+.work .lbl{color:var(--sun)}
+.mq{margin-top:40px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.mq .track{display:flex;gap:18px;width:max-content;animation:mq 60s linear infinite}
+.mq:hover .track{animation-play-state:paused}
+.mq figure{margin:0;width:230px;flex:none;position:relative}
+.mq img{width:230px;height:300px;object-fit:cover;border-radius:12px;border:3px solid rgba(255,255,255,.12)}
+.mq figcaption{margin-top:10px;text-align:center;font-weight:700;color:#fff;font-size:15px}
+.mq .tag{position:absolute;top:10px;left:10px;background:var(--sun);color:var(--navy);font-weight:800;font-size:12px;padding:3px 10px;border-radius:999px;text-transform:uppercase}
+@keyframes mq{to{transform:translateX(-50%)}}
+.work .note{text-align:center;color:#b9c4da;font-size:13px;margin-top:22px}
+
+/* banner */
+.banner{position:relative;color:#fff;text-align:center;padding:90px 0;overflow:hidden}
+.banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.banner::before{content:"";position:absolute;inset:0;background:rgba(10,22,48,.78);z-index:1}
+.banner .in{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:24px}
+.banner h2{color:#fff;font-size:clamp(26px,4vw,42px);max-width:820px}
+
+/* why */
+.why{background:var(--soft)}
+.wgrid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px}
+.wc{background:#fff;border-radius:14px;padding:28px;display:flex;gap:18px;align-items:flex-start;border:1px solid var(--line)}
+.wc .ic{width:58px;height:58px;border-radius:12px;background:var(--navy);display:grid;place-items:center;flex:none}
+.wc .ic svg{width:30px;height:30px;stroke:var(--sun);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.wc h3{font-size:19px;text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px}
+.wc p{margin:0;font-size:15px}
+.why .go{text-align:center;margin-top:42px}
+.why .go h3{font-size:24px;margin-bottom:16px;text-transform:uppercase}
+
+/* fixed price (like financing) */
+.fin{background:#fff}
+.fin .box{background:linear-gradient(120deg,var(--navy) 0%,#1b3466 100%);color:#fff;border-radius:18px;padding:48px;display:grid;grid-template-columns:1.4fr 1fr;gap:30px;align-items:center}
+.fin h2{color:#fff;font-size:clamp(26px,3.4vw,38px)}
+.fin p{margin:14px 0 0;color:#dbe3f2}
+.fin ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.fin li{display:flex;gap:10px;align-items:center;font-weight:700}
+.fin li::before{content:"✓";width:26px;height:26px;border-radius:50%;background:var(--sun);color:var(--navy);display:grid;place-items:center;font-weight:800;flex:none}
+.fin .btn{margin-top:24px}
+
+/* process */
+.proc{background:var(--soft)}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:44px}
+.stp{background:#fff;border-radius:14px;padding:24px 20px;border-top:5px solid var(--sun);box-shadow:0 8px 20px rgba(16,33,67,.06)}
+.stp .n{display:inline-block;background:var(--navy);color:var(--sun);font-weight:800;font-size:13px;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:999px;margin-bottom:12px}
+.stp h3{font-size:18px;margin-bottom:8px}
+.stp p{margin:0;font-size:14.5px}
+.proc .btn{margin-top:24px}
+
+/* faq */
+.faq{background:#fff}
+.faq .in{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:start}
+.faq .side .btn{margin-top:22px}
+.faq details{border:1px solid var(--line);border-radius:10px;margin-bottom:12px;background:var(--soft)}
+.faq summary{cursor:pointer;list-style:none;padding:18px 52px 18px 20px;font-weight:700;color:var(--navy);position:relative}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font-size:22px;color:var(--muted);flex:none}
+.faq summary::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);width:26px;height:26px;border-radius:50%;background:var(--sun);color:var(--navy);display:grid;place-items:center;font-weight:800}
 .faq details[open] summary::after{content:"–"}
-.faq p{margin:0 0 13px;color:var(--muted);font-size:15px}
-.rv-h{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:700}
-.stars{color:#f5b301;letter-spacing:1px}
-.rv{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:thin}
-.rv article{flex:0 0 84%;max-width:330px;scroll-snap-align:start;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:6px}
-.rv .who{display:flex;gap:10px;align-items:center}
-.rv .av{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;flex:none}
-.rv .who b{display:block;line-height:1.2}.rv .who small{color:var(--muted);font-size:12px}
-.rv p{margin:0;font-size:14.5px;line-height:1.45}
-.rv details{font-size:13px;color:var(--muted)}.rv details summary{cursor:pointer;font-weight:600}.rv details p{font-size:13px;margin-top:4px;color:var(--muted)}
+.faq details p{margin:0;padding:0 20px 18px}
 
-/* trust: chips, before/after, gallery */
-.chips2{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
-.chips2 span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:5px 10px;font-size:12.5px;font-weight:600;line-height:1.2}
-.ba{position:relative;aspect-ratio:1/1;overflow:hidden;border-radius:16px;background:var(--line);touch-action:pan-y;--p:50%}
-.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
-.ba .bb{clip-path:inset(0 calc(100% - var(--p)) 0 0)}
-.ba .bar{position:absolute;top:0;bottom:0;left:var(--p);width:3px;margin-left:-1.5px;background:#fff;box-shadow:0 0 0 1px rgba(16,33,67,.25)}
-.ba .bar::after{content:"\2194";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;background:var(--sun);color:var(--sun-ink);display:grid;place-items:center;font-weight:800;font-size:18px;box-shadow:0 2px 8px rgba(0,0,0,.3)}
-.ba .tg{position:absolute;top:10px;padding:4px 10px;border-radius:999px;background:rgba(16,33,67,.82);color:#fff;font-size:12px;font-weight:700;letter-spacing:.3px}
-.ba .tg.l{left:10px}.ba .tg.r{right:10px}
-.ba input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
-.gal{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;margin-inline:-4px;padding-inline:4px;-webkit-overflow-scrolling:touch}
-.gal img{flex:0 0 auto;height:190px;width:auto;max-width:78%;object-fit:cover;border-radius:12px;scroll-snap-align:start;background:var(--line)}
-.cap{margin:0;font-size:13px;color:var(--muted);line-height:1.4}
-.about p{margin:0;font-size:15px;line-height:1.55}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+/* areas */
+.areas{background:var(--navy);color:#fff;text-align:center}
+.areas .lbl{color:var(--sun)}
+.areas .h2{color:#fff}
+.pills{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:34px auto;max-width:900px}
+.pills span{border:2px solid var(--sun);color:#fff;border-radius:6px;padding:8px 16px;font-weight:700;font-size:15px}
+
+/* footer */
+footer{background:var(--navy2);color:#c9d3e6;font-size:15px}
+.fcta{background:var(--sun);color:var(--navy)}
+.fcta .in{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-block:26px;flex-wrap:wrap}
+.fcta b{font-family:var(--display);font-size:24px}
+.fcta .btn{background:var(--navy);color:#fff;box-shadow:none}
+.fgrid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:36px;padding-block:56px}
+footer h4{color:#fff;margin:0 0 14px;font-size:15px;letter-spacing:1.5px;text-transform:uppercase}
+footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+footer a{text-decoration:none}
+footer a:hover{color:var(--sun)}
+footer .ct{display:flex;flex-direction:column;gap:12px;margin-top:16px}
+footer .ct b{color:#fff;display:block;font-size:13px;letter-spacing:1px;text-transform:uppercase}
+.copy{border-top:1px solid rgba(255,255,255,.1);padding-block:18px;font-size:13px;text-align:center}
+.wa{position:fixed;right:18px;bottom:18px;z-index:60;width:60px;height:60px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.wa svg{width:32px;height:32px;fill:#fff}
+
+/* responsive */
+@media (max-width:980px){
+ header.nav nav{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;gap:0;box-shadow:0 10px 20px rgba(16,33,67,.1)}
+ header.nav nav.open{display:flex}
+ header.nav nav a{padding:14px 20px;border-top:1px solid var(--line)}
+ .burger{display:block}
+ header.nav .hbtn{display:none}
+ .hero .in{grid-template-columns:1fr;padding-block:56px}
+ .badge-logo{max-width:280px;padding:22px}
+ .split,.about .in,.faq .in,.fin .box{grid-template-columns:1fr}
+ .cards{grid-template-columns:1fr 1fr}
+ .steps{grid-template-columns:1fr 1fr}
+ .wgrid{grid-template-columns:1fr}
+ .fgrid{grid-template-columns:1fr 1fr}
+ .about .ph .yr{right:12px}
+}
+@media (max-width:600px){
+ section{padding:54px 0}
+ .info .l span.ar{display:none}
+ .hero{min-height:0}
+ .hero h1{font-size:32px}
+ .annc .card{padding:34px 22px}
+ .annc .pic{padding:28px}.annc .pic img{max-width:170px}.annc .pic .fl{position:static;margin-top:14px}
+ .cards,.steps,.fgrid{grid-template-columns:1fr}
+ .fin .box{padding:30px 22px}
+ .rv{flex-basis:84%}
+ .mq figure,.mq img{width:180px}.mq img{height:240px}
+}
+@media (prefers-reduced-motion:reduce){.mq .track{animation:none}*{transition:none!important}html{scroll-behavior:auto}}
 </style>
+</head><body>
 
-<header class="hero">
- <div class="hero-in">
-  <div class="top">
-   <div class="brand"><img src="data:image/png;base64,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" alt="Artmar" style="height:46px;width:auto;display:block"><small style="color:#fec945;font-weight:800;letter-spacing:4px;font-size:12px;margin-left:6px;align-self:flex-end">MALEREI</small></div>
-   <div class="lang" role="group" aria-label="Sprache / Idioma"><button type="button" data-lang="de" aria-pressed="true">DE</button><button type="button" data-lang="es" aria-pressed="false">ES</button></div>
-  </div>
-  <h1 data-i="h1"></h1>
-  <p data-i="lead"></p>
-  <div class="flow"><span data-i="f1"></span><i>→</i><span data-i="f2"></span><i>→</i><span data-i="f3"></span></div>
-  <div class="chips2" id="chips2"></div>
+<div class="ann"><div class="in"><span data-k="ann">NEU: Dein Richtpreis in 30 Sekunden – online, ohne Anruf!</span><a class="q" href="rechner/" data-k="annBtn">Mehr erfahren</a></div></div>
+<div class="info"><div class="in">
+ <div class="l"><a href="https://wa.me/41767360520" target="_blank" rel="noopener">📞 +41 76 736 05 20</a><span class="ar">📍 Luzern ~ Zug ~ Zürich</span></div>
+ <div class="soc">
+  <a href="https://www.instagram.com/artmarmalerei" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zM12 16a4 4 0 110-8 4 4 0 010 8zm6.4-11.8a1.4 1.4 0 100 2.9 1.4 1.4 0 000-2.9z"/></svg></a>
+  <a href="https://www.tiktok.com/@artmarmalerei" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.6 6.7a4.8 4.8 0 01-3.8-4.2V2h-3.4v13.4a2.9 2.9 0 11-2-2.7V9.2a6.3 6.3 0 105.4 6.2V8.6a8.2 8.2 0 004.8 1.5V6.7h-1z"/></svg></a>
+  <a href="https://share.google/Q0aba34GznFFTA015" target="_blank" rel="noopener" aria-label="Google"><svg viewBox="0 0 24 24"><path d="M12.2 10.3v3.6h5.1c-.2 1.3-1.6 3.9-5.1 3.9-3.1 0-5.6-2.5-5.6-5.7s2.5-5.7 5.6-5.7c1.8 0 2.9.7 3.6 1.4l2.4-2.4C16.7 3.9 14.6 3 12.2 3 7.2 3 3.2 7 3.2 12s4 9 9 9c5.2 0 8.6-3.6 8.6-8.8 0-.6-.1-1-.1-1.5h-8.5z"/></svg></a>
+  <div class="lang" role="group" aria-label="Sprache / Idioma"><button type="button" data-lang="de" aria-pressed="true">DE</button><button type="button" data-lang="es" aria-pressed="false">ES</button></div>
  </div>
-</header>
+</div></div>
 
-<main class="wrap" style="margin-top:18px">
- <section class="card" aria-labelledby="sp">
-  <h2 id="sp" style="font-family:var(--display);margin:0;font-size:21px" data-i="proofT"></h2>
-  <div class="ba" id="ba"><img src="img/ba_nachher.jpg" alt="" width="800" height="1000" loading="eager"><img class="bb" src="img/ba_vorher.jpg" alt="" width="800" height="1000" loading="eager"><span class="tg l" data-i="baB"></span><span class="tg r" data-i="baA"></span><i class="bar"></i><input type="range" min="0" max="100" value="50" id="baR" data-al="baAria"></div>
-  <p class="cap" data-i="baCap"></p>
-  <div class="gal" aria-label="Galerie"><img src="img/haus_gelb_1.jpg" alt="" width="900" height="1198" loading="lazy"><img src="img/haus_weiss_2.jpg" alt="" width="1000" height="646" loading="lazy"><img src="img/haus_weiss_3.jpg" alt="" width="1000" height="646" loading="lazy"><img src="img/arbeit_leiter.jpg" alt="" width="900" height="1054" loading="lazy"></div>
-  <p class="cap" data-i="galCap"></p>
- </section>
- <section class="card" aria-labelledby="s2">
-  <div class="step"><span>1</span><h2 id="s2" data-i="s2"></h2></div>
-  <p class="hint" data-i="s2h"></p>
-  <textarea id="desc" rows="3" maxlength="300" data-ph="descPh"></textarea>
-  <div class="arearow"><label for="area" data-i="areaL"></label><div class="m2"><input type="number" id="area" min="2" max="400" inputmode="numeric" placeholder="m²"></div></div>
-  <p class="hint" id="areaHint"></p>
-  <div class="colq"><div class="t"><b data-i="o2"></b><small data-i="o2s"></small></div>
-   <div class="seg two" role="radiogroup" id="colG">
-    <label><input type="radio" name="col" value="0" checked><b data-i="col0"></b><small data-i="col0s"></small></label>
-    <label><input type="radio" name="col" value="1"><b data-i="col1"></b><small data-i="col1s"></small></label>
-   </div></div>
-  <div class="colq"><div class="t"><b data-i="o4"></b><small data-i="o4s"></small></div>
-   <div class="seg two" role="radiogroup" id="furnG">
-    <label><input type="radio" name="furn" value="1"><b data-i="yes"></b></label>
-    <label><input type="radio" name="furn" value="0" checked><b data-i="no"></b></label>
-   </div></div>
- </section>
+<header class="nav"><div class="in">
+ <a class="logo" href="#top" aria-label="Artmar Malerei"><img src="img/logo_navy.png" alt="Artmar Malerei" width="520" height="142"></a>
+ <nav id="menu">
+  <a href="#top" class="on" data-k="n1">Start</a>
+  <a href="#leistungen" data-k="n2">Leistungen</a>
+  <a href="#ueber-uns" data-k="n3">Über uns</a>
+  <a href="#bewertungen" data-k="n4">Bewertungen</a>
+  <a href="#kontakt" data-k="n5">Kontakt</a>
+ </nav>
+ <a class="btn hbtn q" href="rechner/" data-k="cta">Gratis Richtpreis</a>
+ <button class="burger" type="button" aria-label="Menü" aria-controls="menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></header>
 
- 
-
- <section class="card" aria-labelledby="s3" id="priceCard">
-  <div class="step"><span>2</span><h2 id="s3" data-i="s3"></h2></div>
-  <div class="calc" aria-hidden="true"><span data-i="calc"></span><div class="bar"><i id="bar"></i></div></div>
-  <p class="teaser" id="teaser"></p>
-  <div class="gate" id="gate">
-   <b data-i="gT"></b><small class="hint" data-i="gS"></small>
-   <div class="grid2">
-    <label for="tel"><span data-i="tel"></span><input type="tel" id="tel" autocomplete="tel" inputmode="tel" placeholder="+41 79 123 45 67"></label>
-   </div>
-   <div class="err" id="gErr" role="alert"></div>
-   <button class="unlock" id="unlock" type="button" data-i="gBtn"></button>
-   <p class="priv" data-i="priv"></p>
+<main id="top">
+<section class="hero">
+ <img class="bgimg" src="img/hero_bg.jpg" alt="" width="1600" height="1031">
+ <div class="in">
+  <div class="badge-logo"><img src="img/logo_white.png" alt="Artmar Malerei" width="520" height="142"><small>MALEREI</small></div>
+  <div class="txt">
+   <a class="grev" href="https://share.google/Q0aba34GznFFTA015" target="_blank" rel="noopener"><svg class="gl" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg> 5,0 <span class="st">★★★★★</span> <small data-k="gRev">31 Bewertungen (Spanien)</small></a>
+   <h1 data-k="h1">Professionelle Maler in <span class="hl">Luzern &amp; Zug</span></h1>
+   <p data-k="heroP">Bei Artmar Malerei streichen wir Wände und Decken in Wohnungen und Häusern – sauber abgedeckt, mit Fixpreis inklusive Material und 5 Jahren Garantie auf die Arbeit. Als Familienbetrieb mit über 25 Jahren Erfahrung behandeln wir dein Zuhause wie unser eigenes.</p>
+   <a class="btn q" href="rechner/" data-k="cta">Gratis Richtpreis</a>
   </div>
-  <div class="price"><div class="big locked" id="rangeBig">CHF –</div><div class="break" id="break"></div></div>
-  <p class="fine" data-i="pfine"></p>
-  <p class="next" id="nextHint" data-i="next" hidden></p>
- </section>
+ </div>
+</section>
 
+<section class="annc" style="padding:0"><div class="split">
+ <div class="card">
+  <h2 data-k="anT">Artmar Pinturas – jetzt auch in der Schweiz!</h2>
+  <h3 data-k="anS">Gleiche Familie, gleiche Arbeit, neues Land</h3>
+  <p data-k="anP1">Artmar Malerei ist der Schweizer Zweig unseres Familienbetriebs Artmar Pinturas aus Spanien. Dort streicht die Familie seit über 25 Jahren Wohnungen und Häuser.</p>
+  <p data-k="anP2">Der Name ist neu, die Arbeitsweise nicht: Möbel und Böden sauber abgedeckt, klare Absprachen und eine saubere Übergabe. In Luzern, Zug und Umgebung arbeiten wir am Wochenende.</p>
+  <div><a class="btn ghost" href="#ueber-uns" data-k="more">Mehr erfahren</a></div>
+ </div>
+ <div class="pic"><img src="brand/Artmar_Profilbild_v2.png" alt="Artmar" width="300" height="300" loading="lazy"><div class="fl" data-k="anF">Artmar Pinturas 🇪🇸 → Artmar Malerei 🇨🇭</div></div>
+</div></section>
 
- <section class="card" aria-labelledby="s1">
-  <div class="step"><span>3</span><h2 id="s1" data-i="s1"></h2></div>
-  <p class="hint" data-i="s1h"></p>
-  <label class="drop" for="photos"><input type="file" id="photos" accept="image/*" multiple><b data-i="drop"></b><small data-i="dropS"></small></label>
-  <div class="thumbs" id="thumbs"></div>
- </section>
+<section class="revs center" id="bewertungen"><div class="in">
+ <span class="lbl" data-k="rvL">Unsere Bewertungen</span>
+ <h2 class="h2" data-k="rvT">Top bewertete Maler – <span class="hl" style="color:var(--sun2)">aus unserer Familie</span></h2>
+ <div class="rvhead"><span class="ex" data-k="rvEx">AUSGEZEICHNET</span><span class="st">★★★★★</span><span data-k="rvN">31 Google-Bewertungen</span></div>
+ <div class="rvrow" id="rv" style="text-align:left"></div>
+ <p class="rvnote" data-k="rvNote">Bewertungen unseres Familienbetriebs in Spanien (Artmar Pinturas), automatisch übersetzt. <a href="https://share.google/Q0aba34GznFFTA015" target="_blank" rel="noopener">Echte Google-Bewertungen ansehen</a></p>
+</div></section>
 
- <section class="card" aria-labelledby="sr">
-  <h2 id="sr" style="font-family:var(--display);margin:0;font-size:21px" data-i="rvT"></h2>
-  <div class="rv-h"><span class="stars" aria-hidden="true">★★★★★</span><span data-i="rvScore"></span></div>
-  <div class="rv" id="rv"></div>
-  <p class="fine" data-i="revS"></p>
-  <a class="cta sun" style="align-self:flex-start" href="https://share.google/Q0aba34GznFFTA015" target="_blank" rel="noopener" data-i="rev"></a>
- </section>
+<section class="about" id="ueber-uns"><div class="in">
+ <div class="ph"><img src="img/maler_arbeit.jpg" alt="" width="800" height="1422" loading="lazy"><div class="yr"><b>25+</b><small data-k="yrs">Jahre Erfahrung</small></div></div>
+ <div>
+  <span class="lbl" data-k="abL">Über uns</span>
+  <h2 class="h2" data-k="abT">Ein Familienbetrieb – für dein Zuhause!</h2>
+  <p data-k="abP1">Artmar ist ein Familienbetrieb. In unserer Familie wird seit über 25 Jahren gestrichen, und in dieser Zeit haben wir Hunderte Wohnungen und Häuser fertig gemacht. Mit Artmar Malerei bringen wir genau diese Arbeitsweise nach Luzern und Zug.</p>
+  <p data-k="abP2">Wir glauben an Ehrlichkeit, klare Kommunikation und daran, unser Wort zu halten. Du bekommst einen Fixpreis, der nicht steigt, und schreibst direkt mit uns per WhatsApp – ohne Callcenter. Jedes Zuhause behandeln wir wie unser eigenes.</p>
+  <div class="fam" data-k="abFam">Bei Artmar bist du mehr als Kunde – du gehörst zur Familie!</div>
+  <a class="btn q" href="rechner/" data-k="cta">Gratis Richtpreis</a>
+ </div>
+</div></section>
 
- <section class="card" aria-labelledby="s4" id="book">
-  <div class="step"><span>4</span><h2 id="s4" data-i="s4"></h2></div>
-  <p class="hint" data-i="s4h"></p>
-  <div class="days" id="days" role="group"></div>
-  <div class="slots" id="slots" role="group"></div>
-  <div class="grid2">
-   <label for="name"><span data-i="name"></span><input type="text" id="name" autocomplete="name"></label>
-   <label for="plz"><span data-i="plz"></span><input type="text" id="plz" autocomplete="postal-code"></label>
-  </div>
-  <div class="note" id="photoNote"></div>
-  <div class="msg" id="msg"></div>
-  <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-   <a class="cta" id="wa2" href="#" target="_blank" rel="noopener"></a>
-   <button class="copy" id="copy" type="button" data-i="copy"></button>
-  </div>
-  <p class="fine" id="waNum"></p>
- </section>
+<section class="svc" id="leistungen"><div class="in">
+ <div class="top">
+  <span class="lbl" data-k="svL">Maler in Luzern &amp; Zug</span>
+  <h2 class="h2" data-k="svT">Unsere Malerarbeiten</h2>
+  <p class="lead" data-k="svP">Wir streichen Wände und Decken in Wohnungen und Häusern, innen und matt. Mit sorgfältigem Abdecken, sauberem Abkleben und guter Farbe sorgen wir für ein gleichmässiges Ergebnis – ob ein Zimmer, eine ganze Wohnung oder vor der Wohnungsabgabe.</p>
+  <a class="btn q" href="rechner/" data-k="cta">Gratis Richtpreis</a>
+ </div>
+ <div class="cards">
+  <article class="sc"><img src="img/innen_zimmer.jpg" alt="" loading="lazy" width="800" height="1422"><div><h3 data-k="s1T">Wohnung streichen</h3><p data-k="s1P">Ein Zimmer oder die ganze Wohnung: Wir rücken Möbel zusammen, decken alles ab und streichen Wände sauber und gleichmässig.</p><a class="q" href="rechner/" data-k="s1A">Richtpreis berechnen</a></div></article>
+  <article class="sc"><img src="img/decke.jpg" alt="" loading="lazy" width="800" height="1422"><div><h3 data-k="s2T">Decken streichen</h3><p data-k="s2P">Decken ohne Ansätze und Streifen – mit Rolle oder Airless-Spritze, je nachdem, was für deinen Raum besser passt.</p><a class="q" href="rechner/" data-k="s1A">Richtpreis berechnen</a></div></article>
+  <article class="sc"><img src="img/ba_vorher.jpg" alt="" loading="lazy" width="800" height="1422"><div><h3 data-k="s3T">Wohnungsabgabe</h3><p data-k="s3P">Dübellöcher, Flecken oder dunkle Wände? Wir machen deine Wohnung wieder hell und abgabebereit – schnell und am Wochenende.</p><a class="q" href="rechner/" data-k="s1A">Richtpreis berechnen</a></div></article>
+  <article class="sc"><img src="img/innen_schlafzimmer.jpg" alt="" loading="lazy" width="800" height="1422"><div><h3 data-k="s4T">Haus innen streichen</h3><p data-k="s4P">Vom Eingang bis zum Schlafzimmer: Ein ganzes Haus streichen wir in 3–4 Tagen, mit Fixpreis inklusive Material.</p><a class="q" href="rechner/" data-k="s1A">Richtpreis berechnen</a></div></article>
+ </div>
+</div></section>
 
- <section class="card" aria-labelledby="s6">
-  <h2 id="s6" style="font-family:var(--display);margin:0;font-size:21px" data-i="how"></h2>
-  <div class="how"><div><b data-i="hw1"></b><small data-i="hw1s"></small></div><div><b data-i="hw2"></b><small data-i="hw2s"></small></div><div><b data-i="hw3"></b><small data-i="hw3s"></small></div><div><b data-i="hw4"></b><small data-i="hw4s"></small></div></div>
-  <ul class="inc" id="inc"></ul>
-  <div style="display:flex;flex-direction:column;gap:6px"><a class="cta sun" style="align-self:flex-start" href="https://share.google/Q0aba34GznFFTA015" target="_blank" rel="noopener" data-i="rev"></a><p class="fine" data-i="revS"></p></div>
- </section>
- <section class="card" aria-labelledby="sw">
-  <h2 id="sw" style="font-family:var(--display);margin:0;font-size:21px" data-i="whyT"></h2>
-  <div class="why" id="why"></div>
-  <div style="display:flex;flex-direction:column;gap:8px"><b data-i="areaT"></b><div class="chips" id="chips"></div><p class="fine" data-i="areaS"></p></div>
- </section>
+<section class="work center"><div class="in">
+ <span class="lbl" data-k="wkL">Familienbetrieb seit über 25 Jahren</span>
+ <h2 class="h2" data-k="wkT">Unsere Arbeit</h2>
+</div>
+ <div class="mq"><div class="track" id="mq"></div></div>
+ <p class="note in" data-k="wkNote">Projekte unseres Familienbetriebs in Spanien.</p>
+</section>
 
- <section class="card about" aria-labelledby="sa">
-  <h2 id="sa" style="font-family:var(--display);margin:0;font-size:21px" data-i="aboutT"></h2>
-  <p data-i="aboutP"></p>
- </section>
+<section class="banner">
+ <img src="img/banner_bg.jpg" alt="" loading="lazy" width="1600" height="1202">
+ <div class="in"><h2 data-k="bnT">Saubere Ergebnisse von Malern aus der Familie – in Luzern, Zug und Umgebung</h2><a class="btn q" href="rechner/" data-k="cta">Gratis Richtpreis</a></div>
+</section>
 
- <section class="card faq" aria-labelledby="sf">
-  <h2 id="sf" style="font-family:var(--display);margin:0;font-size:21px" data-i="faqT"></h2>
-  <div id="faq"></div>
-  <a class="cta sun" style="align-self:flex-start" href="#priceCard" data-i="faqCta"></a>
- </section>
+<section class="why"><div class="in">
+ <div class="center"><span class="lbl" data-k="whL">Warum Artmar</span><h2 class="h2" data-k="whT">Warum du uns wählen solltest</h2></div>
+ <div class="wgrid">
+  <div class="wc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2l7 3v6c0 5-3.5 9-7 11-3.5-2-7-6-7-11V5z"/><path d="M9 12l2 2 4-4"/></svg></div><div><h3 data-k="w1T">5 Jahre Garantie</h3><p data-k="w1P">Wir stehen für unsere Arbeit gerade. Mit 5 Jahren schriftlicher Garantie auf die Arbeit sind wir auch nach dem letzten Pinselstrich für dich da.</p></div></div>
+  <div class="wc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></div><div><h3 data-k="w2T">Familienbetrieb</h3><p data-k="w2P">Über 25 Jahre Erfahrung in der Familie. Vom ersten Kontakt bis zum letzten Pinselstrich behandeln wir dein Zuhause wie unser eigenes.</p></div></div>
+  <div class="wc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 01-11.8 7L4 20l1.1-4.6A8 8 0 1121 12z"/></svg></div><div><h3 data-k="w3T">Direkter Ansprechpartner</h3><p data-k="w3P">Du schreibst direkt mit uns per WhatsApp – ohne Callcenter und ohne Warten. Termine, Farbe und Fragen klären wir schnell und persönlich.</p></div></div>
+  <div class="wc"><div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></div><div><h3 data-k="w4T">Fixpreis, der nicht steigt</h3><p data-k="w4P">Nach der Besichtigung bekommst du deinen Fixpreis schriftlich – Material inklusive, keine MWST. Danach ändert er sich nicht mehr.</p></div></div>
+ </div>
+ <div class="go"><h3 data-k="goT">Starte dein Projekt noch heute</h3><a class="btn q" href="rechner/" data-k="cta">Gratis Richtpreis</a></div>
+</div></section>
+
+<section class="fin"><div class="in"><div class="box">
+ <div><h2 data-k="fnT">Fixpreis inklusive Material</h2><p data-k="fnP">Keine Überraschungen auf der Rechnung: Im Preis ist alles drin, was es für ein sauberes Ergebnis braucht. Deinen Richtpreis siehst du online in 30 Sekunden, den verbindlichen Fixpreis bekommst du nach der Besichtigung.</p><a class="btn q" href="rechner/" data-k="fnB">Richtpreis berechnen</a></div>
+ <ul><li data-k="f1">Material inklusive</li><li data-k="f2">Böden und Möbel abgedeckt</li><li data-k="f3">Kanten sauber abgeklebt</li><li data-k="f4">Aufräumen und Reinigung</li><li data-k="f5">Keine MWST</li></ul>
+</div></div></section>
+
+<section class="proc center"><div class="in">
+ <span class="lbl" data-k="prL">So einfach geht's</span>
+ <h2 class="h2" data-k="prT">Unser einfacher 5-Schritte-Ablauf</h2>
+ <p class="lead" data-k="prP">Dein Zuhause neu zu streichen soll Freude machen, nicht Stress. Darum arbeiten wir mit einem klaren Ablauf, der deine Zeit und deinen Raum respektiert – mit ehrlicher Kommunikation von Anfang an.</p>
+ <a class="btn q" href="rechner/" data-k="cta">Gratis Richtpreis</a>
+ <div class="steps" style="text-align:left">
+  <div class="stp"><span class="n" data-k="st1">Schritt 1</span><h3 data-k="p1T">Richtpreis online</h3><p data-k="p1P">Beschreibe kurz, was gestrichen werden soll, und sieh deinen Richtpreis in 30 Sekunden. Kostenlos und unverbindlich.</p></div>
+  <div class="stp"><span class="n" data-k="st2">Schritt 2</span><h3 data-k="p2T">Besichtigung</h3><p data-k="p2P">Wir kommen am Samstag oder Sonntag vorbei. 15 Minuten vor Ort, wir schauen uns alles an und beantworten deine Fragen.</p></div>
+  <div class="stp"><span class="n" data-k="st3">Schritt 3</span><h3 data-k="p3T">Fixpreis &amp; Termin</h3><p data-k="p3P">Du bekommst deinen Fixpreis schriftlich. Danach steigt er nicht mehr. Wir legen gemeinsam Farbe und Termin fest.</p></div>
+  <div class="stp"><span class="n" data-k="st4">Schritt 4</span><h3 data-k="p4T">Wir streichen</h3><p data-k="p4P">Wir decken Möbel und Böden ab, kleben Kanten sauber ab und streichen. Zimmer in 1 Tag, Wohnung in 2–3 Tagen.</p></div>
+  <div class="stp"><span class="n" data-k="st5">Schritt 5</span><h3 data-k="p5T">Abnahme</h3><p data-k="p5P">Wir räumen auf und gehen alles gemeinsam mit dir durch. Erst wenn du zufrieden bist, sind wir fertig.</p></div>
+ </div>
+</div></section>
+
+<section class="faq"><div class="in">
+ <div class="side"><span class="lbl" data-k="fqL">FAQ</span><h2 class="h2" data-k="fqT">Häufige Fragen</h2><p data-k="fqP">Noch Fragen? Schreib uns einfach per WhatsApp.</p><a class="btn q" href="rechner/" data-k="cta">Gratis Richtpreis</a></div>
+ <div id="faq"></div>
+</div></section>
+
+<section class="areas" id="gebiet"><div class="in">
+ <span class="lbl" data-k="arL">Dein Maler in der Zentralschweiz</span>
+ <h2 class="h2" data-k="arT">Wir arbeiten in Luzern, Zug und Umgebung</h2>
+ <div class="pills"><span>Luzern</span><span>Kriens</span><span>Horw</span><span>Emmen</span><span>Ebikon</span><span>Meggen</span><span>Adligenswil</span><span>Root</span><span>Zug</span><span>Baar</span><span>Cham</span><span>Steinhausen</span><span>Hünenberg</span><span>Rotkreuz</span><span>Zürich</span></div>
+ <a class="btn q" href="rechner/" data-k="cta">Gratis Richtpreis</a>
+</div></section>
 </main>
 
-<div class="dock" role="region" aria-label="Richtpreis">
- <div class="dock-in">
-  <div><small data-i="dock"></small><div class="range" id="range">CHF –</div></div>
-  <a class="cta sun" id="dockCta" href="#book"></a>
+<footer id="kontakt">
+ <div class="fcta"><div class="in"><b data-k="fcT">Dein Zuhause mit Farbe, Sorgfalt und Handwerk neu beleben.</b><a class="btn q" href="rechner/" data-k="cta">Gratis Richtpreis</a></div></div>
+ <div class="in fgrid">
+  <div><img src="img/logo_white.png" alt="Artmar Malerei" width="200" height="55" style="width:200px;height:auto" loading="lazy"><p data-k="ftP">Dein freundlicher, zuverlässiger Malerbetrieb für Luzern, Zug und Umgebung.</p>
+   <div class="ct"><div><b>WhatsApp</b><a href="https://wa.me/41767360520" target="_blank" rel="noopener">+41 76 736 05 20</a></div><div><b data-k="ftA">Einsatzgebiet</b><span>Luzern · Zug · Zürich</span></div><div><b data-k="ftH">Besichtigungen</b><span data-k="ftHs">Samstag &amp; Sonntag</span></div></div></div>
+  <div><h4 data-k="ftQ">Schnelllinks</h4><ul><li><a href="#top" data-k="n1">Start</a></li><li><a href="#leistungen" data-k="n2">Leistungen</a></li><li><a href="#ueber-uns" data-k="n3">Über uns</a></li><li><a href="#bewertungen" data-k="n4">Bewertungen</a></li><li><a class="q" href="rechner/" data-k="ftR">Richtpreis-Rechner</a></li></ul></div>
+  <div><h4 data-k="ftS">Unsere Leistungen</h4><ul><li data-k="s1T">Wohnung streichen</li><li data-k="s2T">Decken streichen</li><li data-k="s3T">Wohnungsabgabe</li><li data-k="s4T">Haus innen streichen</li></ul></div>
+  <div><h4 data-k="ftG">Einsatzgebiete</h4><ul><li>Luzern</li><li>Zug</li><li>Zürich</li><li data-k="ftU">und Umgebung</li></ul></div>
  </div>
-</div>
+ <div class="copy">© 2026 Artmar Malerei. <span data-k="ftC">Alle Rechte vorbehalten.</span></div>
+</footer>
+
+<a class="wa" href="https://wa.me/41767360520" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-1 1.2-.4.2-.7.1a8.2 8.2 0 01-4.1-3.6c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 00-.9.4 3.6 3.6 0 00-1.1 2.7 6.3 6.3 0 001.3 3.3 14.4 14.4 0 005.5 4.9c2 .9 2.8.9 3.8.8a3.3 3.3 0 002.2-1.5 2.7 2.7 0 00.2-1.5c-.1-.2-.3-.2-.6-.4zM12 21.8a9.8 9.8 0 01-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1112 21.8zM20.5 3.5A11.8 11.8 0 001.9 17.8L.2 24l6.3-1.7A11.8 11.8 0 0024 12a11.7 11.7 0 00-3.5-8.5z"/></svg></a>
 
 <script>
-// ---- Settings Brian can change ----
-const WHATSAPP = "41767360520";            // e.g. "41791234567" (country code, no + or spaces)
-const RATE_WALL = 13, RATE_CEIL = 16, DOOR = 120, RAD = 80, MIN_JOB = 350, LOW = 0.9, HIGH = 1.2;
-const VISIT = { weekday:[], sat:["08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00"], sun:["09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00"] }; // viewing slots
-// -----------------------------------
-const TXT = {
- de:{h1:'Preis in <em>30 Sek.</em>',lead:'Beschreibe kurz, was gestrichen werden soll, gib deine Handynummer ein und sieh deinen Richtpreis. Den Fixpreis bekommst du bei der Besichtigung.',
-  f1:'✍️ Text',f2:'⚡ Richtpreis',f3:'📅 Termin',
-  s1:'Fotos (optional)',s1h:'Für den Preis nicht nötig. Mit Fotos können wir dir aber ein genaueres Angebot machen: jede Wand einmal, gern mit Löchern oder Flecken im Bild.',drop:'📷 Fotos auswählen',dropS:'oder hierher ziehen',
-  s2:'Was soll gestrichen werden?',s2h:'Schreib kurz, zum Beispiel «3.5-Zimmer-Wohnung, 80 m², alles streichen».',descPh:'z.B. 3.5-Zimmer-Wohnung, 80 m², alles streichen',areaL:'Fläche ca. (m²)',areaOk:a=>`✓ Erkannt: ${a} m². Stimmt nicht? Ändere die Zahl.`,areaNo:'Wie gross ist die Fläche ungefähr? Zum Beispiel 60 m².',teaser:l=>`Dein Preis beginnt ab ${l}`,dockLocked:'Preis ansehen',
-  o1:'Decken mitstreichen',o1s:'Meist sinnvoll bei Auszug',o2:'Wandfarbe',o2s:'Die genaue Farbe besprechen wir bei der Besichtigung',col0:'Weiss',col0s:'Standard, ohne Aufpreis',col1:'Farbig',col1s:'Mit Aufpreis',o3:'Nikotin oder starke Flecken',o3s:'Mit Isoliergrund',yes:'Ja',no:'Nein',o4:'Räume sind möbliert',o4s:'Wir rücken Möbel und decken alles ab',o5:'Türen inkl. Rahmen lackieren',o5s:'pro Tür, beidseitig',o6:'Heizkörper lackieren',o6s:'pro Stück',
-  c1:'Gut',c1s:'Kaum Löcher',c2:'Normal',c2s:'Dübellöcher, kleine Risse',c3:'Viel Arbeit',c3s:'Risse, alte Tapete',h1b:'Bis 2.5 m',h1s:'Standard',h2b:'Bis 2.8 m',h2s:'Etwas höher',h3b:'Über 2.8 m',h3s:'Altbau',
-  s3:'Dein Richtpreis',calc:'Berechnet',pfine:'Richtpreis inkl. Material, Abdecken, Abkleben und Reinigung. Keine MWST. Den verbindlichen Fixpreis bekommst du bei der Besichtigung, danach ändert er sich nicht mehr.',
-  gT:'🔒 Handynummer eingeben und Preis sehen',gS:'Wir melden uns kurz bei dir, um den Preis zu besprechen. Kostenlos und unverbindlich.',tel:'Handynummer',gBtn:'Preis anzeigen',priv:'Deine Nummer nutzen wir nur, um dich zum Preis und zu einem Termin zu kontaktieren. Keine Weitergabe an Dritte, kein Newsletter.',gErrN:'Bitte gib deinen Namen ein.',gErrT:'Bitte gib eine gültige Handynummer ein.',lockedDock:'🔒 Preis freischalten',
-  lead2:(o)=>`Hallo Artmar Malerei!\n\nMein Richtpreis laut Rechner: ${o.range}\n${o.rooms}\nOptionen: ${o.opts}\n\nName: ${o.name}\nTel: ${o.tel}\n\nBitte meldet euch für einen Besichtigungstermin.`,
-  rev:'⭐ Echte Google-Bewertungen ansehen',revS:'Bewertungen unseres Familienbetriebs in Spanien (Artmar Pinturas). Google übersetzt sie automatisch.',
-  whyT:'Warum Artmar Malerei',why:[['🏅','5 Jahre Garantie','Wir stehen für unsere Arbeit gerade, auch lange nach dem letzten Pinselstrich.'],['❤️','Familienbetrieb','Über 25 Jahre Erfahrung in der Familie. Wir behandeln dein Zuhause wie unser eigenes.'],['💬','Direkter Ansprechpartner','Du schreibst direkt mit uns per WhatsApp, ohne Callcenter und ohne Warten.'],['🔒','Fixpreis','Nach der Besichtigung bekommst du deinen Fixpreis. Material inklusive, keine MWST, und er steigt nicht.']],
-  areaT:'Einsatzgebiet',areas:['Luzern','Zug','Zürich','und Umgebung'],areaS:'Du wohnst woanders? Schreib uns kurz, wir schauen, ob es passt.',
-  faqT:'Häufige Fragen',faqCta:'Zum Richtpreis',faq:[['Was kostet das Streichen?','Das hängt von Fläche und Zustand ab. Oben siehst du in 30 Sekunden deinen Richtpreis. Den verbindlichen Fixpreis bekommst du nach der Besichtigung, Material inklusive, ohne MWST.'],['Wo arbeitet ihr?','In Luzern, Zug, Zürich und Umgebung. Bei einer anderen Region frag uns einfach kurz per WhatsApp.'],['Welche Arbeiten bietet ihr an?','Wir streichen Wände und Decken in Wohnungen und Häusern, innen und matt. Fassaden und Lackierarbeiten (Türen, Heizkörper) machen wir derzeit nicht.'],['Wie lange dauert es?','Ein Zimmer in 1 Tag, eine Wohnung in 2–3 Tagen, ein Haus in 3–4 Tagen. Wir arbeiten zu zweit.'],['Muss ich Möbel wegräumen?','Nein. Wir rücken Möbel zusammen und decken Möbel und Böden sauber ab.'],['Wie bekomme ich einen Termin?','Wähle oben einen freien Termin für die Besichtigung. Unter der Woche sind wir auf Baustellen, darum Samstag und Sonntag. Wir bestätigen per WhatsApp.']],
-  rvT:'Das sagen Kunden',rvScore:'5,0 · 31 Google-Bewertungen (Spanien)',rvOrig:'Original anzeigen',rvLang:{es:'Spanisch',en:'Englisch'},rvTag:'Google-Bewertung',
-  gErrA:'Bitte gib zuerst die Fläche in m² ein.',next:'👇 Passt der Preis? Dann wähle unten einen freien Termin für die Besichtigung.',s4:'Passt der Preis? Besichtigung buchen',s4h:'Das sind die freien Zeiten unseres Malers. 15 Minuten vor Ort, dann bekommst du den Fixpreis. Unter der Woche sind wir auf Baustellen, darum Samstag und Sonntag. Wähle Tag und Uhrzeit, wir bestätigen per WhatsApp.',name:'Name (optional)',plz:'PLZ / Ort',
-  photos0:'Noch keine Fotos ausgewählt. Du kannst sie auch direkt im WhatsApp-Chat schicken.',photosN:n=>`📷 ${n} Foto${n>1?'s':''} ausgewählt. Hänge sie im WhatsApp-Chat an diese Nachricht an.`,
-  send:'💬 Termin anfragen',copy:'Text kopieren',copied:'Kopiert',selected:'Text markiert, jetzt kopieren',pick:'Bitte Tag und Uhrzeit wählen',
-  how:"So läuft's",hw1:'Räume angeben',hw1s:'Fläche reicht. Fotos sind optional.',hw2:'Richtpreis in 30 Sek.',hw2s:'Sofort auf dieser Seite.',hw3:'Besichtigung',hw3s:'Am Wochenende, 15 Min. vor Ort, dann Fixpreis.',hw4:'Schnell fertig',hw4s:'Zimmer in 1 Tag · Wohnung in 2–3 Tagen · Haus in 3–4 Tagen. Wir arbeiten zu zweit. Abgedeckt, gestrichen, sauber.',dur:'Dauer',durV:a=>a<=25?'1 Tag':a<=60?'2 Tage':a<=100?'3 Tage':a<=160?'3–4 Tage':'nach Absprache',
-  inc:['Fixpreis, der nicht steigt','Material inklusive','Böden und Möbel abgedeckt','Kanten sauber abgeklebt','5 Jahre Garantie auf die Arbeit','Familienbetrieb mit über 25 Jahren Erfahrung','Hunderte Wohnungen gestrichen','⭐ 5,0 bei 31 Google-Bewertungen (Spanien)'],
-  dock:'Dein Richtpreis',dockBtn:'Termin buchen',walls:'Wände',ceils:'Decken',cond:'Zustand',prep:'% Vorarbeit',dark:'Farbe statt Weiss',darkV:'Aufpreis',nic:'Isoliergrund',incl:'inklusive',furn:'Möbel & Abdecken',doors:'Türen',rads:'Heizkörper',min:'Mindestauftrag',
-  types:['Ganze Wohnung','Ganzes Haus','Schlafzimmer','Kinderzimmer','Wohnzimmer','Küche','Bad','Korridor','Büro','Anderer Raum'],dow:['So','Mo','Di','Mi','Do','Fr','Sa'],ca:'ca.',
-  m:(o)=>`Hallo Artmar Malerei!\n\nIch möchte eine Besichtigung buchen.\n📅 Wunschtermin: ${o.when}\n\n${o.rooms}\nOptionen: ${o.opts}\nZustand: ${o.cond}\nRichtpreis laut Rechner: ${o.range}\n\nName: ${o.name}\nTel: ${o.tel}\nOrt: ${o.plz}\n${o.photos}`,
-  mPhotos:n=>n?`📷 ${n} Fotos hänge ich hier an.`:'📷 Fotos schicke ich gleich.',withC:'mit Decken',noC:'ohne Decken',condV:['gut','normal (Dübellöcher)','viel Arbeit']},
- es:{h1:'Precio en <em>30 s</em>',lead:'Describe brevemente qué hay que pintar, pon tu móvil y ve tu precio orientativo. El precio fijo te lo damos en la visita.',
-  f1:'✍️ Texto',f2:'⚡ Precio',f3:'📅 Cita',
-  s1:'Fotos (opcional)',s1h:'No hacen falta para ver el precio. Pero con fotos podemos darte un presupuesto más exacto: cada pared una vez, mejor si se ven agujeros o manchas.',drop:'📷 Elegir fotos',dropS:'o arrástralas aquí',
-  s2:'¿Qué hay que pintar?',s2h:'Escribe brevemente, por ejemplo «piso de 3,5 habitaciones, 80 m², pintar todo».',descPh:'p. ej. piso de 3,5 habitaciones, 80 m², pintar todo',areaL:'Superficie aprox. (m²)',areaOk:a=>`✓ Detectado: ${a} m². Si no es correcto, cambia el número.`,areaNo:'¿Cuánto mide aproximadamente la superficie? Por ejemplo 60 m².',teaser:l=>`Tu precio empieza desde ${l}`,dockLocked:'Ver precio',
-  o1:'Pintar también los techos',o1s:'Casi siempre al dejar un piso',o2:'Color de las paredes',o2s:'El color exacto lo hablamos en la visita',col0:'Blanco',col0s:'Estándar, sin suplemento',col1:'De color',col1s:'Con suplemento',o3:'Nicotina o manchas fuertes',o3s:'Con imprimación aislante',yes:'Sí',no:'No',o4:'Habitaciones amuebladas',o4s:'Movemos muebles y tapamos todo',o5:'Lacar puertas con marco',o5s:'por puerta, por ambas caras',o6:'Lacar radiadores',o6s:'por unidad',
-  c1:'Bien',c1s:'Casi sin agujeros',c2:'Normal',c2s:'Agujeros de tacos, grietas pequeñas',c3:'Mucho trabajo',c3s:'Grietas, papel viejo',h1b:'Hasta 2,5 m',h1s:'Estándar',h2b:'Hasta 2,8 m',h2s:'Algo más alto',h3b:'Más de 2,8 m',h3s:'Edificio antiguo',
-  s3:'Tu precio orientativo',calc:'Calculado',pfine:'Precio orientativo con material, protección, encintado y limpieza incluidos. Sin IVA. El precio fijo y definitivo te lo damos en la visita, y después ya no cambia.',
-  gT:'🔒 Pon tu móvil y ve tu precio',gS:'Te contactamos brevemente para comentar el precio. Gratis y sin compromiso.',tel:'Móvil',gBtn:'Ver mi precio',priv:'Usamos tu número solo para contactarte sobre el precio y la visita. No lo compartimos con nadie ni enviamos newsletters.',gErrN:'Escribe tu nombre.',gErrT:'Escribe un número de móvil válido.',lockedDock:'🔒 Desbloquea tu precio',
-  lead2:(o)=>`¡Hola Artmar Malerei!\n\nMi precio orientativo de la calculadora: ${o.range}\n${o.rooms}\nOpciones: ${o.opts}\n\nNombre: ${o.name}\nTel: ${o.tel}\n\nPor favor, contactadme para la visita.`,
-  rev:'⭐ Ver reseñas reales en Google',revS:'Reseñas de nuestra empresa familiar en España (Artmar Pinturas).',
-  whyT:'Por qué Artmar Malerei',why:[['🏅','5 años de garantía','Respondemos por nuestro trabajo, también mucho después de la última pincelada.'],['❤️','Empresa familiar','Más de 25 años de experiencia en la familia. Tratamos tu casa como si fuera la nuestra.'],['💬','Trato directo','Hablas directamente con nosotros por WhatsApp, sin centralita y sin esperas.'],['🔒','Precio fijo','Tras la visita recibes tu precio fijo. Material incluido, sin IVA, y no sube.']],
-  areaT:'Zona de trabajo',areas:['Lucerna','Zug','Zúrich','y alrededores'],areaS:'¿Vives en otro sitio? Escríbenos y vemos si podemos.',
-  faqT:'Preguntas frecuentes',faqCta:'Ir al precio',faq:[['¿Cuánto cuesta pintar?','Depende de la superficie y del estado. Arriba ves tu precio orientativo en 30 segundos. El precio fijo y definitivo te lo damos tras la visita, con material incluido y sin IVA.'],['¿Dónde trabajáis?','En Lucerna, Zug, Zúrich y alrededores. Si estás en otra zona, escríbenos por WhatsApp.'],['¿Qué trabajos hacéis?','Pintamos paredes y techos de pisos y casas, por dentro y en acabado mate. De momento no hacemos fachadas ni lacados (puertas, radiadores).'],['¿Cuánto se tarda?','Una habitación en 1 día, un piso en 2–3 días, una casa en 3–4 días. Trabajamos en equipo.'],['¿Tengo que quitar los muebles?','No. Juntamos los muebles y los cubrimos, igual que los suelos.'],['¿Cómo consigo una cita?','Elige arriba un horario libre para la visita. Entre semana estamos en obra, así que sábado y domingo. Lo confirmamos por WhatsApp.']],
-  rvT:'Lo que dicen los clientes',rvScore:'5,0 · 31 reseñas en Google (España)',rvOrig:'Ver original',rvLang:{es:'español',en:'inglés'},rvTag:'Reseña de Google',
-  gErrA:'Primero indica los m² de la superficie.',next:'👇 ¿Te parece bien el precio? Elige abajo un horario libre para la visita.',s4:'¿Te parece bien? Reserva la visita',s4h:'Estos son los horarios libres de nuestro pintor. 15 minutos en tu casa y te damos el precio fijo. Entre semana estamos en obra, así que el sábado y el domingo. Elige día y hora y te lo confirmamos por WhatsApp.',name:'Nombre (opcional)',plz:'Código postal / ciudad',
-  photos0:'Aún no has elegido fotos. También puedes mandarlas directamente en el chat de WhatsApp.',photosN:n=>`📷 ${n} foto${n>1?'s':''} elegida${n>1?'s':''}. Adjúntalas en el chat de WhatsApp junto a este mensaje.`,
-  send:'💬 Pedir cita',copy:'Copiar texto',copied:'Copiado',selected:'Texto marcado, cópialo ahora',pick:'Elige día y hora',
-  how:'Cómo funciona',hw1:'Indica las habitaciones',hw1s:'Con los m² basta. Las fotos son opcionales.',hw2:'Precio en 30 s',hw2s:'Al momento, en esta página.',hw3:'Visita',hw3s:'El finde, 15 min en tu casa y precio fijo.',hw4:'Listo en pocos días',hw4s:'Habitación en 1 día · piso en 2–3 días · casa en 3–4 días. Trabajamos en equipo. Protegido, pintado, limpio.',dur:'Duración',durV:a=>a<=25?'1 día':a<=60?'2 días':a<=100?'3 días':a<=160?'3–4 días':'a convenir',
-  inc:['Precio fijo que no sube','Material incluido','Suelos y muebles protegidos','Bordes encintados con cuidado','5 años de garantía en el trabajo','Empresa familiar: cientos de pisos pintados','⭐ Reseñas de 5 estrellas en España'],
-  dock:'Tu precio orientativo',dockBtn:'Reservar cita',walls:'Paredes',ceils:'Techos',cond:'Estado',prep:'% preparación',dark:'Color en vez de blanco',darkV:'Suplemento',nic:'Imprimación aislante',incl:'incluida',furn:'Muebles y protección',doors:'Puertas',rads:'Radiadores',min:'Pedido mínimo',
-  types:['Piso completo','Casa completa','Dormitorio','Habitación infantil','Salón','Cocina','Baño','Pasillo','Despacho','Otra habitación'],dow:['dom','lun','mar','mié','jue','vie','sáb'],ca:'aprox.',
-  m:(o)=>`¡Hola Artmar Malerei!\n\nMe gustaría reservar una visita.\n📅 Fecha deseada: ${o.when}\n\n${o.rooms}\nOpciones: ${o.opts}\nEstado: ${o.cond}\nPrecio orientativo de la calculadora: ${o.range}\n\nNombre: ${o.name}\nTel: ${o.tel}\nLugar: ${o.plz}\n${o.photos}`,
-  mPhotos:n=>n?`📷 Te adjunto ${n} fotos aquí.`:'📷 Ahora te mando las fotos.',withC:'con techos',noC:'sin techos',condV:['bien','normal (agujeros de tacos)','mucho trabajo']}
-};
-const REVIEWS=[
- {n:'Bas I.',c:'#1f6feb',o:'en',orig:"Miguel recently removed the gotelé from the walls in my apartment, smoothed them perfectly, and painted the whole place. The result looks fantastic. His attention to detail was excellent, and the finish is beautiful. He was professional, flexible, and very trustworthy throughout the process. I would highly recommend Miguel to anyone looking for a great painter.",
-  de:"Miguel hat bei mir kürzlich den Gotelé (Spritzputz) von den Wänden meiner Wohnung entfernt, sie perfekt geglättet und die ganze Wohnung gestrichen. Das Ergebnis sieht fantastisch aus. Er arbeitet sehr genau und die Oberfläche ist wunderschön. Er war professionell, flexibel und während des ganzen Vorgangs sehr vertrauenswürdig. Ich kann Miguel jedem empfehlen, der einen guten Maler sucht.",
-  es:"Miguel quitó hace poco el gotelé de las paredes de mi apartamento, las alisó perfectamente y pintó todo el piso. El resultado es fantástico. Cuida muchísimo los detalles y el acabado es precioso. Fue profesional, flexible y muy de fiar durante todo el proceso. Recomiendo a Miguel a cualquiera que busque un buen pintor."},
- {n:'Miguel G.',c:'#8e5ea2',o:'es',orig:"Decir que estoy muy contento con Miguel pintor muy profesional. Nos pintó toda la casa y nos encantó, la calidad, acabados y su trato muy correcto. Lo recomiendo a todos. Muy serio, todo lo que nos dijo lo cumplió. Un 10 en todo.",
-  de:"Ich bin sehr zufrieden mit Miguel, einem sehr professionellen Maler. Er hat unser ganzes Haus gestrichen und wir sind begeistert: Qualität, Ausführung und sein korrekter Umgang. Ich empfehle ihn allen. Sehr seriös, alles, was er gesagt hat, hat er eingehalten. Eine 10 in allem."},
- {n:'Ma Dolores M.',c:'#e8590c',o:'es',orig:"Han venido a casa a pintar las terrazas Miguel y Esteban. Ha sido una gran suerte dar con ellos ya que han resultado ser unos grande profesionales y unas estupendas personas. Han realizado un buen trabajo y ha un precio estupendo. Sin duda los recomendamos a cualquiera que necesite pintores. Saludos de Rosita y su hermana (M. Dolores)",
-  de:"Miguel und Esteban sind zu uns gekommen, um die Terrassen zu streichen. Wir hatten grosses Glück, sie zu finden: Sie sind grossartige Profis und wunderbare Menschen. Sie haben gute Arbeit zu einem tollen Preis geleistet. Wir empfehlen sie ohne Zweifel jedem, der Maler braucht. Liebe Grüsse von Rosita und ihrer Schwester (M. Dolores)."},
- {n:'Daniel F.',c:'#c2255c',o:'es',orig:"Excelente experiencia con Miguel pintando mi apartamento en Cullera. Miguel es muy profesional, te escucha y te aconseja para que tu casa quede lo mejor posible. Tanto él como su empleado Juan Carlos cuidaron de todos los detalles y limpieza posterior. Contaré con él sin duda ara futuros proyectos.",
-  de:"Hervorragende Erfahrung mit Miguel, der meine Wohnung in Cullera gestrichen hat. Miguel ist sehr professionell, hört zu und berät dich, damit dein Zuhause so gut wie möglich wird. Er und sein Mitarbeiter Juan Carlos haben sich um alle Details und die anschliessende Reinigung gekümmert. Ich werde ihn ohne Zweifel für künftige Projekte wieder beauftragen."},
- {n:'Keith S.',c:'#2f9e44',o:'en',orig:"Punctual, experienced, hardworking and reliable professional painters, who only use the best quality materials. They do a great job and I have no hesitation in recommending them! Robbie",
-  de:"Pünktliche, erfahrene, fleissige und zuverlässige Profimaler, die nur Material bester Qualität verwenden. Sie leisten grossartige Arbeit und ich empfehle sie ohne zu zögern! Robbie",
-  es:"Pintores profesionales puntuales, con experiencia, trabajadores y fiables, que solo usan materiales de la mejor calidad. ¡Hacen un gran trabajo y los recomiendo sin dudarlo! Robbie"}
-];
-const AREAS=[0,0,14,11,24,10,6,8,11,12];
-let lang='de'; try{const s=localStorage.getItem('artmar-lang'); if(s==='es'||s==='de') lang=s}catch(e){}
-let rooms=[{t:0,a:0}], photos=[], day=null, slot=null, unlocked=false; const counts={doors:0,rads:0};
 const $=id=>document.getElementById(id);
-const fmt=n=>(Math.round(n/10)*10).toLocaleString('de-CH');
-Object.assign(TXT.de,{proofT:'So arbeiten wir',baB:'Vorher',baA:'Nachher',baAria:'Vorher-Nachher-Regler',baCap:'Schlafzimmer: dunkle Wand, wieder hell. Projekt unseres Familienbetriebs in Spanien.',galCap:'Aus unserem Familienbetrieb in Spanien. In der Zentralschweiz arbeiten wir am Wochenende.',aboutT:'Wer wir sind',aboutP:'Artmar Malerei ist ein Familienbetrieb. In der Familie wird seit über 25 Jahren gestrichen, und genau diese Arbeitsweise bringen wir nach Luzern und Zug: Möbel und Böden sauber abgedeckt, klarer Preis, saubere Übergabe. Wir arbeiten am Wochenende, darum sind unsere Termine begrenzt.',chips2:['🏅 5 Jahre Garantie','❤️ Familienbetrieb','⭐ 5,0 auf Google (Spanien)','🧰 Material inklusive']});
-Object.assign(TXT.es,{proofT:'Así trabajamos',baB:'Antes',baA:'Después',baAria:'Control antes y después',baCap:'Dormitorio: pared oscura, otra vez clara. Proyecto de nuestra empresa familiar en España.',galCap:'De nuestra empresa familiar en España. En Suiza central trabajamos los fines de semana.',aboutT:'Quiénes somos',aboutP:'Artmar Malerei es una empresa familiar. En la familia se pinta desde hace más de 25 años, y esa misma forma de trabajar la traemos a Lucerna y Zug: muebles y suelos bien cubiertos, precio claro, entrega limpia. Trabajamos los fines de semana, por eso las citas son limitadas.',chips2:['🏅 5 años de garantía','❤️ Empresa familiar','⭐ 5,0 en Google (España)','🧰 Material incluido']});
-const L=()=>TXT[lang];
+let lang='de';try{const s=localStorage.getItem('artmar-lang');if(s==='es'||s==='de')lang=s}catch(e){}
 
-// lead log (Google Sheet via Apps Script): visit / calc / unlock / book
-const LOG_URL="https://script.google.com/macros/s/AKfycbz2lSCSD24gw2-rhU6shPzHgexH8dbfNNljDtRSUd_KpIfv5UyQkLpM2eqxCP1ZvywH/exec";
-let SID='';try{SID=localStorage.getItem('artmar-sid')||'';if(!SID){SID=Math.random().toString(36).slice(2,8)+Date.now().toString(36).slice(-4);localStorage.setItem('artmar-sid',SID)}}catch(e){SID=Math.random().toString(36).slice(2,10)}
-const SRC=(()=>{try{const q=new URLSearchParams(location.search);if(q.get('gclid'))return 'google-ads';if(q.get('utm_source'))return q.get('utm_source');if(document.referrer)return new URL(document.referrer).hostname;}catch(e){}return 'direkt'})();
-function track(ev,x){try{const body=JSON.stringify(Object.assign({ev,sid:SID,src:SRC,lang},x||{}));if(navigator.sendBeacon){navigator.sendBeacon(LOG_URL,new Blob([body],{type:'text/plain'}))}else{fetch(LOG_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body,keepalive:true})}}catch(e){}}
+// keep ad parameters (utm, fbclid, gclid) when going to the calculator
+(function(){const q=location.search;if(!q)return;document.querySelectorAll('a.q').forEach(a=>{a.href=a.getAttribute('href').split('?')[0]+q})})();
 
-function applyLang(){
+const REVIEWS=[
+ {n:'Bas I.',c:'#1f6feb',de:"Miguel hat bei mir kürzlich den Gotelé (Spritzputz) von den Wänden meiner Wohnung entfernt, sie perfekt geglättet und die ganze Wohnung gestrichen. Das Ergebnis sieht fantastisch aus. Er arbeitet sehr genau und die Oberfläche ist wunderschön. Er war professionell, flexibel und während des ganzen Vorgangs sehr vertrauenswürdig.",es:"Miguel quitó hace poco el gotelé de las paredes de mi apartamento, las alisó perfectamente y pintó todo el piso. El resultado es fantástico. Cuida muchísimo los detalles y el acabado es precioso. Fue profesional, flexible y muy de fiar durante todo el proceso."},
+ {n:'Miguel G.',c:'#8e5ea2',de:"Ich bin sehr zufrieden mit Miguel, einem sehr professionellen Maler. Er hat unser ganzes Haus gestrichen und wir sind begeistert: Qualität, Ausführung und sein korrekter Umgang. Sehr seriös, alles, was er gesagt hat, hat er eingehalten. Eine 10 in allem.",es:"Decir que estoy muy contento con Miguel, pintor muy profesional. Nos pintó toda la casa y nos encantó, la calidad, acabados y su trato muy correcto. Muy serio, todo lo que nos dijo lo cumplió. Un 10 en todo."},
+ {n:'Ma Dolores M.',c:'#e8590c',de:"Miguel und Esteban sind zu uns gekommen, um die Terrassen zu streichen. Wir hatten grosses Glück, sie zu finden: Sie sind grossartige Profis und wunderbare Menschen. Sie haben gute Arbeit zu einem tollen Preis geleistet.",es:"Han venido a casa a pintar las terrazas Miguel y Esteban. Ha sido una gran suerte dar con ellos, ya que han resultado ser unos grandes profesionales y unas estupendas personas. Han realizado un buen trabajo y a un precio estupendo."},
+ {n:'Daniel F.',c:'#c2255c',de:"Hervorragende Erfahrung mit Miguel, der meine Wohnung in Cullera gestrichen hat. Miguel ist sehr professionell, hört zu und berät dich. Er und sein Mitarbeiter Juan Carlos haben sich um alle Details und die anschliessende Reinigung gekümmert.",es:"Excelente experiencia con Miguel pintando mi apartamento en Cullera. Miguel es muy profesional, te escucha y te aconseja. Tanto él como su empleado Juan Carlos cuidaron de todos los detalles y de la limpieza posterior."},
+ {n:'Keith S.',c:'#2f9e44',de:"Pünktliche, erfahrene, fleissige und zuverlässige Profimaler, die nur Material bester Qualität verwenden. Sie leisten grossartige Arbeit und ich empfehle sie ohne zu zögern!",es:"Pintores profesionales puntuales, con experiencia, trabajadores y fiables, que solo usan materiales de la mejor calidad. ¡Hacen un gran trabajo y los recomiendo sin dudarlo!"}
+];
+const WORK=[
+ ['ba_vorher.jpg','vor'],['ba_nachher.jpg','nach'],['innen_wohnraum.jpg','c1'],['haus_gelb_1.jpg','c2'],['innen_zimmer.jpg','c3'],['haus_weiss_2.jpg','c2'],['innen_tuer.jpg','c1'],['innen_klein.jpg','c3'],['haus_weiss_3.jpg','c2'],['innen_schlafzimmer.jpg','c4'],['arbeit_leiter.jpg','c5'],['decke.jpg','c6']
+];
+const FAQ={
+ de:[['Was kostet das Streichen?','Das hängt von Fläche und Zustand ab. Mit unserem Rechner siehst du deinen Richtpreis in 30 Sekunden. Den verbindlichen Fixpreis bekommst du nach der Besichtigung, Material inklusive, ohne MWST.'],['Wo arbeitet ihr?','In Luzern, Zug, Zürich und Umgebung. Bei einer anderen Region frag uns einfach kurz per WhatsApp.'],['Welche Arbeiten bietet ihr an?','Wir streichen Wände und Decken in Wohnungen und Häusern, innen und matt. Fassaden und Lackierarbeiten (Türen, Heizkörper) machen wir derzeit nicht.'],['Wie lange dauert es?','Ein Zimmer in 1 Tag, eine Wohnung in 2–3 Tagen, ein Haus in 3–4 Tagen. Wir arbeiten zu zweit.'],['Muss ich Möbel wegräumen?','Nein. Wir rücken Möbel zusammen und decken Möbel und Böden sauber ab.'],['Wie bekomme ich einen Termin?','Berechne deinen Richtpreis und wähle einen freien Termin für die Besichtigung. Unter der Woche sind wir auf Baustellen, darum Samstag und Sonntag. Wir bestätigen per WhatsApp.']],
+ es:[['¿Cuánto cuesta pintar?','Depende de la superficie y del estado. Con nuestra calculadora ves tu precio orientativo en 30 segundos. El precio fijo y definitivo te lo damos tras la visita, con material incluido y sin IVA.'],['¿Dónde trabajáis?','En Lucerna, Zug, Zúrich y alrededores. Si estás en otra zona, escríbenos por WhatsApp.'],['¿Qué trabajos hacéis?','Pintamos paredes y techos de pisos y casas, por dentro y en acabado mate. De momento no hacemos fachadas ni lacados (puertas, radiadores).'],['¿Cuánto se tarda?','Una habitación en 1 día, un piso en 2–3 días, una casa en 3–4 días. Trabajamos en equipo.'],['¿Tengo que quitar los muebles?','No. Juntamos los muebles y los cubrimos, igual que los suelos.'],['¿Cómo consigo una cita?','Calcula tu precio orientativo y elige un horario libre para la visita. Entre semana estamos en obra, así que sábado y domingo. Lo confirmamos por WhatsApp.']]
+};
+const CAP={de:{vor:'Vorher',nach:'Nachher',c1:'Wohnung',c2:'Haus',c3:'Zimmer',c4:'Schlafzimmer',c5:'Bei der Arbeit',c6:'Decke mit Airless'},es:{vor:'Antes',nach:'Después',c1:'Piso',c2:'Casa',c3:'Habitación',c4:'Dormitorio',c5:'Trabajando',c6:'Techo con airless'}};
+const ES={
+ ann:'NUEVO: Tu precio orientativo en 30 segundos, online y sin llamadas',annBtn:'Saber más',
+ n1:'Inicio',n2:'Servicios',n3:'Quiénes somos',n4:'Reseñas',n5:'Contacto',cta:'Precio gratis',
+ gRev:'31 reseñas (España)',h1:'Pintores profesionales en <span class="hl">Lucerna y Zug</span>',
+ heroP:'En Artmar Malerei pintamos paredes y techos de pisos y casas: todo bien cubierto, con precio fijo con material incluido y 5 años de garantía en el trabajo. Como empresa familiar con más de 25 años de experiencia, tratamos tu casa como si fuera la nuestra.',
+ anT:'Artmar Pinturas, ¡ahora también en Suiza!',anS:'La misma familia, el mismo trabajo, nuevo país',
+ anP1:'Artmar Malerei es la rama suiza de nuestra empresa familiar Artmar Pinturas, de España. Allí la familia pinta pisos y casas desde hace más de 25 años.',
+ anP2:'El nombre es nuevo, la forma de trabajar no: muebles y suelos bien cubiertos, acuerdos claros y una entrega limpia. En Lucerna, Zug y alrededores trabajamos los fines de semana.',
+ more:'Saber más',anF:'Artmar Pinturas 🇪🇸 → Artmar Malerei 🇨🇭',
+ rvL:'Nuestras reseñas',rvT:'Pintores muy bien valorados, <span class="hl" style="color:var(--sun2)">de nuestra familia</span>',rvEx:'EXCELENTE',rvN:'31 reseñas en Google',
+ rvNote:'Reseñas de nuestra empresa familiar en España (Artmar Pinturas). <a href="https://share.google/Q0aba34GznFFTA015" target="_blank" rel="noopener">Ver las reseñas reales en Google</a>',
+ yrs:'años de experiencia',abL:'Quiénes somos',abT:'Una empresa familiar, ¡para tu casa!',
+ abP1:'Artmar es una empresa familiar. En nuestra familia se pinta desde hace más de 25 años, y en ese tiempo hemos terminado cientos de pisos y casas. Con Artmar Malerei traemos esa misma forma de trabajar a Lucerna y Zug.',
+ abP2:'Creemos en la honestidad, en la comunicación clara y en cumplir nuestra palabra. Recibes un precio fijo que no sube y hablas directamente con nosotros por WhatsApp, sin centralitas. Tratamos cada casa como si fuera la nuestra.',
+ abFam:'En Artmar eres más que un cliente: ¡eres parte de la familia!',
+ svL:'Pintores en Lucerna y Zug',svT:'Nuestros trabajos de pintura',
+ svP:'Pintamos paredes y techos de pisos y casas, por dentro y en mate. Cubriendo con cuidado, encintando bien y con buena pintura, conseguimos un resultado uniforme: una habitación, un piso entero o antes de entregar el piso.',
+ s1T:'Pintar el piso',s1P:'Una habitación o el piso entero: juntamos los muebles, lo cubrimos todo y pintamos las paredes limpias y uniformes.',s1A:'Calcular precio',
+ s2T:'Pintar techos',s2P:'Techos sin marcas ni rayas, con rodillo o con pistola airless, según lo que mejor vaya en tu espacio.',
+ s3T:'Entrega del piso',s3P:'¿Agujeros, manchas o paredes oscuras? Dejamos tu piso otra vez claro y listo para entregar, rápido y en fin de semana.',
+ s4T:'Pintar casa por dentro',s4P:'De la entrada al dormitorio: una casa entera la pintamos en 3–4 días, con precio fijo y material incluido.',
+ wkL:'Empresa familiar desde hace más de 25 años',wkT:'Nuestro trabajo',wkNote:'Proyectos de nuestra empresa familiar en España.',
+ bnT:'Resultados limpios de pintores de la familia, en Lucerna, Zug y alrededores',
+ whL:'Por qué Artmar',whT:'Por qué elegirnos',
+ w1T:'5 años de garantía',w1P:'Respondemos por nuestro trabajo. Con 5 años de garantía por escrito, seguimos ahí también después de la última pincelada.',
+ w2T:'Empresa familiar',w2P:'Más de 25 años de experiencia en la familia. Del primer contacto a la última pincelada, tratamos tu casa como la nuestra.',
+ w3T:'Contacto directo',w3P:'Nos escribes directamente por WhatsApp, sin centralitas ni esperas. Citas, colores y dudas, rápido y en persona.',
+ w4T:'Precio fijo que no sube',w4P:'Tras la visita recibes tu precio fijo por escrito, material incluido y sin IVA. Después ya no cambia.',
+ goT:'Empieza tu proyecto hoy',
+ fnT:'Precio fijo con material incluido',fnP:'Sin sorpresas en la factura: en el precio va todo lo necesario para un resultado limpio. Tu precio orientativo lo ves online en 30 segundos y el precio fijo te lo damos tras la visita.',fnB:'Calcular precio',
+ f1:'Material incluido',f2:'Suelos y muebles cubiertos',f3:'Bordes bien encintados',f4:'Recogida y limpieza',f5:'Sin IVA',
+ prL:'Así de fácil',prT:'Nuestro proceso sencillo en 5 pasos',prP:'Pintar tu casa tiene que ser ilusionante, no estresante. Por eso trabajamos con un proceso claro que respeta tu tiempo y tu espacio, con comunicación honesta desde el principio.',
+ st1:'Paso 1',st2:'Paso 2',st3:'Paso 3',st4:'Paso 4',st5:'Paso 5',
+ p1T:'Precio online',p1P:'Describe brevemente qué hay que pintar y ve tu precio orientativo en 30 segundos. Gratis y sin compromiso.',
+ p2T:'Visita',p2P:'Pasamos el sábado o el domingo. 15 minutos en tu casa: lo vemos todo y resolvemos tus dudas.',
+ p3T:'Precio fijo y fecha',p3P:'Recibes tu precio fijo por escrito, que ya no sube. Decidimos juntos el color y la fecha.',
+ p4T:'Pintamos',p4P:'Cubrimos muebles y suelos, encintamos los bordes y pintamos. Una habitación en 1 día, un piso en 2–3 días.',
+ p5T:'Entrega',p5P:'Recogemos y lo revisamos todo contigo. Solo cuando estás contento hemos terminado.',
+ fqL:'Preguntas',fqT:'Preguntas frecuentes',fqP:'¿Más dudas? Escríbenos por WhatsApp.',
+ arL:'Tu pintor en Suiza central',arT:'Trabajamos en Lucerna, Zug y alrededores',
+ fcT:'Renueva tu casa con color, cuidado y oficio.',ftP:'Tu empresa de pintura cercana y de confianza para Lucerna, Zug y alrededores.',
+ ftA:'Zona de trabajo',ftH:'Visitas',ftHs:'Sábado y domingo',ftQ:'Enlaces',ftR:'Calculadora de precio',ftS:'Nuestros servicios',ftG:'Zonas',ftU:'y alrededores',ftC:'Todos los derechos reservados.'
+};
+const DE={};document.querySelectorAll('[data-k]').forEach(e=>{if(!(e.dataset.k in DE))DE[e.dataset.k]=e.innerHTML});
+
+function render(){
  document.documentElement.lang=lang;
- document.querySelectorAll('[data-i]').forEach(e=>{const v=L()[e.dataset.i]; if(typeof v==='string') e.innerHTML=v});
+ const T=lang==='es'?ES:DE;
+ document.querySelectorAll('[data-k]').forEach(e=>{const v=T[e.dataset.k];if(v!==undefined)e.innerHTML=v});
  document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===lang));
- $('inc').innerHTML=L().inc.map(x=>`<li>${x}</li>`).join('');
- $('why').innerHTML=L().why.map(x=>`<div><span>${x[0]}</span><b>${x[1]}</b><small>${x[2]}</small></div>`).join('');
- $('chips').innerHTML=L().areas.map(x=>`<span>${x}</span>`).join('');
- $('chips2').innerHTML=L().chips2.map(x=>`<span>${x}</span>`).join('');
- document.querySelectorAll('[data-al]').forEach(e=>e.setAttribute('aria-label',L()[e.dataset.al]));
- $('faq').innerHTML=L().faq.map(x=>`<details><summary>${x[0]}</summary><p>${x[1]}</p></details>`).join('');
- $('rv').innerHTML=REVIEWS.map(r=>{const t=r[lang]||r.de,show=r.o!==lang;return `<article><div class="who"><span class="av" style="background:${r.c}">${r.n[0]}</span><div><b>${r.n}</b><small>${L().rvTag} · <span class="stars">★★★★★</span></small></div></div><p>${t}</p>${show?`<details><summary>${L().rvOrig} (${L().rvLang[r.o]})</summary><p lang="${r.o}">${r.orig}</p></details>`:''}</article>`}).join('');
- drawDays(); calc();
- document.querySelectorAll('[data-ph]').forEach(e=>{e.placeholder=L()[e.dataset.ph]});
+ const gl='<svg class="gl" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>';
+ $('rv').innerHTML=REVIEWS.map(r=>`<article class="rv"><div class="who"><span class="av" style="background:${r.c}">${r.n[0]}</span><div><b>${r.n}</b><small class="st">★★★★★</small></div>${gl}</div><p>${r[lang]}</p></article>`).join('');
+ const C=CAP[lang];const items=WORK.map(w=>`<figure>${w[1]==='vor'||w[1]==='nach'?`<span class="tag">${C[w[1]]}</span>`:''}<img src="img/${w[0]}" alt="" width="230" height="300"><figcaption>${C[w[1]]}</figcaption></figure>`).join('');
+ $('mq').innerHTML=items+items;
+ $('faq').innerHTML=FAQ[lang].map(x=>`<details><summary>${x[0]}</summary><p>${x[1]}</p></details>`).join('');
 }
-$('baR').addEventListener('input',e=>{$('ba').style.setProperty('--p',e.target.value+'%')});
-document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>{lang=b.dataset.lang;try{localStorage.setItem('artmar-lang',lang)}catch(e){};applyLang()});
-
-// photos (kept in this browser only; the client attaches them in WhatsApp)
-$('photos').addEventListener('change',e=>{[...e.target.files].slice(0,12-photos.length).forEach(f=>photos.push({name:f.name,url:URL.createObjectURL(f)}));e.target.value='';drawThumbs();calc()});
-const drop=document.querySelector('.drop');
-['dragover','dragenter'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault()}));
-drop.addEventListener('drop',e=>{e.preventDefault();[...e.dataTransfer.files].filter(f=>f.type.startsWith('image/')).slice(0,12-photos.length).forEach(f=>photos.push({name:f.name,url:URL.createObjectURL(f)}));drawThumbs();calc()});
-function drawThumbs(){$('thumbs').innerHTML='';photos.forEach((p,i)=>{const f=document.createElement('figure');const im=document.createElement('img');im.src=p.url;im.alt=p.name;const b=document.createElement('button');b.type='button';b.textContent='×';b.setAttribute('aria-label','Foto entfernen');b.onclick=()=>{URL.revokeObjectURL(p.url);photos.splice(i,1);drawThumbs();calc()};f.append(im,b);$('thumbs').appendChild(f)})}
-
-function parseArea(t){
- let m=t.match(/(\d{1,3}(?:[.,]\d+)?)\s*(?:m\s*2|m²|m\^2|qm|quadrat|metros?|mt2)/i);
- if(m)return Math.round(parseFloat(m[1].replace(',','.')));
- m=t.match(/(\d(?:[.,]\d)?)\s*[- ]?(?:zimmer|zi\b|habitaci|hab\b|dorm|pi[eè]ces|rooms?)/i);
- if(m)return Math.round(parseFloat(m[1].replace(',','.'))*21);
- return 0}
-let areaManual=false;
-$('desc').addEventListener('input',()=>{if(!areaManual){const a=parseArea($('desc').value);$('area').value=a||''}calc()});
-$('area').addEventListener('input',()=>{areaManual=$('area').value!=='';calc()});
-document.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{const k=b.dataset.c;counts[k]=Math.max(0,Math.min(20,counts[k]+ +b.dataset.d));$(k).textContent=counts[k];calc()});
-document.querySelectorAll('main input,main select').forEach(e=>e.addEventListener('change',calc));
-['name','tel','plz'].forEach(id=>$(id).addEventListener('input',calc));
-
-function nextDays(){const out=[];const d=new Date();d.setHours(0,0,0,0);for(let i=1;out.length<8&&i<40;i++){const x=new Date(d);x.setDate(d.getDate()+i);const w=x.getDay();const s=w===0?VISIT.sun:w===6?VISIT.sat:VISIT.weekday;if(s.length)out.push({date:x,slots:s})}return out}
-let DAYS=nextDays();
-function drawDays(){
- const box=$('days');box.innerHTML='';
- DAYS.forEach((d,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed',day===i);
-  b.innerHTML=`<small>${L().dow[d.date.getDay()]}</small><b>${d.date.getDate()}.</b><small>${d.date.toLocaleDateString(lang==='de'?'de-CH':'es-ES',{month:'short'})}</small>`;
-  b.onclick=()=>{day=i;slot=null;drawDays();calc()};box.appendChild(b)});
- const sb=$('slots');sb.innerHTML='';
- if(day!==null) DAYS[day].slots.forEach(s=>{const b=document.createElement('button');b.type='button';b.textContent=s;b.setAttribute('aria-pressed',slot===s);b.onclick=()=>{slot=s;drawDays();calc()};sb.appendChild(b)});
-}
-
-let lastKey='', LAST={};
-const telOk=v=>{const d=v.replace(/[^0-9+]/g,'');const n=d.replace(/^\+/,'');return /^\+?[0-9]{9,15}$/.test(d)&&!/^0{3}/.test(n)};
-function calc(){
- const T=L();
- const h=2.5;
- const condV=0.15;
- const area=Math.min(400,Math.max(0,Math.round(+$('area').value||0)));rooms=[{t:0,a:area}];
- const ceilOn=true,dark=document.querySelector('input[name=col]:checked').value==='1',nic=false,furn=document.querySelector('input[name=furn]:checked').value==='1';
- let wall=0,ceil=0; const floor=rooms.reduce((x,r)=>x+(r.a||0),0); rooms.forEach(r=>{const a=r.a||0;wall+=r.t<2?a*2.2*(h/2.5):4*Math.sqrt(a)*h*0.88;if(ceilOn)ceil+=a});
- const base=wall*RATE_WALL+ceil*RATE_CEIL;
- let est=base*(1+condV+(dark?0.25:0)+(nic?0.3:0)+(furn?0.1:0))+counts.doors*DOOR+counts.rads*RAD;
- const minApplied=est<MIN_JOB; est=Math.max(est,MIN_JOB);
- const range='CHF '+fmt(est*LOW)+' – '+fmt(est*HIGH);
- $('rangeBig').textContent=range; $('rangeBig').classList.toggle('locked',!unlocked);
- $('range').textContent=unlocked?range:T.lockedDock; $('dockCta').textContent=unlocked?T.dockBtn:T.dockLocked;
- $('teaser').textContent=(!unlocked&&area>0)?T.teaser('CHF '+fmt(est*LOW)):''; $('areaHint').textContent=area>0?T.areaOk(area):T.areaNo;
- const roomsTxt=($('desc').value.trim().slice(0,300)||T.types[0])+' ('+T.ca+' '+area+' m²)'; $('gate').hidden=unlocked; $('nextHint').hidden=!unlocked;
- document.querySelector('.dock .cta').setAttribute('href',unlocked?'#book':'#priceCard');
- const key=range; if(key!==lastKey){lastKey=key;const b=$('bar');b.style.transition='none';b.style.width='0';requestAnimationFrame(()=>{b.style.transition='';b.style.width='100%'})}
- const lines=[[T.walls,Math.round(wall)+' m²'],...(ceilOn?[[T.ceils,Math.round(ceil)+' m²']]:[]),
-  ...(dark?[[T.dark,T.darkV]]:[]),...(nic?[[T.nic,T.incl]]:[]),...(furn?[[T.furn,T.incl]]:[]),...(counts.doors?[[T.doors,counts.doors+' ×']]:[]),...(counts.rads?[[T.rads,counts.rads+' ×']]:[]),...(minApplied?[[T.min,'CHF '+fmt(MIN_JOB)]]:[]),[T.dur,T.durV(floor)]];
- $('break').innerHTML=lines.map(([a,b])=>`<div><span>${a}</span><span>${b}</span></div>`).join('');
- $('photoNote').textContent=photos.length?T.photosN(photos.length):T.photos0;
- const when=(day!==null&&slot)?`${T.dow[DAYS[day].date.getDay()]} ${DAYS[day].date.toLocaleDateString(lang==='de'?'de-CH':'es-ES',{day:'numeric',month:'long'})}, ${slot}`:'…';
- const opts=[T.dur+': '+T.durV(floor),ceilOn?T.withC:T.noC,dark&&T.dark,nic&&T.nic,furn&&T.furn,counts.doors&&counts.doors+' '+T.doors,counts.rads&&counts.rads+' '+T.rads].filter(Boolean).join(', ');
- const m=T.m({when,rooms:roomsTxt,opts,cond:T.condV[[0,0.15,0.35].indexOf(condV)],range,name:$('name').value||'…',tel:$('tel').value||'…',plz:$('plz').value||'…',photos:T.mPhotos(photos.length)});
- $('msg').textContent=m;
- const ok=unlocked&&day!==null&&slot;
- LAST={range,rooms:roomsTxt,opts};
- const a=$('wa2'); a.textContent=ok?T.send:T.pick; a.setAttribute('aria-disabled',!ok);
- a.href=(WHATSAPP?'https://wa.me/'+WHATSAPP:'https://wa.me/')+'?text='+encodeURIComponent(m);
- $('waNum').textContent=WHATSAPP?'WhatsApp: +'+WHATSAPP:'';
-}
-$('unlock').onclick=()=>{const T=L();const n=$('name').value.trim(),t=$('tel').value.trim();
- if(!(+$('area').value>0)){$('gErr').textContent=T.gErrA;$('area').focus();return}
- if(!telOk(t)){$('gErr').textContent=T.gErrT;$('tel').focus();return}
- $('gErr').textContent='';unlocked=true;calc();trackLead();
- track('unlock',{name:n,tel:t,plz:$('plz').value.trim(),range:LAST.range,det:LAST.rooms+'\n'+LAST.opts});
- $('priceCard').scrollIntoView({behavior:'smooth',block:'start'})};
-$('copy').onclick=async()=>{const T=L();try{await navigator.clipboard.writeText($('msg').textContent);$('copy').textContent=T.copied}catch(e){const r=document.createRange();r.selectNodeContents($('msg'));const s=getSelection();s.removeAllRanges();s.addRange(r);$('copy').textContent=T.selected}setTimeout(()=>$('copy').textContent=T.copy,2500)};
-applyLang();
-track('visit');
-let _calcSent=false;document.querySelector('main').addEventListener('input',()=>{if(!_calcSent){_calcSent=true;track('calc',{range:LAST.range})}});
-document.querySelector('main').addEventListener('change',()=>{if(!_calcSent){_calcSent=true;track('calc',{range:LAST.range})}});
-$('wa2').addEventListener('click',()=>{if($('wa2').getAttribute('aria-disabled')==='false'){try{if(window.fbq)fbq('track','Schedule');}catch(e){}track('book',{name:$('name').value.trim(),tel:$('tel').value.trim(),plz:$('plz').value.trim(),range:LAST.range,when:(day!==null&&slot)?`${DAYS[day].date.toLocaleDateString('de-CH')} ${slot}`:'',det:LAST.rooms+'\n'+LAST.opts})}});
+document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>{lang=b.dataset.lang;try{localStorage.setItem('artmar-lang',lang)}catch(e){};render()});
+const bg=document.querySelector('.burger'),menu=$('menu');
+bg.onclick=()=>{const o=menu.classList.toggle('open');bg.setAttribute('aria-expanded',o)};
+menu.querySelectorAll('a').forEach(a=>a.onclick=()=>{menu.classList.remove('open');bg.setAttribute('aria-expanded','false')});
+document.querySelectorAll('a.q').forEach(a=>a.addEventListener('click',()=>{try{if(window.fbq)fbq('trackCustom','CtaRechner')}catch(e){}}));
+render();
 </script>
-
 </body></html>
