@@ -175,6 +175,22 @@ ul.inc li::before{content:"✓ ";color:var(--ok);font-weight:800}
 .rv .who b{display:block;line-height:1.2}.rv .who small{color:var(--muted);font-size:12px}
 .rv p{margin:0;font-size:14.5px;line-height:1.45}
 .rv details{font-size:13px;color:var(--muted)}.rv details summary{cursor:pointer;font-weight:600}.rv details p{font-size:13px;margin-top:4px;color:var(--muted)}
+
+/* trust: chips, before/after, gallery */
+.chips2{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
+.chips2 span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:5px 10px;font-size:12.5px;font-weight:600;line-height:1.2}
+.ba{position:relative;aspect-ratio:1/1;overflow:hidden;border-radius:16px;background:var(--line);touch-action:pan-y;--p:50%}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
+.ba .bb{clip-path:inset(0 calc(100% - var(--p)) 0 0)}
+.ba .bar{position:absolute;top:0;bottom:0;left:var(--p);width:3px;margin-left:-1.5px;background:#fff;box-shadow:0 0 0 1px rgba(16,33,67,.25)}
+.ba .bar::after{content:"\2194";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;background:var(--sun);color:var(--sun-ink);display:grid;place-items:center;font-weight:800;font-size:18px;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.ba .tg{position:absolute;top:10px;padding:4px 10px;border-radius:999px;background:rgba(16,33,67,.82);color:#fff;font-size:12px;font-weight:700;letter-spacing:.3px}
+.ba .tg.l{left:10px}.ba .tg.r{right:10px}
+.ba input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
+.gal{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;margin-inline:-4px;padding-inline:4px;-webkit-overflow-scrolling:touch}
+.gal img{flex:0 0 auto;height:190px;width:auto;max-width:78%;object-fit:cover;border-radius:12px;scroll-snap-align:start;background:var(--line)}
+.cap{margin:0;font-size:13px;color:var(--muted);line-height:1.4}
+.about p{margin:0;font-size:15px;line-height:1.55}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
@@ -187,10 +203,18 @@ ul.inc li::before{content:"✓ ";color:var(--ok);font-weight:800}
   <h1 data-i="h1"></h1>
   <p data-i="lead"></p>
   <div class="flow"><span data-i="f1"></span><i>→</i><span data-i="f2"></span><i>→</i><span data-i="f3"></span></div>
+  <div class="chips2" id="chips2"></div>
  </div>
 </header>
 
 <main class="wrap" style="margin-top:18px">
+ <section class="card" aria-labelledby="sp">
+  <h2 id="sp" style="font-family:var(--display);margin:0;font-size:21px" data-i="proofT"></h2>
+  <div class="ba" id="ba"><img src="img/ba_nachher.jpg" alt="" width="800" height="1000" loading="eager"><img class="bb" src="img/ba_vorher.jpg" alt="" width="800" height="1000" loading="eager"><span class="tg l" data-i="baB"></span><span class="tg r" data-i="baA"></span><i class="bar"></i><input type="range" min="0" max="100" value="50" id="baR" data-al="baAria"></div>
+  <p class="cap" data-i="baCap"></p>
+  <div class="gal" aria-label="Galerie"><img src="img/haus_gelb_1.jpg" alt="" width="900" height="1198" loading="lazy"><img src="img/haus_weiss_2.jpg" alt="" width="1000" height="646" loading="lazy"><img src="img/haus_weiss_3.jpg" alt="" width="1000" height="646" loading="lazy"><img src="img/arbeit_leiter.jpg" alt="" width="900" height="1054" loading="lazy"></div>
+  <p class="cap" data-i="galCap"></p>
+ </section>
  <section class="card" aria-labelledby="s2">
   <div class="step"><span>1</span><h2 id="s2" data-i="s2"></h2></div>
   <p class="hint" data-i="s2h"></p>
@@ -273,6 +297,11 @@ ul.inc li::before{content:"✓ ";color:var(--ok);font-weight:800}
   <h2 id="sw" style="font-family:var(--display);margin:0;font-size:21px" data-i="whyT"></h2>
   <div class="why" id="why"></div>
   <div style="display:flex;flex-direction:column;gap:8px"><b data-i="areaT"></b><div class="chips" id="chips"></div><p class="fine" data-i="areaS"></p></div>
+ </section>
+
+ <section class="card about" aria-labelledby="sa">
+  <h2 id="sa" style="font-family:var(--display);margin:0;font-size:21px" data-i="aboutT"></h2>
+  <p data-i="aboutP"></p>
  </section>
 
  <section class="card faq" aria-labelledby="sf">
@@ -362,6 +391,8 @@ let lang='de'; try{const s=localStorage.getItem('artmar-lang'); if(s==='es'||s==
 let rooms=[{t:0,a:0}], photos=[], day=null, slot=null, unlocked=false; const counts={doors:0,rads:0};
 const $=id=>document.getElementById(id);
 const fmt=n=>(Math.round(n/10)*10).toLocaleString('de-CH');
+Object.assign(TXT.de,{proofT:'So arbeiten wir',baB:'Vorher',baA:'Nachher',baAria:'Vorher-Nachher-Regler',baCap:'Schlafzimmer: dunkle Wand, wieder hell. Projekt unseres Familienbetriebs in Spanien.',galCap:'Aus unserem Familienbetrieb in Spanien. In der Zentralschweiz arbeiten wir am Wochenende.',aboutT:'Wer wir sind',aboutP:'Artmar Malerei ist ein Familienbetrieb. In der Familie wird seit über 25 Jahren gestrichen, und genau diese Arbeitsweise bringen wir nach Luzern und Zug: Möbel und Böden sauber abgedeckt, klarer Preis, saubere Übergabe. Wir arbeiten am Wochenende, darum sind unsere Termine begrenzt.',chips2:['🏅 5 Jahre Garantie','❤️ Familienbetrieb','⭐ 5,0 auf Google (Spanien)','🧰 Material inklusive']});
+Object.assign(TXT.es,{proofT:'Así trabajamos',baB:'Antes',baA:'Después',baAria:'Control antes y después',baCap:'Dormitorio: pared oscura, otra vez clara. Proyecto de nuestra empresa familiar en España.',galCap:'De nuestra empresa familiar en España. En Suiza central trabajamos los fines de semana.',aboutT:'Quiénes somos',aboutP:'Artmar Malerei es una empresa familiar. En la familia se pinta desde hace más de 25 años, y esa misma forma de trabajar la traemos a Lucerna y Zug: muebles y suelos bien cubiertos, precio claro, entrega limpia. Trabajamos los fines de semana, por eso las citas son limitadas.',chips2:['🏅 5 años de garantía','❤️ Empresa familiar','⭐ 5,0 en Google (España)','🧰 Material incluido']});
 const L=()=>TXT[lang];
 
 // lead log (Google Sheet via Apps Script): visit / calc / unlock / book
@@ -377,11 +408,14 @@ function applyLang(){
  $('inc').innerHTML=L().inc.map(x=>`<li>${x}</li>`).join('');
  $('why').innerHTML=L().why.map(x=>`<div><span>${x[0]}</span><b>${x[1]}</b><small>${x[2]}</small></div>`).join('');
  $('chips').innerHTML=L().areas.map(x=>`<span>${x}</span>`).join('');
+ $('chips2').innerHTML=L().chips2.map(x=>`<span>${x}</span>`).join('');
+ document.querySelectorAll('[data-al]').forEach(e=>e.setAttribute('aria-label',L()[e.dataset.al]));
  $('faq').innerHTML=L().faq.map(x=>`<details><summary>${x[0]}</summary><p>${x[1]}</p></details>`).join('');
  $('rv').innerHTML=REVIEWS.map(r=>{const t=r[lang]||r.de,show=r.o!==lang;return `<article><div class="who"><span class="av" style="background:${r.c}">${r.n[0]}</span><div><b>${r.n}</b><small>${L().rvTag} · <span class="stars">★★★★★</span></small></div></div><p>${t}</p>${show?`<details><summary>${L().rvOrig} (${L().rvLang[r.o]})</summary><p lang="${r.o}">${r.orig}</p></details>`:''}</article>`}).join('');
  drawDays(); calc();
  document.querySelectorAll('[data-ph]').forEach(e=>{e.placeholder=L()[e.dataset.ph]});
 }
+$('baR').addEventListener('input',e=>{$('ba').style.setProperty('--p',e.target.value+'%')});
 document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>{lang=b.dataset.lang;try{localStorage.setItem('artmar-lang',lang)}catch(e){};applyLang()});
 
 // photos (kept in this browser only; the client attaches them in WhatsApp)
